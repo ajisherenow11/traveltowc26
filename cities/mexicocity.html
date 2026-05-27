@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mexico City World Cup 2026 Guide — TravelToWC26</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--green:#1a7a3c;--green-pale:#e8f8ef;--sandy:#e9c46a;--sandy-pale:#fef8e7;--terra:#d64045;--ivory:#fffbf0;--white:#ffffff;--bg:#fffbf0;--text:#1a2e20;--muted:#6b7e70;--border:#e0d8c8;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;min-height:100vh;}
+  nav{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 5%;background:var(--white);border-bottom:2px solid #f0e8d0;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(26,122,60,0.06);}
+  .logo{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;color:var(--green);text-decoration:none;}
+  .logo span{color:var(--terra);}
+  .nav-links{display:flex;align-items:center;gap:2rem;}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:0.88rem;font-weight:500;transition:color 0.2s;}
+  .nav-links a:hover,.nav-links a.active{color:var(--green);font-weight:600;}
+  .nav-pill{background:var(--green);color:white;font-size:0.75rem;font-weight:700;padding:0.4rem 1rem;border-radius:20px;}
+  .city-hero{background:linear-gradient(135deg,#f0fff6 0%,var(--ivory) 60%,#fef3e8 100%);padding:3rem 5%;border-bottom:1px solid var(--border);}
+  .city-hero-inner{max-width:1100px;margin:0 auto;}
+  .breadcrumb{font-size:0.78rem;color:var(--muted);margin-bottom:1rem;}
+  .breadcrumb a{color:var(--green);text-decoration:none;}
+  .breadcrumb span{margin:0 0.4rem;}
+  .city-flag-title{display:flex;align-items:center;gap:1rem;margin-bottom:0.5rem;}
+  .city-flag{font-size:2.5rem;}
+  .city-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:900;letter-spacing:-0.5px;color:var(--text);}
+  .city-stadium{font-size:1rem;color:var(--muted);margin-bottom:1rem;}
+  .city-badges{display:flex;gap:0.5rem;flex-wrap:wrap;}
+  .badge{font-size:0.72rem;font-weight:700;padding:0.3rem 0.75rem;border-radius:20px;text-transform:uppercase;letter-spacing:0.5px;}
+  .badge-gold{background:var(--sandy-pale);color:#7a5c00;border:1px solid var(--sandy);}
+  .badge-green{background:var(--green-pale);color:#1a5c30;border:1px solid #a8d5b8;}
+  .badge-terra{background:#fff0f0;color:#7a1a1a;border:1px solid #f5b8b8;}
+  .stats-bar{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--white);margin-bottom:2rem;}
+  .stat-item{padding:1.2rem 1.5rem;border-right:1px solid var(--border);text-align:center;}
+  .stat-item:last-child{border-right:none;}
+  .stat-num{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;color:var(--green);line-height:1;margin-bottom:0.3rem;}
+  .stat-label{font-size:0.78rem;color:var(--muted);}
+  .main{max-width:1100px;margin:0 auto;padding:2.5rem 5%;display:grid;grid-template-columns:1fr 340px;gap:1.5rem;align-items:start;}
+  .main-left,.main-right{display:flex;flex-direction:column;gap:1.5rem;}
+  .card{background:var(--white);border:1.5px solid var(--border);border-radius:16px;overflow:hidden;}
+  .card-header{display:flex;align-items:center;gap:0.75rem;padding:1rem 1.3rem;border-bottom:1px solid var(--border);background:var(--ivory);}
+  .card-header-icon{font-size:1.1rem;}
+  .card-title{font-weight:700;font-size:0.95rem;color:var(--green);}
+  .card-body{padding:1.2rem 1.3rem;}
+  .match-list{display:flex;flex-direction:column;gap:0.6rem;}
+  .match-row{display:grid;grid-template-columns:110px 1fr auto;align-items:center;gap:0.75rem;padding:0.75rem 1rem;border-radius:10px;background:var(--bg);border:1px solid var(--border);}
+  .match-row.opener{background:var(--sandy-pale);border-color:var(--sandy);}
+  .match-row.mexico{background:#fff0f0;border-color:#f5b8b8;}
+  .match-date{font-size:0.75rem;color:var(--muted);font-weight:500;}
+  .match-teams{font-size:0.88rem;font-weight:600;color:var(--text);}
+  .match-row.opener .match-teams{color:#7a5c00;}
+  .match-row.mexico .match-teams{color:#7a1a1a;}
+  .match-stage{font-size:0.68rem;font-weight:700;padding:0.2rem 0.5rem;border-radius:6px;white-space:nowrap;background:var(--green-pale);color:var(--green);}
+  .match-row.opener .match-stage{background:#fde8b0;color:#7a5c00;}
+  .match-row.mexico .match-stage{background:#ffd6d6;color:#7a1a1a;}
+  .stay-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:1rem;}
+  .stay-card{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.9rem;}
+  .stay-name{font-weight:700;font-size:0.88rem;color:var(--green);margin-bottom:0.3rem;}
+  .stay-note{font-size:0.75rem;color:var(--muted);line-height:1.5;}
+  .stay-tag{font-size:0.65rem;font-weight:700;background:var(--green-pale);color:var(--green);padding:0.15rem 0.4rem;border-radius:4px;margin-top:0.4rem;display:inline-block;}
+  .book-list{display:flex;flex-direction:column;gap:0.5rem;}
+  .book-row{display:flex;align-items:center;justify-content:space-between;padding:0.75rem 1rem;border:1.5px solid var(--border);border-radius:10px;text-decoration:none;transition:all 0.2s;background:var(--white);}
+  .book-row:hover{border-color:var(--green);transform:translateY(-1px);}
+  .book-name{font-weight:600;font-size:0.88rem;color:var(--text);}
+  .book-note{font-size:0.72rem;color:var(--muted);margin-top:0.15rem;}
+  .book-arrow{color:var(--green);font-size:0.9rem;font-weight:700;}
+  .tips-list{display:flex;flex-direction:column;gap:0.9rem;}
+  .tip-row{display:flex;gap:0.75rem;align-items:flex-start;}
+  .tip-icon{font-size:1.2rem;flex-shrink:0;margin-top:1px;}
+  .tip-content{flex:1;}
+  .tip-title{font-weight:700;font-size:0.85rem;color:var(--text);margin-bottom:0.2rem;}
+  .tip-text{font-size:0.78rem;color:var(--muted);line-height:1.55;}
+  .transport-list{display:flex;flex-direction:column;gap:0.6rem;}
+  .transport-row{display:flex;align-items:center;justify-content:space-between;padding:0.75rem 1rem;border:1.5px solid var(--border);border-radius:10px;background:var(--white);text-decoration:none;transition:all 0.2s;}
+  .transport-row:hover{border-color:var(--green);}
+  .transport-name{font-weight:600;font-size:0.88rem;color:var(--text);}
+  .transport-note{font-size:0.72rem;color:var(--muted);margin-top:0.15rem;}
+  .transport-arrow{color:var(--green);font-weight:700;font-size:0.9rem;}
+  .notice{background:var(--sandy-pale);border:1.5px solid var(--sandy);border-radius:12px;padding:1rem 1.2rem;font-size:0.82rem;color:#7a5c00;line-height:1.6;}
+  .notice strong{display:block;font-size:0.88rem;margin-bottom:0.3rem;color:#5a4000;}
+  .notice-green{background:var(--green-pale);border:1.5px solid #a8d5b8;border-radius:12px;padding:1rem 1.2rem;font-size:0.82rem;color:#1a5c30;line-height:1.6;}
+  .notice-green strong{display:block;font-size:0.88rem;margin-bottom:0.3rem;color:var(--green);}
+  .fanfest-card{background:var(--green-pale);border:1.5px solid #a8d5b8;border-radius:12px;padding:1rem 1.2rem;font-size:0.82rem;color:#1a5c30;line-height:1.6;}
+  .fanfest-card strong{display:block;font-size:0.9rem;margin-bottom:0.3rem;color:var(--green);}
+  .plan-btn{display:flex;align-items:center;justify-content:center;gap:0.5rem;background:var(--green);color:white;padding:0.9rem 1.5rem;border-radius:12px;font-weight:700;font-size:0.9rem;text-decoration:none;transition:all 0.2s;box-shadow:0 4px 12px rgba(26,122,60,0.2);text-align:center;}
+  .plan-btn:hover{background:#155f2f;transform:translateY(-1px);}
+  footer{background:var(--green);padding:2rem 5%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-top:4rem;}
+  footer .logo{color:white;font-size:1.2rem;}
+  footer .logo span{color:var(--terra);}
+  .footer-links{display:flex;gap:1.5rem;flex-wrap:wrap;}
+  .footer-links a{color:rgba(255,255,255,0.55);text-decoration:none;font-size:0.8rem;transition:color 0.2s;}
+  .footer-links a:hover{color:white;}
+  .footer-copy{font-size:0.75rem;color:rgba(255,255,255,0.35);}
+  @media(max-width:900px){.main{grid-template-columns:1fr;}.stats-bar{grid-template-columns:repeat(2,1fr);}.stay-grid{grid-template-columns:1fr;}.nav-links{display:none;}.match-row{grid-template-columns:90px 1fr;}.match-stage{display:none;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="logo">TravelTo<span>WC26</span></a>
+  <div class="nav-links">
+    <a href="../visa.html">Visa Guide</a>
+    <a href="../cities.html" class="active">Host Cities</a>
+    <a href="../schedule.html">Match Schedule</a>
+    <a href="../about.html">About</a>
+    <span class="nav-pill">⚽ Jun 11 – Jul 19, 2026</span>
+  </div>
+</nav>
+
+<div class="city-hero">
+  <div class="city-hero-inner">
+    <div class="breadcrumb"><a href="../index.html">Home</a><span>›</span><a href="../cities.html">Host Cities</a><span>›</span>Mexico City</div>
+    <div class="city-flag-title">
+      <div class="city-flag">🇲🇽</div>
+      <h1 class="city-title">Mexico City</h1>
+    </div>
+    <div class="city-stadium">Estadio Azteca · Host of the tournament opening match and Mexico's home games</div>
+    <div class="city-badges">
+      <span class="badge badge-gold">🎉 Opening Match — Jun 11</span>
+      <span class="badge badge-terra">🇲🇽 Mexico plays here</span>
+      <span class="badge badge-green">5 matches total</span>
+      <span class="badge badge-green">Historic third World Cup at Azteca</span>
+    </div>
+  </div>
+</div>
+
+<div class="stats-bar">
+  <div class="stat-item"><div class="stat-num">5</div><div class="stat-label">Matches hosted</div></div>
+  <div class="stat-item"><div class="stat-num">87,500</div><div class="stat-label">Stadium capacity</div></div>
+  <div class="stat-item"><div class="stat-num">$80-250</div><div class="stat-label">Avg hotel per night</div></div>
+  <div class="stat-item"><div class="stat-num">7,350 ft</div><div class="stat-label">Altitude above sea level</div></div>
+</div>
+
+<div class="main">
+  <div class="main-left">
+
+    <div class="card">
+      <div class="card-header"><span class="card-header-icon">⚽</span><div class="card-title">Matches in Mexico City</div></div>
+      <div class="card-body">
+        <div class="match-list">
+          <div class="match-row opener"><div class="match-date">Thu Jun 11, 3pm CT</div><div class="match-teams">🎉 Mexico vs South Africa — OPENING MATCH</div><div class="match-stage">Group A</div></div>
+          <div class="match-row"><div class="match-date">Wed Jun 17, 10pm CT</div><div class="match-teams">Uzbekistan vs Colombia</div><div class="match-stage">Group K</div></div>
+          <div class="match-row mexico"><div class="match-date">Tue Jun 23, 9pm CT</div><div class="match-teams">🇲🇽 Mexico vs Czechia</div><div class="match-stage">Group A</div></div>
+          <div class="match-row"><div class="match-date">Wed Jul 1</div><div class="match-teams">Round of 32 — TBD</div><div class="match-stage">Round of 32</div></div>
+          <div class="match-row"><div class="match-date">Sun Jul 5, 8pm CT</div><div class="match-teams">Round of 16 — TBD</div><div class="match-stage">Round of 16</div></div>
+        </div>
+        <div class="notice-green" style="margin-top:1rem">
+          <strong>Historic opening match on June 11</strong>
+          Estadio Azteca becomes the first stadium in history to host matches at three different World Cups (1970, 1986, 2026). Mexico vs South Africa will be one of the loudest and most electric atmospheres of the entire tournament.
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><span class="card-header-icon">🏨</span><div class="card-title">Where to stay</div></div>
+      <div class="card-body">
+        <div class="stay-grid">
+          <div class="stay-card">
+            <div class="stay-name">Roma Norte / Condesa</div>
+            <div class="stay-note">Best overall neighbourhood for World Cup visitors. Trendy, walkable, great restaurants and bars. Art deco streets, Parque Mexico, strong nightlife. 40 min to Azteca by Tren Ligero.</div>
+            <span class="stay-tag">Best overall</span>
+          </div>
+          <div class="stay-card">
+            <div class="stay-name">Polanco</div>
+            <div class="stay-note">Upscale area with luxury hotels, designer shopping and Michelin-level restaurants. Safest neighbourhood for international visitors. 40 min to Azteca.</div>
+            <span class="stay-tag">Safest / Luxury</span>
+          </div>
+          <div class="stay-card">
+            <div class="stay-name">Centro Historico</div>
+            <div class="stay-note">Heart of the city. Zócalo Fan Festival on your doorstep. Rich history with Templo Mayor, Palacio de Bellas Artes. Metro access everywhere. Budget to mid-range hotels.</div>
+            <span class="stay-tag">Best for Fan Festival</span>
+          </div>
+          <div class="stay-card">
+            <div class="stay-name">Coyoacán</div>
+            <div class="stay-note">Charming village feel within the city. Frida Kahlo museum nearby. Closest neighbourhood to Estadio Azteca. Quieter and more residential.</div>
+            <span class="stay-tag">Closest to stadium</span>
+          </div>
+        </div>
+        <div class="notice" style="margin-bottom:1rem">
+          <strong>Book now for the opening match</strong>
+          June 11 is the most in-demand night across the entire 2026 tournament globally. Mexico City hotels around that date are selling out fast. Book with free cancellation if possible.
+        </div>
+        <div class="book-list">
+          <a href="#" class="book-row"><div><div class="book-name">Booking.com</div><div class="book-note">Largest selection, free cancellation options</div></div><div class="book-arrow">→</div></a>
+          <a href="#" class="book-row"><div><div class="book-name">Hotels.com</div><div class="book-note">Earn free nights with every booking</div></div><div class="book-arrow">→</div></a>
+          <a href="#" class="book-row"><div><div class="book-name">Hostelworld</div><div class="book-note">Budget stays from $25 per night</div></div><div class="book-arrow">→</div></a>
+          <a href="#" class="book-row"><div><div class="book-name">Agoda</div><div class="book-note">Popular with Asian travellers</div></div><div class="book-arrow">→</div></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><span class="card-header-icon">💡</span><div class="card-title">Local tips for Mexico City</div></div>
+      <div class="card-body">
+        <div class="tips-list">
+          <div class="tip-row">
+            <div class="tip-icon">🏔️</div>
+            <div class="tip-content">
+              <div class="tip-title">Altitude warning — take it easy your first day</div>
+              <div class="tip-text">Mexico City sits at 7,350 feet (2,240m) above sea level. Many visitors feel headaches, fatigue or breathlessness on arrival. Take it easy your first day, drink plenty of water, avoid alcohol and heavy food. Most people adjust within 24-48 hours.</div>
+            </div>
+          </div>
+          <div class="tip-row">
+            <div class="tip-icon">🚇</div>
+            <div class="tip-content">
+              <div class="tip-title">Metro and Tren Ligero to Estadio Azteca</div>
+              <div class="tip-text">From central neighbourhoods take Metro Line 2 to Tasqueña station then Tren Ligero (light rail) to Estadio Azteca station. Reliable, cheap and avoids all traffic. Arrive very early on match days as queues are long. Pink cars on Metro are women-only during rush hours.</div>
+            </div>
+          </div>
+          <div class="tip-row">
+            <div class="tip-icon">🌧️</div>
+            <div class="tip-content">
+              <div class="tip-title">Afternoon rain is very common in June and July</div>
+              <div class="tip-text">Mexico City's rainy season runs June to September. Expect brief but intense afternoon downpours most days. Bring a light rain jacket. Estadio Azteca is an open-air stadium so check weather before matches.</div>
+            </div>
+          </div>
+          <div class="tip-row">
+            <div class="tip-icon">💧</div>
+            <div class="tip-content">
+              <div class="tip-title">Drink bottled or purified water only</div>
+              <div class="tip-text">Tap water in Mexico City is not safe to drink for international visitors. Always use bottled or purified water, including for brushing teeth. Most hotels provide purified water. This is important to avoid stomach illness during your trip.</div>
+            </div>
+          </div>
+          <div class="tip-row">
+            <div class="tip-icon">💰</div>
+            <div class="tip-content">
+              <div class="tip-title">Mexico City is very affordable</div>
+              <div class="tip-text">Compared to the US and Canadian host cities, Mexico City offers exceptional value. Great meals from $5-15, Metro costs a few pesos, budget hotels from $25 per night. Tip 10-15% at restaurants, always in Mexican pesos. Withdraw pesos from BBVA or Santander ATMs for the best exchange rates.</div>
+            </div>
+          </div>
+          <div class="tip-row">
+            <div class="tip-icon">🎉</div>
+            <div class="tip-content">
+              <div class="tip-title">Fan Festival at Zócalo with 16 city-wide zones</div>
+              <div class="tip-text">The official FIFA Fan Festival is at Zócalo Square in the heart of the city with 16 additional fan zones across all city boroughs. Massive screens, food, music and cultural events throughout the tournament. Free entry.</div>
+            </div>
+          </div>
+          <div class="tip-row">
+            <div class="tip-icon">🚕</div>
+            <div class="tip-content">
+              <div class="tip-title">Use Uber or DiDi for rideshare</div>
+              <div class="tip-text">Uber and DiDi are safe and affordable in Mexico City. Avoid hailing random street taxis. Do not rent a car — driving in Mexico City is extremely challenging and parking near the stadium is very limited.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="main-right">
+
+    <a href="../index.html" class="plan-btn">Plan your full Mexico City trip ⚽</a>
+
+    <div class="card">
+      <div class="card-header"><span class="card-header-icon">🛂</span><div class="card-title">Mexico visa requirements</div></div>
+      <div class="card-body">
+        <p style="font-size:0.82rem;color:var(--muted);margin-bottom:1rem;line-height:1.6">Mexico has the most flexible entry policy of the three host nations. Most nationalities can enter visa-free. Check our full visa guide for your passport.</p>
+        <div class="tips-list">
+          <div class="tip-row">
+            <div class="tip-icon">✅</div>
+            <div class="tip-content">
+              <div class="tip-title">Visa free for most nationalities</div>
+              <div class="tip-text">USA, UK, EU, Brazil, Argentina, Japan, Australia and 60+ other nationalities enter visa-free for up to 180 days.</div>
+            </div>
+          </div>
+          <div class="tip-row">
+            <div class="tip-icon">🌟</div>
+            <div class="tip-content">
+              <div class="tip-title">Valid US/UK/Schengen visa qualifies</div>
+              <div class="tip-text">If you hold a valid US, UK, Canadian or Schengen visa, you can enter Mexico visa-free even if your nationality normally requires a visa.</div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:1rem">
+          <a href="../visa.html" class="book-row" style="text-decoration:none"><div><div class="book-name">Full Mexico Visa Guide</div><div class="book-note">Check requirements for your passport</div></div><div class="book-arrow">→</div></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><span class="card-header-icon">✈️</span><div class="card-title">Getting to Mexico City</div></div>
+      <div class="card-body">
+        <p style="font-size:0.82rem;color:var(--muted);margin-bottom:1rem;line-height:1.6">Mexico City International Airport (MEX/AICM) is the main hub with connections from across the Americas, Europe and the Middle East. The newer Felipe Angeles Airport (NLU) handles some routes.</p>
+        <div class="transport-list">
+          <a href="#" class="transport-row"><div><div class="transport-name">Flights to Mexico City MEX</div><div class="transport-note">Search and compare flights</div></div><div class="transport-arrow">→</div></a>
+          <a href="#" class="transport-row"><div><div class="transport-name">Airport Transfer</div><div class="transport-note">MEX to Roma, Polanco or Condesa</div></div><div class="transport-arrow">→</div></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><span class="card-header-icon">🚇</span><div class="card-title">Getting to Estadio Azteca</div></div>
+      <div class="card-body">
+        <div class="tips-list">
+          <div class="tip-row">
+            <div class="tip-icon">🚇</div>
+            <div class="tip-content">
+              <div class="tip-title">Metro Line 2 to Tasqueña then Tren Ligero</div>
+              <div class="tip-text">Most reliable route from central areas. Metro to Tasqueña then Tren Ligero light rail directly to Estadio Azteca station. Very cheap and avoids all traffic.</div>
+            </div>
+          </div>
+          <div class="tip-row">
+            <div class="tip-icon">🚗</div>
+            <div class="tip-content">
+              <div class="tip-title">Uber or DiDi</div>
+              <div class="tip-text">Affordable from most central neighbourhoods but expect traffic delays on match days. Book return trip before the final whistle.</div>
+            </div>
+          </div>
+          <div class="tip-row">
+            <div class="tip-icon">🚌</div>
+            <div class="tip-content">
+              <div class="tip-title">Official fan shuttles</div>
+              <div class="tip-text">FIFA and local authorities will operate official fan shuttles from major fan zones on match days. Check official Mexico City World Cup channels closer to the tournament.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><span class="card-header-icon">📱</span><div class="card-title">Stay connected in Mexico City</div></div>
+      <div class="card-body">
+        <p style="font-size:0.82rem;color:var(--muted);margin-bottom:1rem;line-height:1.6">Get a Mexico eSIM before you land to avoid roaming charges. Note that local SIM cards in Mexico now require passport registration since January 2026.</p>
+        <a href="#" class="book-row" style="text-decoration:none"><div><div class="book-name">Get Mexico eSIM on Airalo</div><div class="book-note">Activate before landing, no registration needed</div></div><div class="book-arrow">→</div></a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><span class="card-header-icon">🛡️</span><div class="card-title">Travel insurance</div></div>
+      <div class="card-body">
+        <p style="font-size:0.82rem;color:var(--muted);margin-bottom:1rem;line-height:1.6">Travel insurance is strongly recommended for Mexico, covering medical emergencies, trip cancellation and baggage.</p>
+        <a href="#" class="book-row" style="text-decoration:none"><div><div class="book-name">Get a quote on World Nomads</div><div class="book-note">Covers medical, cancellation and baggage</div></div><div class="book-arrow">→</div></a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><span class="card-header-icon">👕</span><div class="card-title">Official merchandise</div></div>
+      <div class="card-body">
+        <p style="font-size:0.82rem;color:var(--muted);margin-bottom:1rem;line-height:1.6">Shop official World Cup 2026 jerseys and gear before you travel.</p>
+        <a href="#" class="book-row" style="text-decoration:none"><div><div class="book-name">Shop on Fanatics</div><div class="book-note">Official licensed World Cup gear</div></div><div class="book-arrow">→</div></a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <a href="../index.html" class="logo">TravelTo<span>WC26</span></a>
+  <div class="footer-links">
+    <a href="../visa.html">Visa Guide</a>
+    <a href="../cities.html">Host Cities</a>
+    <a href="../schedule.html">Match Schedule</a>
+    <a href="../about.html">Affiliate Disclosure</a>
+    <a href="../about.html">Privacy Policy</a>
+  </div>
+  <div class="footer-copy">© 2026 TravelToWC26 · Not affiliated with FIFA</div>
+</footer>
+
+</body>
+</html>

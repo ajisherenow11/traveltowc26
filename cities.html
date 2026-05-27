@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Host Cities — TravelToWC26</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--green:#1a7a3c;--green-pale:#e8f8ef;--sandy:#e9c46a;--sandy-pale:#fef8e7;--terra:#c47a1a;--ivory:#fffbf0;--white:#ffffff;--bg:#fffbf0;--text:#1a2e20;--muted:#6b7e70;--border:#e0d8c8;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;min-height:100vh;}
+  nav{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 5%;background:var(--white);border-bottom:2px solid #f0e8d0;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(26,122,60,0.06);}
+  .logo{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;color:var(--green);text-decoration:none;}
+  .logo span{color:var(--terra);}
+  .nav-links{display:flex;align-items:center;gap:2rem;}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:0.88rem;font-weight:500;transition:color 0.2s;}
+  .nav-links a:hover,.nav-links a.active{color:var(--green);font-weight:600;}
+  .nav-pill{background:var(--green);color:white;font-size:0.75rem;font-weight:700;padding:0.4rem 1rem;border-radius:20px;}
+
+  .page-hero{background:linear-gradient(135deg,#f0fff6 0%,var(--ivory) 60%,#fef3e8 100%);padding:3rem 5%;border-bottom:1px solid var(--border);}
+  .page-hero-inner{max-width:1200px;margin:0 auto;}
+  .breadcrumb{font-size:0.78rem;color:var(--muted);margin-bottom:1rem;}
+  .breadcrumb a{color:var(--green);text-decoration:none;}
+  .breadcrumb span{margin:0 0.4rem;}
+  .page-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:900;letter-spacing:-0.5px;margin-bottom:0.75rem;}
+  .page-title span{color:var(--green);}
+  .page-sub{font-size:1rem;color:var(--muted);line-height:1.65;max-width:600px;}
+
+  .main{max-width:1200px;margin:0 auto;padding:2.5rem 5%;}
+
+  .region-label{font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--muted);margin-bottom:1rem;margin-top:2.5rem;padding-bottom:0.5rem;border-bottom:1px solid var(--border);}
+  .region-label:first-child{margin-top:0;}
+
+  .cities-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0.75rem;margin-bottom:0.5rem;}
+
+  .city-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1rem 1.1rem;text-decoration:none;color:var(--text);display:block;transition:border-color 0.15s,transform 0.15s;}
+  .city-card:hover{border-color:var(--green);transform:translateY(-2px);}
+
+  .city-top{display:flex;align-items:center;gap:0.5rem;margin-bottom:0.35rem;}
+  .city-flag{font-size:1.1rem;}
+  .city-name{font-weight:700;font-size:0.95rem;color:var(--green);}
+  .city-stadium{font-size:0.72rem;color:var(--muted);margin-bottom:0.5rem;line-height:1.3;}
+  .city-meta{display:flex;align-items:center;justify-content:space-between;}
+  .city-matches{font-size:0.7rem;color:var(--muted);}
+
+  .city-badge{font-size:0.62rem;font-weight:700;padding:0.18rem 0.45rem;border-radius:4px;}
+  .badge-final{background:var(--sandy-pale);color:#7a4a00;}
+  .badge-semi{background:var(--green-pale);color:#1a5c30;}
+  .badge-quarter{background:#e8f4fd;color:#0c447c;}
+  .badge-r16{background:#f5f5f5;color:var(--muted);}
+  .badge-special{background:var(--sandy-pale);color:#7a4a00;}
+
+  footer{background:var(--green);padding:2rem 5%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-top:4rem;}
+  footer .logo{color:white;font-size:1.2rem;}
+  footer .logo span{color:var(--terra);}
+  .footer-links{display:flex;gap:1.5rem;flex-wrap:wrap;}
+  .footer-links a{color:rgba(255,255,255,0.55);text-decoration:none;font-size:0.8rem;transition:color 0.2s;}
+  .footer-links a:hover{color:white;}
+  .footer-copy{font-size:0.75rem;color:rgba(255,255,255,0.35);}
+
+  @media(max-width:900px){.cities-grid{grid-template-columns:repeat(2,1fr);}.nav-links{display:none;}}
+  @media(max-width:480px){.cities-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">TravelTo<span>WC26</span></a>
+  <div class="nav-links">
+    <a href="visa.html">Visa Guide</a>
+    <a href="cities.html" class="active">Host Cities</a>
+    <a href="schedule.html">Match Schedule</a>
+    <a href="about.html">About</a>
+    <span class="nav-pill">⚽ Jun 11 – Jul 19, 2026</span>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>›</span>Host Cities</div>
+    <h1 class="page-title">World Cup 2026 <span>Host Cities</span></h1>
+    <p class="page-sub">16 cities across three countries. Click any city for a complete guide — matches, hotels, transport, local tips and all affiliate links.</p>
+  </div>
+</div>
+
+<div class="main">
+
+  <div class="region-label">🇺🇸 United States — 11 cities</div>
+  <div class="cities-grid">
+    <a href="cities/newyork.html" class="city-card">
+      <div class="city-top"><span class="city-flag">🇺🇸</span><span class="city-name">New York / NJ</span></div>
+      <div class="city-stadium">MetLife Stadium, East Rutherford</div>
+      <div class="city-meta"><span class="city-matches">8 matches</span><span class="city-badge badge-final">Final</span></div>
+    </a>
+    <a href="cities/dallas.html" class="city-card">
+      <div class="city-top"><span class="city-flag">🇺🇸</span><span class="city-name">Dallas</span></div>
+      <div class="city-stadium">AT&T Stadium, Arlington</div>
+      <div class="city-meta"><span class="city-matches">9 matches</span><span class="city-badge badge-semi">Semi-Final</span></div>
+    </a>
+    <a href="cities/atlanta.html" class="city-card">
+      <div class="city-top"><span class="city-flag">🇺🇸</span><span class="city-name">Atlanta</span></div>
+      <div class="city-stadium">Mercedes-Benz Stadium</div>
+      <div class="city-meta"><span class="city-matches">8 matches</span><span class="city-badge badge-semi">Semi-Final</span></div>
+    </a>
+    <a href="cities/losangeles.html" class="city-card">
+      <div class="city-top"><span class="city-flag">🇺🇸</span><span class="city-name">Los Angeles</span></div>
+      <div class="city-stadium">SoFi Stadium, Inglewood</div>
+      <div class="city-meta"><span class="city-matches">8 matches</span><span class="city-badge badge-quarter">Quarter-Final</span></div>
+    </a>
+    <a href="cities/miami.html" class="city-card">
+      <div class="city-top"><span class="city-flag">🇺🇸</span><span class="city-name">Miami</span></div>
+      <div class="city-stadium">Hard Rock Stadium</div>
+      <div class="city-meta"><span class="city-matches">7 matches</span><span class="city-badge badge-quarter">Quarter-Final</span></div>
+    </a>
+    <a href="cities/kansascity.html" class="city-card">
+      <div class="city-top"><span class="city-flag">🇺🇸</span><span class="city-name">Kansas City</span></div>
+      <div class="city-stadium">Arrowhead Stadium</div>
+      <div class="city-meta"><span class="city-matches">6 matches</span><span class="city-badge badge-quarter">Quarter-Final</span></div>
+    </a>
+    <a href="cities/boston.html" class="city-card">
+      <div class="city-top"><span class="city-flag">🇺🇸</span><span class="city-name">Boston</span></div>
+      <div class="city-stadium">Gillette Stadium, Foxborough</div>
+      <div class="city-meta"><span class="city-matches">7 matches</span><span class="city-badge badge-quarter">Quarter-Final</span></div>
+    </a>
+    <a href="cities/seattle.html" class="city-card">
+      <div class="city-top"><span class="city-flag">🇺🇸</span><span class="city-name">Seattle</span></div>
+      <div class="city-stadium">Lumen Field</div>
+      <div class="city-meta"><span class="city-matches">6 matches</span><span class="city-badge badge-r16">Round of 16</span></div>
+    </a>
+    <a href="cities/philadelphia.html" class="city-card">
+      <div class="city-top"><span class="city-flag">🇺🇸</span><span class="city-name">Philadelphia</span></div>
+      <div class="city-stadium">Lincoln Financial Field</div>
+      <div class="city-meta"><span class="city-matches">6 matches</span><span class="city-badge badge-r16">Round of 16</span></div>
+    </a>
+    <a href="cities/houston.html" class="city-card">
+      <div class="city-top"><span class="city-flag">🇺🇸</span><span class="city-name">Houston</span></div>
+      <div class="city-stadium">NRG Stadium</div>
+      <div class="city-meta"><span class="city-matches">7 matches</span><span class="city-badge badge-r16">Round of 16</span></div>
+    </a>
+    <a href="cities/sanfrancisco.html" class="city-card">
+      <div class="city-top"><span class="city-flag">🇺🇸</span><span class="city-name">San Francisco</span></div>
+      <div class="city-stadium">Levi's Stadium, Santa Clara</div>
+      <div class="city-meta"><span class="city-matches">6 matches</span><span class="city-badge badge-r16">Round of 32</span></div>
+    </a>
+  </div>
+
+  <div class="region-label">🇨🇦 Canada — 2 cities</div>
+  <div class="cities-grid">
+    <a href="cities/toronto.html" class="city-card">
+      <div class="city-top"><span class="city-flag">🇨🇦</span><span class="city-name">Toronto</span></div>
+      <div class="city-stadium">BMO Field</div>
+      <div class="city-meta"><span class="city-matches">6 matches</span><span class="city-badge badge-special">Canada opener</span></div>
+    </a>
+    <a href="cities/vancouver.html" class="city-card">
+      <div class="city-top"><span class="city-flag">🇨🇦</span><span class="city-name">Vancouver</span></div>
+      <div class="city-stadium">BC Place</div>
+      <div class="city-meta"><span class="city-matches">7 matches</span><span class="city-badge badge-r16">Round of 16</span></div>
+    </a>
+  </div>
+
+  <div class="region-label">🇲🇽 Mexico — 3 cities</div>
+  <div class="cities-grid">
+    <a href="cities/mexicocity.html" class="city-card">
+      <div class="city-top"><span class="city-flag">🇲🇽</span><span class="city-name">Mexico City</span></div>
+      <div class="city-stadium">Estadio Azteca</div>
+      <div class="city-meta"><span class="city-matches">5 matches</span><span class="city-badge badge-special">Opening match</span></div>
+    </a>
+    <a href="cities/guadalajara.html" class="city-card">
+      <div class="city-top"><span class="city-flag">🇲🇽</span><span class="city-name">Guadalajara</span></div>
+      <div class="city-stadium">Estadio Akron</div>
+      <div class="city-meta"><span class="city-matches">4 matches</span></div>
+    </a>
+    <a href="cities/monterrey.html" class="city-card">
+      <div class="city-top"><span class="city-flag">🇲🇽</span><span class="city-name">Monterrey</span></div>
+      <div class="city-stadium">Estadio BBVA</div>
+      <div class="city-meta"><span class="city-matches">4 matches</span></div>
+    </a>
+  </div>
+
+</div>
+
+<footer>
+  <a href="index.html" class="logo">TravelTo<span>WC26</span></a>
+  <div class="footer-links">
+    <a href="visa.html">Visa Guide</a>
+    <a href="cities.html">Host Cities</a>
+    <a href="schedule.html">Match Schedule</a>
+    <a href="about.html">Affiliate Disclosure</a>
+    <a href="about.html">Privacy Policy</a>
+  </div>
+  <div class="footer-copy">© 2026 TravelToWC26 · Not affiliated with FIFA</div>
+</footer>
+
+</body>
+</html>

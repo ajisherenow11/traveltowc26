@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vancouver World Cup 2026 Guide — TravelToWC26</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--green:#1a7a3c;--green-pale:#e8f8ef;--sandy:#e9c46a;--sandy-pale:#fef8e7;--terra:#d64045;--ivory:#fffbf0;--white:#ffffff;--bg:#fffbf0;--text:#1a2e20;--muted:#6b7e70;--border:#e0d8c8;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;min-height:100vh;}
+  nav{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 5%;background:var(--white);border-bottom:2px solid #f0e8d0;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(26,122,60,0.06);}
+  .logo{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;color:var(--green);text-decoration:none;}
+  .logo span{color:var(--terra);}
+  .nav-links{display:flex;align-items:center;gap:2rem;}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:0.88rem;font-weight:500;transition:color 0.2s;}
+  .nav-links a:hover,.nav-links a.active{color:var(--green);font-weight:600;}
+  .nav-pill{background:var(--green);color:white;font-size:0.75rem;font-weight:700;padding:0.4rem 1rem;border-radius:20px;}
+  .city-hero{background:linear-gradient(135deg,#f0fff6 0%,var(--ivory) 60%,#fef3e8 100%);padding:3rem 5%;border-bottom:1px solid var(--border);}
+  .city-hero-inner{max-width:1100px;margin:0 auto;}
+  .breadcrumb{font-size:0.78rem;color:var(--muted);margin-bottom:1rem;}
+  .breadcrumb a{color:var(--green);text-decoration:none;}
+  .breadcrumb span{margin:0 0.4rem;}
+  .city-flag-title{display:flex;align-items:center;gap:1rem;margin-bottom:0.5rem;}
+  .city-flag{font-size:2.5rem;}
+  .city-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:900;letter-spacing:-0.5px;color:var(--text);}
+  .city-stadium{font-size:1rem;color:var(--muted);margin-bottom:1rem;}
+  .city-badges{display:flex;gap:0.5rem;flex-wrap:wrap;}
+  .badge{font-size:0.72rem;font-weight:700;padding:0.3rem 0.75rem;border-radius:20px;text-transform:uppercase;letter-spacing:0.5px;}
+  .badge-gold{background:var(--sandy-pale);color:#7a5c00;border:1px solid var(--sandy);}
+  .badge-green{background:var(--green-pale);color:#1a5c30;border:1px solid #a8d5b8;}
+  .stats-bar{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--white);margin-bottom:2rem;}
+  .stat-item{padding:1.2rem 1.5rem;border-right:1px solid var(--border);text-align:center;}
+  .stat-item:last-child{border-right:none;}
+  .stat-num{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;color:var(--green);line-height:1;margin-bottom:0.3rem;}
+  .stat-label{font-size:0.78rem;color:var(--muted);}
+  .main{max-width:1100px;margin:0 auto;padding:2.5rem 5%;display:grid;grid-template-columns:1fr 340px;gap:1.5rem;align-items:start;}
+  .main-left,.main-right{display:flex;flex-direction:column;gap:1.5rem;}
+  .card{background:var(--white);border:1.5px solid var(--border);border-radius:16px;overflow:hidden;}
+  .card-header{display:flex;align-items:center;gap:0.75rem;padding:1rem 1.3rem;border-bottom:1px solid var(--border);background:var(--ivory);}
+  .card-header-icon{font-size:1.1rem;}
+  .card-title{font-weight:700;font-size:0.95rem;color:var(--green);}
+  .card-body{padding:1.2rem 1.3rem;}
+  .match-list{display:flex;flex-direction:column;gap:0.6rem;}
+  .match-row{display:grid;grid-template-columns:110px 1fr auto;align-items:center;gap:0.75rem;padding:0.75rem 1rem;border-radius:10px;background:var(--bg);border:1px solid var(--border);}
+  .match-row.canada{background:#f0fff6;border-color:#a8d5b8;}
+  .match-date{font-size:0.75rem;color:var(--muted);font-weight:500;}
+  .match-teams{font-size:0.88rem;font-weight:600;color:var(--text);}
+  .match-row.canada .match-teams{color:#1a5c30;}
+  .match-stage{font-size:0.68rem;font-weight:700;padding:0.2rem 0.5rem;border-radius:6px;white-space:nowrap;background:var(--green-pale);color:var(--green);}
+  .match-row.canada .match-stage{background:#c0e8cc;color:#1a5c30;}
+  .stay-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:1rem;}
+  .stay-card{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.9rem;}
+  .stay-name{font-weight:700;font-size:0.88rem;color:var(--green);margin-bottom:0.3rem;}
+  .stay-note{font-size:0.75rem;color:var(--muted);line-height:1.5;}
+  .stay-tag{font-size:0.65rem;font-weight:700;background:var(--green-pale);color:var(--green);padding:0.15rem 0.4rem;border-radius:4px;margin-top:0.4rem;display:inline-block;}
+  .book-list{display:flex;flex-direction:column;gap:0.5rem;}
+  .book-row{display:flex;align-items:center;justify-content:space-between;padding:0.75rem 1rem;border:1.5px solid var(--border);border-radius:10px;text-decoration:none;transition:all 0.2s;background:var(--white);}
+  .book-row:hover{border-color:var(--green);transform:translateY(-1px);}
+  .book-name{font-weight:600;font-size:0.88rem;color:var(--text);}
+  .book-note{font-size:0.72rem;color:var(--muted);margin-top:0.15rem;}
+  .book-arrow{color:var(--green);font-size:0.9rem;font-weight:700;}
+  .tips-list{display:flex;flex-direction:column;gap:0.9rem;}
+  .tip-row{display:flex;gap:0.75rem;align-items:flex-start;}
+  .tip-icon{font-size:1.2rem;flex-shrink:0;margin-top:1px;}
+  .tip-content{flex:1;}
+  .tip-title{font-weight:700;font-size:0.85rem;color:var(--text);margin-bottom:0.2rem;}
+  .tip-text{font-size:0.78rem;color:var(--muted);line-height:1.55;}
+  .transport-list{display:flex;flex-direction:column;gap:0.6rem;}
+  .transport-row{display:flex;align-items:center;justify-content:space-between;padding:0.75rem 1rem;border:1.5px solid var(--border);border-radius:10px;background:var(--white);text-decoration:none;transition:all 0.2s;}
+  .transport-row:hover{border-color:var(--green);}
+  .transport-name{font-weight:600;font-size:0.88rem;color:var(--text);}
+  .transport-note{font-size:0.72rem;color:var(--muted);margin-top:0.15rem;}
+  .transport-arrow{color:var(--green);font-weight:700;font-size:0.9rem;}
+  .notice{background:var(--sandy-pale);border:1.5px solid var(--sandy);border-radius:12px;padding:1rem 1.2rem;font-size:0.82rem;color:#7a5c00;line-height:1.6;}
+  .notice strong{display:block;font-size:0.88rem;margin-bottom:0.3rem;color:#5a4000;}
+  .notice-green{background:var(--green-pale);border:1.5px solid #a8d5b8;border-radius:12px;padding:1rem 1.2rem;font-size:0.82rem;color:#1a5c30;line-height:1.6;}
+  .notice-green strong{display:block;font-size:0.88rem;margin-bottom:0.3rem;color:var(--green);}
+  .fanfest-card{background:var(--green-pale);border:1.5px solid #a8d5b8;border-radius:12px;padding:1rem 1.2rem;font-size:0.82rem;color:#1a5c30;line-height:1.6;}
+  .fanfest-card strong{display:block;font-size:0.9rem;margin-bottom:0.3rem;color:var(--green);}
+  .plan-btn{display:flex;align-items:center;justify-content:center;gap:0.5rem;background:var(--green);color:white;padding:0.9rem 1.5rem;border-radius:12px;font-weight:700;font-size:0.9rem;text-decoration:none;transition:all 0.2s;box-shadow:0 4px 12px rgba(26,122,60,0.2);text-align:center;}
+  .plan-btn:hover{background:#155f2f;transform:translateY(-1px);}
+  footer{background:var(--green);padding:2rem 5%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-top:4rem;}
+  footer .logo{color:white;font-size:1.2rem;}
+  footer .logo span{color:var(--terra);}
+  .footer-links{display:flex;gap:1.5rem;flex-wrap:wrap;}
+  .footer-links a{color:rgba(255,255,255,0.55);text-decoration:none;font-size:0.8rem;transition:color 0.2s;}
+  .footer-links a:hover{color:white;}
+  .footer-copy{font-size:0.75rem;color:rgba(255,255,255,0.35);}
+  @media(max-width:900px){.main{grid-template-columns:1fr;}.stats-bar{grid-template-columns:repeat(2,1fr);}.stay-grid{grid-template-columns:1fr;}.nav-links{display:none;}.match-row{grid-template-columns:90px 1fr;}.match-stage{display:none;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="logo">TravelTo<span>WC26</span></a>
+  <div class="nav-links">
+    <a href="../visa.html">Visa Guide</a>
+    <a href="../cities.html" class="active">Host Cities</a>
+    <a href="../schedule.html">Match Schedule</a>
+    <a href="../about.html">About</a>
+    <span class="nav-pill">⚽ Jun 11 – Jul 19, 2026</span>
+  </div>
+</nav>
+
+<div class="city-hero">
+  <div class="city-hero-inner">
+    <div class="breadcrumb"><a href="../index.html">Home</a><span>›</span><a href="../cities.html">Host Cities</a><span>›</span>Vancouver</div>
+    <div class="city-flag-title">
+      <div class="city-flag">🇨🇦</div>
+      <h1 class="city-title">Vancouver, BC</h1>
+    </div>
+    <div class="city-stadium">BC Place · Canada plays twice — the most beautiful World Cup host city</div>
+    <div class="city-badges">
+      <span class="badge badge-green">🍁 Canada plays twice</span>
+      <span class="badge badge-green">7 matches total</span>
+      <span class="badge badge-green">No US visa needed</span>
+      <span class="badge badge-green">Round of 16 — Jul 7</span>
+    </div>
+  </div>
+</div>
+
+<div class="stats-bar">
+  <div class="stat-item"><div class="stat-num">7</div><div class="stat-label">Matches hosted</div></div>
+  <div class="stat-item"><div class="stat-num">54,500</div><div class="stat-label">Stadium capacity</div></div>
+  <div class="stat-item"><div class="stat-num">C$200-600</div><div class="stat-label">Avg hotel per night</div></div>
+  <div class="stat-item"><div class="stat-num">26 min</div><div class="stat-label">YVR Airport to downtown</div></div>
+</div>
+
+<div class="main">
+  <div class="main-left">
+
+    <div class="card">
+      <div class="card-header"><span class="card-header-icon">⚽</span><div class="card-title">Matches in Vancouver</div></div>
+      <div class="card-body">
+        <div class="match-list">
+          <div class="match-row"><div class="match-date">Sat Jun 13, 9pm PT</div><div class="match-teams">Australia vs Turkey</div><div class="match-stage">Group D</div></div>
+          <div class="match-row canada"><div class="match-date">Wed Jun 18, 3pm PT</div><div class="match-teams">🍁 Canada vs Qatar</div><div class="match-stage">Group B</div></div>
+          <div class="match-row"><div class="match-date">Sat Jun 21, 6pm PT</div><div class="match-teams">New Zealand vs Egypt</div><div class="match-stage">Group G</div></div>
+          <div class="match-row canada"><div class="match-date">Wed Jun 24, 12pm PT</div><div class="match-teams">🍁 Canada vs Switzerland</div><div class="match-stage">Group B</div></div>
+          <div class="match-row"><div class="match-date">Fri Jun 26, 8pm PT</div><div class="match-teams">New Zealand vs Belgium</div><div class="match-stage">Group G</div></div>
+          <div class="match-row"><div class="match-date">Thu Jul 2, 8pm PT</div><div class="match-teams">Round of 32 — TBD</div><div class="match-stage">Round of 32</div></div>
+          <div class="match-row"><div class="match-date">Mon Jul 7, 1pm PT</div><div class="match-teams">Round of 16 — TBD</div><div class="match-stage">Round of 16</div></div>
+        </div>
+        <div class="notice-green" style="margin-top:1rem">
+          <strong>Canada plays twice in Vancouver</strong>
+          June 18 vs Qatar and June 24 vs Switzerland are both must-watch fixtures. Vancouver's large Australian and New Zealand communities also make the June 13 opener extremely lively.
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><span class="card-header-icon">🏨</span><div class="card-title">Where to stay</div></div>
+      <div class="card-body">
+        <div class="stay-grid">
+          <div class="stay-card">
+            <div class="stay-name">Yaletown</div>
+            <div class="stay-note">Closest neighbourhood to BC Place, 5-10 min walk. Excellent restaurants and bars. Most expensive but most convenient. JW Marriott Parq is directly across from the stadium.</div>
+            <span class="stay-tag">Closest to stadium</span>
+          </div>
+          <div class="stay-card">
+            <div class="stay-name">Downtown / West End</div>
+            <div class="stay-note">Best overall base. Largest hotel inventory, SkyTrain access, walking distance to stadium. Great for first time visitors to Vancouver.</div>
+            <span class="stay-tag">Best overall</span>
+          </div>
+          <div class="stay-card">
+            <div class="stay-name">Burnaby / Metrotown</div>
+            <div class="stay-note">Much cheaper than downtown. SkyTrain Expo Line runs directly to Main Street-Science World, the correct station for BC Place. 20-40 min to stadium.</div>
+            <span class="stay-tag">Budget friendly</span>
+          </div>
+          <div class="stay-card">
+            <div class="stay-name">Richmond</div>
+            <div class="stay-note">Near YVR Airport. Canada Line SkyTrain to downtown in 26 minutes. Good for fans with early flights or short stays around one match.</div>
+            <span class="stay-tag">Near airport</span>
+          </div>
+        </div>
+        <div class="notice" style="margin-bottom:1rem">
+          <strong>Downtown hotels nearly sold out</strong>
+          Fairmont and other premium downtown properties are fully booked for Canada match dates. Burnaby and Richmond on the SkyTrain offer much better availability at half the price.
+        </div>
+        <div class="book-list">
+          <a href="#" class="book-row"><div><div class="book-name">Booking.com</div><div class="book-note">Largest selection, free cancellation options</div></div><div class="book-arrow">→</div></a>
+          <a href="#" class="book-row"><div><div class="book-name">Hotels.com</div><div class="book-note">Earn free nights with every booking</div></div><div class="book-arrow">→</div></a>
+          <a href="#" class="book-row"><div><div class="book-name">Hostelworld</div><div class="book-note">Budget stays from C$50 per night</div></div><div class="book-arrow">→</div></a>
+          <a href="#" class="book-row"><div><div class="book-name">Agoda</div><div class="book-note">Popular with Asian travellers</div></div><div class="book-arrow">→</div></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><span class="card-header-icon">💡</span><div class="card-title">Local tips for Vancouver</div></div>
+      <div class="card-body">
+        <div class="tips-list">
+          <div class="tip-row">
+            <div class="tip-icon">🚇</div>
+            <div class="tip-content">
+              <div class="tip-title">Use Main Street-Science World SkyTrain station</div>
+              <div class="tip-text">The Stadium-Chinatown station is closed during World Cup match days. Use Main Street-Science World station on the Expo Line instead. It is a short walk to BC Place via the Last Mile fan walk. SkyTrain runs every 2 minutes on match days.</div>
+            </div>
+          </div>
+          <div class="tip-row">
+            <div class="tip-icon">✈️</div>
+            <div class="tip-content">
+              <div class="tip-title">Canada Line from YVR Airport to downtown</div>
+              <div class="tip-text">Vancouver International Airport (YVR) has a direct SkyTrain Canada Line to downtown in 26 minutes. Extremely easy arrival. No need for taxis or transfers if you stay downtown.</div>
+            </div>
+          </div>
+          <div class="tip-row">
+            <div class="tip-icon">🍁</div>
+            <div class="tip-content">
+              <div class="tip-title">No US visa needed for Vancouver only</div>
+              <div class="tip-text">If attending matches only in Vancouver and Toronto, you do not need a US visa. A Canadian eTA or visitor visa is all you need. This is a major advantage and cost saving compared to the US host cities.</div>
+            </div>
+          </div>
+          <div class="tip-row">
+            <div class="tip-icon">🌧️</div>
+            <div class="tip-content">
+              <div class="tip-title">Pack for rain even in June</div>
+              <div class="tip-text">Vancouver in June can be wet and cool especially evenings. BC Place has a retractable roof so matches are protected from rain. But getting to and from the stadium may involve wet weather. Bring a light waterproof jacket.</div>
+            </div>
+          </div>
+          <div class="tip-row">
+            <div class="tip-icon">🏔️</div>
+            <div class="tip-content">
+              <div class="tip-title">One of the most beautiful host cities</div>
+              <div class="tip-text">Vancouver is surrounded by mountains and ocean. Build in extra time to explore Stanley Park, Granville Island, the seawall, Gastown and North Shore mountains. Easily one of the best city experiences at the entire 2026 World Cup.</div>
+            </div>
+          </div>
+          <div class="tip-row">
+            <div class="tip-icon">🎉</div>
+            <div class="tip-content">
+              <div class="tip-title">Fan Festival at PNE Hastings Park</div>
+              <div class="tip-text">The official FIFA Fan Festival is at PNE Hastings Park in East Vancouver. Free entry, live match broadcasts, food and cultural events throughout the tournament.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="main-right">
+
+    <a href="../index.html" class="plan-btn">Plan your full Vancouver trip ⚽</a>
+
+    <div class="card">
+      <div class="card-header"><span class="card-header-icon">🛂</span><div class="card-title">Canada entry requirements</div></div>
+      <div class="card-body">
+        <p style="font-size:0.82rem;color:var(--muted);margin-bottom:1rem;line-height:1.6">Canada has no special World Cup visa. Requirements depend on your nationality. No US visa needed if only visiting Vancouver and Toronto.</p>
+        <div class="tips-list">
+          <div class="tip-row">
+            <div class="tip-icon">📱</div>
+            <div class="tip-content">
+              <div class="tip-title">eTA — CAD $7 (most visitors)</div>
+              <div class="tip-text">UK, EU, Australia, Japan, UAE, Qatar and many others. Apply online at canada.ca. Usually approved in minutes.</div>
+            </div>
+          </div>
+          <div class="tip-row">
+            <div class="tip-icon">📋</div>
+            <div class="tip-content">
+              <div class="tip-title">Visitor visa required</div>
+              <div class="tip-text">India, China, Pakistan, Nigeria and others. Apply through IRCC. Allow 2-8 weeks. Apply early.</div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:1rem">
+          <a href="../visa.html" class="book-row" style="text-decoration:none"><div><div class="book-name">Full Canada Visa Guide</div><div class="book-note">Check requirements for your passport</div></div><div class="book-arrow">→</div></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><span class="card-header-icon">✈️</span><div class="card-title">Getting to Vancouver</div></div>
+      <div class="card-body">
+        <p style="font-size:0.82rem;color:var(--muted);margin-bottom:1rem;line-height:1.6">Vancouver International Airport (YVR) is one of the most beautiful airports in the world with direct Canada Line SkyTrain to downtown in 26 minutes.</p>
+        <div class="transport-list">
+          <a href="#" class="transport-row"><div><div class="transport-name">Flights to Vancouver YVR</div><div class="transport-note">Search and compare flights</div></div><div class="transport-arrow">→</div></a>
+          <a href="#" class="transport-row"><div><div class="transport-name">Airport Transfer</div><div class="transport-note">YVR to downtown or BC Place</div></div><div class="transport-arrow">→</div></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><span class="card-header-icon">🚇</span><div class="card-title">Getting to BC Place</div></div>
+      <div class="card-body">
+        <div class="tips-list">
+          <div class="tip-row">
+            <div class="tip-icon">🚇</div>
+            <div class="tip-content">
+              <div class="tip-title">SkyTrain to Main Street-Science World</div>
+              <div class="tip-text">Expo Line to Main Street-Science World then Last Mile fan walk to BC Place. Stadium-Chinatown station is closed on match days. Runs every 2 minutes.</div>
+            </div>
+          </div>
+          <div class="tip-row">
+            <div class="tip-icon">🚶</div>
+            <div class="tip-content">
+              <div class="tip-title">Walk from Yaletown</div>
+              <div class="tip-text">5-10 minute walk from Yaletown neighbourhood. Most convenient option if staying nearby.</div>
+            </div>
+          </div>
+          <div class="tip-row">
+            <div class="tip-icon">🚗</div>
+            <div class="tip-content">
+              <div class="tip-title">Avoid driving on match days</div>
+              <div class="tip-text">Streets near BC Place close to vehicles on match days. SkyTrain is by far the best option. Rideshare surge pricing will be high after matches.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><span class="card-header-icon">📱</span><div class="card-title">Stay connected in Vancouver</div></div>
+      <div class="card-body">
+        <p style="font-size:0.82rem;color:var(--muted);margin-bottom:1rem;line-height:1.6">Get a Canada eSIM before you land to avoid roaming charges.</p>
+        <a href="#" class="book-row" style="text-decoration:none"><div><div class="book-name">Get Canada eSIM on Airalo</div><div class="book-note">Activate before landing, no SIM swap needed</div></div><div class="book-arrow">→</div></a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><span class="card-header-icon">🛡️</span><div class="card-title">Travel insurance</div></div>
+      <div class="card-body">
+        <p style="font-size:0.82rem;color:var(--muted);margin-bottom:1rem;line-height:1.6">Healthcare in Canada is not free for visitors. Travel insurance is strongly recommended.</p>
+        <a href="#" class="book-row" style="text-decoration:none"><div><div class="book-name">Get a quote on World Nomads</div><div class="book-note">Covers medical, cancellation and baggage</div></div><div class="book-arrow">→</div></a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><span class="card-header-icon">👕</span><div class="card-title">Official merchandise</div></div>
+      <div class="card-body">
+        <p style="font-size:0.82rem;color:var(--muted);margin-bottom:1rem;line-height:1.6">Shop official World Cup 2026 jerseys and gear before you travel.</p>
+        <a href="#" class="book-row" style="text-decoration:none"><div><div class="book-name">Shop on Fanatics</div><div class="book-note">Official licensed World Cup gear</div></div><div class="book-arrow">→</div></a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <a href="../index.html" class="logo">TravelTo<span>WC26</span></a>
+  <div class="footer-links">
+    <a href="../visa.html">Visa Guide</a>
+    <a href="../cities.html">Host Cities</a>
+    <a href="../schedule.html">Match Schedule</a>
+    <a href="../about.html">Affiliate Disclosure</a>
+    <a href="../about.html">Privacy Policy</a>
+  </div>
+  <div class="footer-copy">© 2026 TravelToWC26 · Not affiliated with FIFA</div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Boston World Cup 2026 Guide — TravelToWC26</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--green:#1a7a3c;--green-pale:#e8f8ef;--sandy:#e9c46a;--sandy-pale:#fef8e7;--terra:#c47a1a;--ivory:#fffbf0;--white:#ffffff;--bg:#fffbf0;--text:#1a2e20;--muted:#6b7e70;--border:#e0d8c8;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;min-height:100vh;}
+  nav{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 5%;background:var(--white);border-bottom:2px solid #f0e8d0;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(26,122,60,0.06);}
+  .logo{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;color:var(--green);text-decoration:none;}
+  .logo span{color:var(--terra);}
+  .nav-links{display:flex;align-items:center;gap:2rem;}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:0.88rem;font-weight:500;transition:color 0.2s;}
+  .nav-links a:hover,.nav-links a.active{color:var(--green);font-weight:600;}
+  .nav-pill{background:var(--green);color:white;font-size:0.75rem;font-weight:700;padding:0.4rem 1rem;border-radius:20px;}
+  .city-hero{background:linear-gradient(135deg,#f0fff6 0%,var(--ivory) 60%,#fef3e8 100%);padding:3rem 5%;border-bottom:1px solid var(--border);}
+  .city-hero-inner{max-width:1100px;margin:0 auto;}
+  .breadcrumb{font-size:0.78rem;color:var(--muted);margin-bottom:1rem;}
+  .breadcrumb a{color:var(--green);text-decoration:none;}
+  .breadcrumb span{margin:0 0.4rem;}
+  .city-flag-title{display:flex;align-items:center;gap:1rem;margin-bottom:0.5rem;}
+  .city-flag{font-size:2.5rem;}
+  .city-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:900;letter-spacing:-0.5px;color:var(--text);}
+  .city-stadium{font-size:1rem;color:var(--muted);margin-bottom:1rem;}
+  .city-badges{display:flex;gap:0.5rem;flex-wrap:wrap;}
+  .badge{font-size:0.72rem;font-weight:700;padding:0.3rem 0.75rem;border-radius:20px;text-transform:uppercase;letter-spacing:0.5px;}
+  .badge-gold{background:var(--sandy-pale);color:#7a5c00;border:1px solid var(--sandy);}
+  .badge-green{background:var(--green-pale);color:#1a5c30;border:1px solid #a8d5b8;}
+  .stats-bar{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--white);margin-bottom:2rem;}
+  .stat-item{padding:1.2rem 1.5rem;border-right:1px solid var(--border);text-align:center;}
+  .stat-item:last-child{border-right:none;}
+  .stat-num{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;color:var(--green);line-height:1;margin-bottom:0.3rem;}
+  .stat-label{font-size:0.78rem;color:var(--muted);}
+  .main{max-width:1100px;margin:0 auto;padding:2.5rem 5%;display:grid;grid-template-columns:1fr 340px;gap:1.5rem;align-items:start;}
+  .main-left,.main-right{display:flex;flex-direction:column;gap:1.5rem;}
+  .card{background:var(--white);border:1.5px solid var(--border);border-radius:16px;overflow:hidden;}
+  .card-header{display:flex;align-items:center;gap:0.75rem;padding:1rem 1.3rem;border-bottom:1px solid var(--border);background:var(--ivory);}
+  .card-header-icon{font-size:1.1rem;}
+  .card-title{font-weight:700;font-size:0.95rem;color:var(--green);}
+  .card-body{padding:1.2rem 1.3rem;}
+  .match-list{display:flex;flex-direction:column;gap:0.6rem;}
+  .match-row{display:grid;grid-template-columns:110px 1fr auto;align-items:center;gap:0.75rem;padding:0.75rem 1rem;border-radius:10px;background:var(--bg);border:1px solid var(--border);}
+  .match-row.special{background:var(--sandy-pale);border-color:var(--sandy);}
+  .match-date{font-size:0.75rem;color:var(--muted);font-weight:500;}
+  .match-teams{font-size:0.88rem;font-weight:600;color:var(--text);}
+  .match-row.special .match-teams{color:#7a5c00;}
+  .match-stage{font-size:0.68rem;font-weight:700;padding:0.2rem 0.5rem;border-radius:6px;white-space:nowrap;background:var(--green-pale);color:var(--green);}
+  .match-row.special .match-stage{background:#fde8b0;color:#7a5c00;}
+  .stay-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:1rem;}
+  .stay-card{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.9rem;}
+  .stay-name{font-weight:700;font-size:0.88rem;color:var(--green);margin-bottom:0.3rem;}
+  .stay-note{font-size:0.75rem;color:var(--muted);line-height:1.5;}
+  .stay-tag{font-size:0.65rem;font-weight:700;background:var(--green-pale);color:var(--green);padding:0.15rem 0.4rem;border-radius:4px;margin-top:0.4rem;display:inline-block;}
+  .book-list{display:flex;flex-direction:column;gap:0.5rem;}
+  .book-row{display:flex;align-items:center;justify-content:space-between;padding:0.75rem 1rem;border:1.5px solid var(--border);border-radius:10px;text-decoration:none;transition:all 0.2s;background:var(--white);}
+  .book-row:hover{border-color:var(--green);transform:translateY(-1px);}
+  .book-name{font-weight:600;font-size:0.88rem;color:var(--text);}
+  .book-note{font-size:0.72rem;color:var(--muted);margin-top:0.15rem;}
+  .book-arrow{color:var(--green);font-size:0.9rem;font-weight:700;}
+  .tips-list{display:flex;flex-direction:column;gap:0.9rem;}
+  .tip-row{display:flex;gap:0.75rem;align-items:flex-start;}
+  .tip-icon{font-size:1.2rem;flex-shrink:0;margin-top:1px;}
+  .tip-content{flex:1;}
+  .tip-title{font-weight:700;font-size:0.85rem;color:var(--text);margin-bottom:0.2rem;}
+  .tip-text{font-size:0.78rem;color:var(--muted);line-height:1.55;}
+  .transport-list{display:flex;flex-direction:column;gap:0.6rem;}
+  .transport-row{display:flex;align-items:center;justify-content:space-between;padding:0.75rem 1rem;border:1.5px solid var(--border);border-radius:10px;background:var(--white);text-decoration:none;transition:all 0.2s;}
+  .transport-row:hover{border-color:var(--green);}
+  .transport-name{font-weight:600;font-size:0.88rem;color:var(--text);}
+  .transport-note{font-size:0.72rem;color:var(--muted);margin-top:0.15rem;}
+  .transport-arrow{color:var(--green);font-weight:700;font-size:0.9rem;}
+  .notice{background:var(--sandy-pale);border:1.5px solid var(--sandy);border-radius:12px;padding:1rem 1.2rem;font-size:0.82rem;color:#7a5c00;line-height:1.6;}
+  .notice strong{display:block;font-size:0.88rem;margin-bottom:0.3rem;color:#5a4000;}
+  .notice-green{background:var(--green-pale);border:1.5px solid #a8d5b8;border-radius:12px;padding:1rem 1.2rem;font-size:0.82rem;color:#1a5c30;line-height:1.6;}
+  .notice-green strong{display:block;font-size:0.88rem;margin-bottom:0.3rem;color:var(--green);}
+  .fanfest-card{background:var(--green-pale);border:1.5px solid #a8d5b8;border-radius:12px;padding:1rem 1.2rem;font-size:0.82rem;color:#1a5c30;line-height:1.6;}
+  .fanfest-card strong{display:block;font-size:0.9rem;margin-bottom:0.3rem;color:var(--green);}
+  .plan-btn{display:flex;align-items:center;justify-content:center;gap:0.5rem;background:var(--green);color:white;padding:0.9rem 1.5rem;border-radius:12px;font-weight:700;font-size:0.9rem;text-decoration:none;transition:all 0.2s;box-shadow:0 4px 12px rgba(26,122,60,0.2);text-align:center;}
+  .plan-btn:hover{background:#155f2f;transform:translateY(-1px);}
+  footer{background:var(--green);padding:2rem 5%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-top:4rem;}
+  footer .logo{color:white;font-size:1.2rem;}
+  footer .logo span{color:var(--terra);}
+  .footer-links{display:flex;gap:1.5rem;flex-wrap:wrap;}
+  .footer-links a{color:rgba(255,255,255,0.55);text-decoration:none;font-size:0.8rem;transition:color 0.2s;}
+  .footer-links a:hover{color:white;}
+  .footer-copy{font-size:0.75rem;color:rgba(255,255,255,0.35);}
+  @media(max-width:900px){.main{grid-template-columns:1fr;}.stats-bar{grid-template-columns:repeat(2,1fr);}.stay-grid{grid-template-columns:1fr;}.nav-links{display:none;}.match-row{grid-template-columns:90px 1fr;}.match-stage{display:none;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="logo">TravelTo<span>WC26</span></a>
+  <div class="nav-links">
+    <a href="../visa.html">Visa Guide</a>
+    <a href="../cities.html" class="active">Host Cities</a>
+    <a href="../schedule.html">Match Schedule</a>
+    <a href="../about.html">About</a>
+    <span class="nav-pill">⚽ Jun 11 – Jul 19, 2026</span>
+  </div>
+</nav>
+
+<div class="city-hero">
+  <div class="city-hero-inner">
+    <div class="breadcrumb"><a href="../index.html">Home</a><span>›</span><a href="../cities.html">Host Cities</a><span>›</span>Boston</div>
+    <div class="city-flag-title">
+      <div class="city-flag">🇺🇸</div>
+      <h1 class="city-title">Boston, Massachusetts</h1>
+    </div>
+    <div class="city-stadium">Gillette Stadium, Foxborough · England, France, Norway and a Quarter-Final</div>
+    <div class="city-badges">
+      <span class="badge badge-gold">Quarter-Final — Jul 9</span>
+      <span class="badge badge-green">7 matches total</span>
+      <span class="badge badge-green">England and France both play here</span>
+      <span class="badge badge-green">MBTA train direct to stadium</span>
+    </div>
+  </div>
+</div>
+
+<div class="stats-bar">
+  <div class="stat-item"><div class="stat-num">7</div><div class="stat-label">Matches hosted</div></div>
+  <div class="stat-item"><div class="stat-num">65,878</div><div class="stat-label">Stadium capacity</div></div>
+  <div class="stat-item"><div class="stat-num">$180-400</div><div class="stat-label">Avg hotel per night</div></div>
+  <div class="stat-item"><div class="stat-num">55 min</div><div class="stat-label">South Station to stadium by train</div></div>
+</div>
+
+<div class="main">
+  <div class="main-left">
+
+    <div class="card">
+      <div class="card-header"><span class="card-header-icon">⚽</span><div class="card-title">Matches in Boston</div></div>
+      <div class="card-body">
+        <div class="match-list">
+          <div class="match-row"><div class="match-date">Sat Jun 13, 9pm ET</div><div class="match-teams">Haiti vs Scotland</div><div class="match-stage">Group C</div></div>
+          <div class="match-row"><div class="match-date">Tue Jun 16, 6pm ET</div><div class="match-teams">Iraq vs Norway</div><div class="match-stage">Group I</div></div>
+          <div class="match-row"><div class="match-date">Fri Jun 19, 6pm ET</div><div class="match-teams">Scotland vs Morocco</div><div class="match-stage">Group C</div></div>
+          <div class="match-row"><div class="match-date">Tue Jun 23, 4pm ET</div><div class="match-teams">England vs Ghana</div><div class="match-stage">Group L</div></div>
+          <div class="match-row"><div class="match-date">Fri Jun 26, 3pm ET</div><div class="match-teams">Norway vs France</div><div class="match-stage">Group I</div></div>
+          <div class="match-row"><div class="match-date">Mon Jun 29, 4:30pm ET</div><div class="match-teams">Round of 32 — TBD</div><div class="match-stage">Round of 32</div></div>
+          <div class="match-row special"><div class="match-date">Thu Jul 9, 4pm ET</div><div class="match-teams">Quarter-Final — TBD</div><div class="match-stage">Quarter-Final</div></div>
+        </div>
+        <div class="notice-green" style="margin-top:1rem">
+          <strong>England and France both play in Boston</strong>
+          Two of the tournament favourites and two of the biggest travelling fan bases in world football. England on June 23 and France on June 26 are Boston's biggest matches. Accommodation for those dates will be extremely limited.
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><span class="card-header-icon">🏨</span><div class="card-title">Where to stay</div></div>
+      <div class="card-body">
+        <div class="stay-grid">
+          <div class="stay-card">
+            <div class="stay-name">Back Bay</div>
+            <div class="stay-note">Best overall neighbourhood for international visitors. Iconic brownstone streets, Copley Square, Newbury Street shopping. South Station is nearby for MBTA trains to Gillette.</div>
+            <span class="stay-tag">Best overall</span>
+          </div>
+          <div class="stay-card">
+            <div class="stay-name">Downtown / South Station</div>
+            <div class="stay-note">Most convenient for the MBTA train to Gillette Stadium. Walking distance to South Station where match day trains depart. Wide hotel range.</div>
+            <span class="stay-tag">Best for transit</span>
+          </div>
+          <div class="stay-card">
+            <div class="stay-name">Seaport District</div>
+            <div class="stay-note">Modern waterfront neighbourhood with excellent restaurants and bars. Silver Line bus to South Station. Popular with international business travellers and families.</div>
+            <span class="stay-tag">Best nightlife</span>
+          </div>
+          <div class="stay-card">
+            <div class="stay-name">Foxborough</div>
+            <div class="stay-note">Stay near Gillette Stadium for walkable match day access. Very limited hotel supply. Best booked months in advance. Quiet between matches.</div>
+            <span class="stay-tag">Closest to stadium</span>
+          </div>
+        </div>
+        <div class="notice" style="margin-bottom:1rem">
+          <strong>Book early for England and France matches</strong>
+          England fans travel in huge numbers and France draws a strong local French-American community in Boston. June 23 and June 26 accommodation will be the first to sell out across all Boston hotels.
+        </div>
+        <div class="book-list">
+          <a href="#" class="book-row"><div><div class="book-name">Booking.com</div><div class="book-note">Largest selection, free cancellation options</div></div><div class="book-arrow">→</div></a>
+          <a href="#" class="book-row"><div><div class="book-name">Hotels.com</div><div class="book-note">Earn free nights with every booking</div></div><div class="book-arrow">→</div></a>
+          <a href="#" class="book-row"><div><div class="book-name">Hostelworld</div><div class="book-note">Budget stays from $50 per night</div></div><div class="book-arrow">→</div></a>
+          <a href="#" class="book-row"><div><div class="book-name">Agoda</div><div class="book-note">Popular with Asian travellers</div></div><div class="book-arrow">→</div></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><span class="card-header-icon">💡</span><div class="card-title">Local tips for Boston</div></div>
+      <div class="card-body">
+        <div class="tips-list">
+          <div class="tip-row">
+            <div class="tip-icon">🚆</div>
+            <div class="tip-content">
+              <div class="tip-title">MBTA match day train is the only reliable option</div>
+              <div class="tip-text">The MBTA runs special nonstop event trains from South Station in Boston directly to Foxboro Station, adjacent to Gillette Stadium. The journey takes about 55 minutes. Tickets cost around $80 and must be purchased in advance — they sell out. Match day tickets are separate from regular commuter rail tickets.</div>
+            </div>
+          </div>
+          <div class="tip-row">
+            <div class="tip-icon">🚌</div>
+            <div class="tip-content">
+              <div class="tip-title">Boston Stadium Express bus — $95 round trip</div>
+              <div class="tip-text">The official Boston Stadium Express bus picks up from over 20 hotel locations across Greater Boston and Logan Airport. Costs $95 round trip, must be booked in advance. Drops off within 10 minutes walk of the stadium. Good alternative if you are not near South Station.</div>
+            </div>
+          </div>
+          <div class="tip-row">
+            <div class="tip-icon">🚗</div>
+            <div class="tip-content">
+              <div class="tip-title">Avoid driving — Route 1 gets very congested</div>
+              <div class="tip-text">Route 1 is the only road to the stadium and gets severely congested on match days. Local roads around the stadium are blocked. If you must drive, book parking in advance through Gillette Stadium. Lots open 4 hours before matches.</div>
+            </div>
+          </div>
+          <div class="tip-row">
+            <div class="tip-icon">🦞</div>
+            <div class="tip-content">
+              <div class="tip-title">Boston's food scene is world class</div>
+              <div class="tip-text">Lobster rolls, clam chowder and seafood are unmissable. Quincy Market and Faneuil Hall are tourist-friendly options. For a more authentic experience try Neptune Oyster in the North End or Yankee Lobster at the Seaport. The Italian restaurants of the North End are also exceptional.</div>
+            </div>
+          </div>
+          <div class="tip-row">
+            <div class="tip-icon">🎉</div>
+            <div class="tip-content">
+              <div class="tip-title">Fan Festival at City Hall Plaza</div>
+              <div class="tip-text">The official FIFA Fan Festival is at Boston City Hall Plaza in the heart of downtown. Free entry, live match broadcasts, food and entertainment throughout the tournament. A second fan zone activation is planned in nearby Providence, Rhode Island.</div>
+            </div>
+          </div>
+          <div class="tip-row">
+            <div class="tip-icon">💵</div>
+            <div class="tip-content">
+              <div class="tip-title">Tip 18-20% and budget carefully</div>
+              <div class="tip-text">Boston is one of the more expensive US cities. Budget $80-120 per day for food and transport. Tipping 18-20% is expected at restaurants and bars. The MBTA subway (the T) is the most affordable way to get around the city itself.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="main-right">
+
+    <a href="../index.html" class="plan-btn">Plan your full Boston trip ⚽</a>
+
+    <div class="card">
+      <div class="card-header"><span class="card-header-icon">✈️</span><div class="card-title">Getting to Boston</div></div>
+      <div class="card-body">
+        <p style="font-size:0.82rem;color:var(--muted);margin-bottom:1rem;line-height:1.6">Logan International Airport (BOS) is the main hub, 3 miles from downtown Boston. Silver Line bus from Terminal A takes you directly to South Station for MBTA connections.</p>
+        <div class="transport-list">
+          <a href="#" class="transport-row"><div><div class="transport-name">Flights to Boston Logan BOS</div><div class="transport-note">Search and compare flights</div></div><div class="transport-arrow">→</div></a>
+          <a href="#" class="transport-row"><div><div class="transport-name">Airport Transfer</div><div class="transport-note">Logan Airport to downtown Boston</div></div><div class="transport-arrow">→</div></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><span class="card-header-icon">🚆</span><div class="card-title">Getting to Gillette Stadium</div></div>
+      <div class="card-body">
+        <div class="tips-list">
+          <div class="tip-row">
+            <div class="tip-icon">🚆</div>
+            <div class="tip-content">
+              <div class="tip-title">MBTA match day train (recommended)</div>
+              <div class="tip-text">Nonstop from South Station to Foxboro Station, 55 minutes. Around $80 return. Book in advance — sells out. 8-minute walk from station to stadium gates.</div>
+            </div>
+          </div>
+          <div class="tip-row">
+            <div class="tip-icon">🚌</div>
+            <div class="tip-content">
+              <div class="tip-title">Boston Stadium Express bus</div>
+              <div class="tip-text">$95 round trip, picks up from 20+ hotel locations across Boston and Logan Airport. Must book in advance. Drops off 10 minutes walk from stadium.</div>
+            </div>
+          </div>
+          <div class="tip-row">
+            <div class="tip-icon">🚗</div>
+            <div class="tip-content">
+              <div class="tip-title">Driving via Route 1 only</div>
+              <div class="tip-text">Route 1 southbound is the only road to Gillette. Local roads blocked on match days. Book parking in advance at gillettepark.com.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><span class="card-header-icon">📱</span><div class="card-title">Stay connected in Boston</div></div>
+      <div class="card-body">
+        <p style="font-size:0.82rem;color:var(--muted);margin-bottom:1rem;line-height:1.6">US roaming charges can be very expensive. Get a US eSIM before you board your flight.</p>
+        <a href="#" class="book-row" style="text-decoration:none"><div><div class="book-name">Get US eSIM on Airalo</div><div class="book-note">From $5 for 1GB, activate before landing</div></div><div class="book-arrow">→</div></a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><span class="card-header-icon">🛡️</span><div class="card-title">Travel insurance</div></div>
+      <div class="card-body">
+        <p style="font-size:0.82rem;color:var(--muted);margin-bottom:1rem;line-height:1.6">Medical costs in the USA are extremely high. Travel insurance is strongly recommended.</p>
+        <a href="#" class="book-row" style="text-decoration:none"><div><div class="book-name">Get a quote on World Nomads</div><div class="book-note">Covers medical, cancellation and baggage</div></div><div class="book-arrow">→</div></a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><span class="card-header-icon">👕</span><div class="card-title">Official merchandise</div></div>
+      <div class="card-body">
+        <p style="font-size:0.82rem;color:var(--muted);margin-bottom:1rem;line-height:1.6">Shop official World Cup 2026 jerseys and gear before you travel.</p>
+        <a href="#" class="book-row" style="text-decoration:none"><div><div class="book-name">Shop on Fanatics</div><div class="book-note">Official licensed World Cup gear</div></div><div class="book-arrow">→</div></a>
+      </div>
+    </div>
+
+    <div class="fanfest-card">
+      <strong>Visa reminder for USA</strong>
+      Most international visitors need either ESTA or a B1/B2 visa to enter the USA. Check requirements before booking.
+      <br><br>
+      <a href="../visa.html" style="color:var(--green);font-weight:700;font-size:0.82rem">View full Visa Guide →</a>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <a href="../index.html" class="logo">TravelTo<span>WC26</span></a>
+  <div class="footer-links">
+    <a href="../visa.html">Visa Guide</a>
+    <a href="../cities.html">Host Cities</a>
+    <a href="../schedule.html">Match Schedule</a>
+    <a href="../about.html">Affiliate Disclosure</a>
+    <a href="../about.html">Privacy Policy</a>
+  </div>
+  <div class="footer-copy">© 2026 TravelToWC26 · Not affiliated with FIFA</div>
+</footer>
+
+</body>
+</html>

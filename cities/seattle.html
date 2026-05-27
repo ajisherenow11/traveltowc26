@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seattle World Cup 2026 Guide — TravelToWC26</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--green:#1a7a3c;--green-pale:#e8f8ef;--sandy:#e9c46a;--sandy-pale:#fef8e7;--terra:#c47a1a;--ivory:#fffbf0;--white:#ffffff;--bg:#fffbf0;--text:#1a2e20;--muted:#6b7e70;--border:#e0d8c8;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;min-height:100vh;}
+  nav{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 5%;background:var(--white);border-bottom:2px solid #f0e8d0;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(26,122,60,0.06);}
+  .logo{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;color:var(--green);text-decoration:none;}
+  .logo span{color:var(--terra);}
+  .nav-links{display:flex;align-items:center;gap:2rem;}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:0.88rem;font-weight:500;transition:color 0.2s;}
+  .nav-links a:hover,.nav-links a.active{color:var(--green);font-weight:600;}
+  .nav-pill{background:var(--green);color:white;font-size:0.75rem;font-weight:700;padding:0.4rem 1rem;border-radius:20px;}
+  .city-hero{background:linear-gradient(135deg,#f0fff6 0%,var(--ivory) 60%,#fef3e8 100%);padding:3rem 5%;border-bottom:1px solid var(--border);}
+  .city-hero-inner{max-width:1100px;margin:0 auto;}
+  .breadcrumb{font-size:0.78rem;color:var(--muted);margin-bottom:1rem;}
+  .breadcrumb a{color:var(--green);text-decoration:none;}
+  .breadcrumb span{margin:0 0.4rem;}
+  .city-flag-title{display:flex;align-items:center;gap:1rem;margin-bottom:0.5rem;}
+  .city-flag{font-size:2.5rem;}
+  .city-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:900;letter-spacing:-0.5px;color:var(--text);}
+  .city-stadium{font-size:1rem;color:var(--muted);margin-bottom:1rem;}
+  .city-badges{display:flex;gap:0.5rem;flex-wrap:wrap;}
+  .badge{font-size:0.72rem;font-weight:700;padding:0.3rem 0.75rem;border-radius:20px;text-transform:uppercase;letter-spacing:0.5px;}
+  .badge-gold{background:var(--sandy-pale);color:#7a5c00;border:1px solid var(--sandy);}
+  .badge-green{background:var(--green-pale);color:#1a5c30;border:1px solid #a8d5b8;}
+  .stats-bar{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--white);margin-bottom:2rem;}
+  .stat-item{padding:1.2rem 1.5rem;border-right:1px solid var(--border);text-align:center;}
+  .stat-item:last-child{border-right:none;}
+  .stat-num{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;color:var(--green);line-height:1;margin-bottom:0.3rem;}
+  .stat-label{font-size:0.78rem;color:var(--muted);}
+  .main{max-width:1100px;margin:0 auto;padding:2.5rem 5%;display:grid;grid-template-columns:1fr 340px;gap:1.5rem;align-items:start;}
+  .main-left,.main-right{display:flex;flex-direction:column;gap:1.5rem;}
+  .card{background:var(--white);border:1.5px solid var(--border);border-radius:16px;overflow:hidden;}
+  .card-header{display:flex;align-items:center;gap:0.75rem;padding:1rem 1.3rem;border-bottom:1px solid var(--border);background:var(--ivory);}
+  .card-header-icon{font-size:1.1rem;}
+  .card-title{font-weight:700;font-size:0.95rem;color:var(--green);}
+  .card-body{padding:1.2rem 1.3rem;}
+  .match-list{display:flex;flex-direction:column;gap:0.6rem;}
+  .match-row{display:grid;grid-template-columns:110px 1fr auto;align-items:center;gap:0.75rem;padding:0.75rem 1rem;border-radius:10px;background:var(--bg);border:1px solid var(--border);}
+  .match-row.special{background:var(--sandy-pale);border-color:var(--sandy);}
+  .match-date{font-size:0.75rem;color:var(--muted);font-weight:500;}
+  .match-teams{font-size:0.88rem;font-weight:600;color:var(--text);}
+  .match-row.special .match-teams{color:#7a5c00;}
+  .match-stage{font-size:0.68rem;font-weight:700;padding:0.2rem 0.5rem;border-radius:6px;white-space:nowrap;background:var(--green-pale);color:var(--green);}
+  .match-row.special .match-stage{background:#fde8b0;color:#7a5c00;}
+  .stay-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:1rem;}
+  .stay-card{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.9rem;}
+  .stay-name{font-weight:700;font-size:0.88rem;color:var(--green);margin-bottom:0.3rem;}
+  .stay-note{font-size:0.75rem;color:var(--muted);line-height:1.5;}
+  .stay-tag{font-size:0.65rem;font-weight:700;background:var(--green-pale);color:var(--green);padding:0.15rem 0.4rem;border-radius:4px;margin-top:0.4rem;display:inline-block;}
+  .book-list{display:flex;flex-direction:column;gap:0.5rem;}
+  .book-row{display:flex;align-items:center;justify-content:space-between;padding:0.75rem 1rem;border:1.5px solid var(--border);border-radius:10px;text-decoration:none;transition:all 0.2s;background:var(--white);}
+  .book-row:hover{border-color:var(--green);transform:translateY(-1px);}
+  .book-name{font-weight:600;font-size:0.88rem;color:var(--text);}
+  .book-note{font-size:0.72rem;color:var(--muted);margin-top:0.15rem;}
+  .book-arrow{color:var(--green);font-size:0.9rem;font-weight:700;}
+  .tips-list{display:flex;flex-direction:column;gap:0.9rem;}
+  .tip-row{display:flex;gap:0.75rem;align-items:flex-start;}
+  .tip-icon{font-size:1.2rem;flex-shrink:0;margin-top:1px;}
+  .tip-content{flex:1;}
+  .tip-title{font-weight:700;font-size:0.85rem;color:var(--text);margin-bottom:0.2rem;}
+  .tip-text{font-size:0.78rem;color:var(--muted);line-height:1.55;}
+  .transport-list{display:flex;flex-direction:column;gap:0.6rem;}
+  .transport-row{display:flex;align-items:center;justify-content:space-between;padding:0.75rem 1rem;border:1.5px solid var(--border);border-radius:10px;background:var(--white);text-decoration:none;transition:all 0.2s;}
+  .transport-row:hover{border-color:var(--green);}
+  .transport-name{font-weight:600;font-size:0.88rem;color:var(--text);}
+  .transport-note{font-size:0.72rem;color:var(--muted);margin-top:0.15rem;}
+  .transport-arrow{color:var(--green);font-weight:700;font-size:0.9rem;}
+  .notice{background:var(--sandy-pale);border:1.5px solid var(--sandy);border-radius:12px;padding:1rem 1.2rem;font-size:0.82rem;color:#7a5c00;line-height:1.6;}
+  .notice strong{display:block;font-size:0.88rem;margin-bottom:0.3rem;color:#5a4000;}
+  .notice-green{background:var(--green-pale);border:1.5px solid #a8d5b8;border-radius:12px;padding:1rem 1.2rem;font-size:0.82rem;color:#1a5c30;line-height:1.6;}
+  .notice-green strong{display:block;font-size:0.88rem;margin-bottom:0.3rem;color:var(--green);}
+  .fanfest-card{background:var(--green-pale);border:1.5px solid #a8d5b8;border-radius:12px;padding:1rem 1.2rem;font-size:0.82rem;color:#1a5c30;line-height:1.6;}
+  .fanfest-card strong{display:block;font-size:0.9rem;margin-bottom:0.3rem;color:var(--green);}
+  .plan-btn{display:flex;align-items:center;justify-content:center;gap:0.5rem;background:var(--green);color:white;padding:0.9rem 1.5rem;border-radius:12px;font-weight:700;font-size:0.9rem;text-decoration:none;transition:all 0.2s;box-shadow:0 4px 12px rgba(26,122,60,0.2);text-align:center;}
+  .plan-btn:hover{background:#155f2f;transform:translateY(-1px);}
+  footer{background:var(--green);padding:2rem 5%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-top:4rem;}
+  footer .logo{color:white;font-size:1.2rem;}
+  footer .logo span{color:var(--terra);}
+  .footer-links{display:flex;gap:1.5rem;flex-wrap:wrap;}
+  .footer-links a{color:rgba(255,255,255,0.55);text-decoration:none;font-size:0.8rem;transition:color 0.2s;}
+  .footer-links a:hover{color:white;}
+  .footer-copy{font-size:0.75rem;color:rgba(255,255,255,0.35);}
+  @media(max-width:900px){.main{grid-template-columns:1fr;}.stats-bar{grid-template-columns:repeat(2,1fr);}.stay-grid{grid-template-columns:1fr;}.nav-links{display:none;}.match-row{grid-template-columns:90px 1fr;}.match-stage{display:none;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="logo">TravelTo<span>WC26</span></a>
+  <div class="nav-links">
+    <a href="../visa.html">Visa Guide</a>
+    <a href="../cities.html" class="active">Host Cities</a>
+    <a href="../schedule.html">Match Schedule</a>
+    <a href="../about.html">About</a>
+    <span class="nav-pill">⚽ Jun 11 – Jul 19, 2026</span>
+  </div>
+</nav>
+
+<div class="city-hero">
+  <div class="city-hero-inner">
+    <div class="breadcrumb"><a href="../index.html">Home</a><span>›</span><a href="../cities.html">Host Cities</a><span>›</span>Seattle</div>
+    <div class="city-flag-title">
+      <div class="city-flag">🇺🇸</div>
+      <h1 class="city-title">Seattle, Washington</h1>
+    </div>
+    <div class="city-stadium">Lumen Field · Downtown stadium with the easiest transit access of any US World Cup venue</div>
+    <div class="city-badges">
+      <span class="badge badge-gold">Round of 16 — Jul 6</span>
+      <span class="badge badge-green">6 matches total</span>
+      <span class="badge badge-green">Walk from downtown hotels</span>
+      <span class="badge badge-green">Link light rail direct</span>
+    </div>
+  </div>
+</div>
+
+<div class="stats-bar">
+  <div class="stat-item"><div class="stat-num">6</div><div class="stat-label">Matches hosted</div></div>
+  <div class="stat-item"><div class="stat-num">68,740</div><div class="stat-label">Stadium capacity</div></div>
+  <div class="stat-item"><div class="stat-num">$150-350</div><div class="stat-label">Avg hotel per night</div></div>
+  <div class="stat-item"><div class="stat-num">40 min</div><div class="stat-label">SEA-TAC to stadium via Link</div></div>
+</div>
+
+<div class="main">
+  <div class="main-left">
+
+    <div class="card">
+      <div class="card-header"><span class="card-header-icon">⚽</span><div class="card-title">Matches in Seattle</div></div>
+      <div class="card-body">
+        <div class="match-list">
+          <div class="match-row"><div class="match-date">Sun Jun 15, 12pm PT</div><div class="match-teams">Belgium vs Egypt</div><div class="match-stage">Group G</div></div>
+          <div class="match-row special"><div class="match-date">Thu Jun 19, 12pm PT</div><div class="match-teams">USA vs Australia</div><div class="match-stage">Group D</div></div>
+          <div class="match-row"><div class="match-date">Wed Jun 24, 12pm PT</div><div class="match-teams">Bosnia and Herzegovina vs Qatar</div><div class="match-stage">Group B</div></div>
+          <div class="match-row"><div class="match-date">Fri Jun 26, 8pm PT</div><div class="match-teams">Egypt vs Iran</div><div class="match-stage">Group G</div></div>
+          <div class="match-row"><div class="match-date">Tue Jul 1, 1pm PT</div><div class="match-teams">Round of 32 — TBD</div><div class="match-stage">Round of 32</div></div>
+          <div class="match-row special"><div class="match-date">Sun Jul 6, 5pm PT</div><div class="match-teams">Round of 16 — TBD</div><div class="match-stage">Round of 16</div></div>
+        </div>
+        <div class="notice-green" style="margin-top:1rem">
+          <strong>Easiest stadium access of any US host city</strong>
+          Lumen Field sits in the heart of downtown Seattle. Walk from most hotels, or take Link light rail directly to Stadium Station. No car needed at all.
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><span class="card-header-icon">🏨</span><div class="card-title">Where to stay</div></div>
+      <div class="card-body">
+        <div class="stay-grid">
+          <div class="stay-card">
+            <div class="stay-name">Pioneer Square</div>
+            <div class="stay-note">Walking distance to Lumen Field. Historic neighbourhood with bars, restaurants and galleries. Most convenient base for match days. Hotels here sell out fast.</div>
+            <span class="stay-tag">Closest to stadium</span>
+          </div>
+          <div class="stay-card">
+            <div class="stay-name">Downtown Seattle</div>
+            <div class="stay-note">Best overall. Pike Place Market, waterfront views, Link light rail access. Wide hotel range. Walking distance or 1-2 stops from stadium. Best for first time visitors.</div>
+            <span class="stay-tag">Best overall</span>
+          </div>
+          <div class="stay-card">
+            <div class="stay-name">Capitol Hill</div>
+            <div class="stay-note">Trendy neighbourhood with great bars, restaurants and nightlife. Own Link light rail station, 1-3 stops to stadium. Popular with younger international fans.</div>
+            <span class="stay-tag">Best nightlife</span>
+          </div>
+          <div class="stay-card">
+            <div class="stay-name">South Lake Union</div>
+            <div class="stay-note">Modern tech-district neighbourhood with good hotels. Streetcar access to downtown, easy connection to Link. Slightly quieter than Capitol Hill or Pioneer Square.</div>
+            <span class="stay-tag">Good value</span>
+          </div>
+        </div>
+        <div class="notice" style="margin-bottom:1rem">
+          <strong>Pioneer Square and downtown sell out fast</strong>
+          Canada and England match weekends in particular see very high hotel demand. Book early with free cancellation. Broader Seattle neighbourhoods all have excellent Link light rail connections.
+        </div>
+        <div class="book-list">
+          <a href="#" class="book-row"><div><div class="book-name">Booking.com</div><div class="book-note">Largest selection, free cancellation options</div></div><div class="book-arrow">→</div></a>
+          <a href="#" class="book-row"><div><div class="book-name">Hotels.com</div><div class="book-note">Earn free nights with every booking</div></div><div class="book-arrow">→</div></a>
+          <a href="#" class="book-row"><div><div class="book-name">Hostelworld</div><div class="book-note">Budget stays from $45 per night</div></div><div class="book-arrow">→</div></a>
+          <a href="#" class="book-row"><div><div class="book-name">Agoda</div><div class="book-note">Popular with Asian travellers</div></div><div class="book-arrow">→</div></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><span class="card-header-icon">💡</span><div class="card-title">Local tips for Seattle</div></div>
+      <div class="card-body">
+        <div class="tips-list">
+          <div class="tip-row">
+            <div class="tip-icon">🚈</div>
+            <div class="tip-content">
+              <div class="tip-title">Link light rail is the easiest stadium route in the US</div>
+              <div class="tip-text">Sound Transit Link light rail runs directly from SEA-TAC Airport to Stadium Station in 40 minutes with no transfers. From downtown hotels it is 1-3 stops. Trains run every 8 minutes with increased service on match days until 1am. Buy an ORCA card at the airport on arrival — $3 one-way, $6 day pass. A special 3-day transit pass for $21 is available at the airport.</div>
+            </div>
+          </div>
+          <div class="tip-row">
+            <div class="tip-icon">🚶</div>
+            <div class="tip-content">
+              <div class="tip-title">Walk from downtown — unique advantage</div>
+              <div class="tip-text">Seattle is one of the only US host cities where fans can walk to the stadium from their hotel. Pioneer Square is a 5-10 minute walk. Downtown core is 15-20 minutes. No other major US World Cup venue offers this.</div>
+            </div>
+          </div>
+          <div class="tip-row">
+            <div class="tip-icon">🌧️</div>
+            <div class="tip-content">
+              <div class="tip-title">Pack a rain jacket — always</div>
+              <div class="tip-text">Seattle's reputation for rain is earned. June is actually one of the drier months but rain is always possible. Lumen Field is open air. Bring a light waterproof layer for every match regardless of the forecast.</div>
+            </div>
+          </div>
+          <div class="tip-row">
+            <div class="tip-icon">☕</div>
+            <div class="tip-content">
+              <div class="tip-title">Coffee capital of the world</div>
+              <div class="tip-text">Seattle is the birthplace of Starbucks and has an extraordinary independent coffee culture. Pike Place Market is the original Starbucks location. Countless excellent independent cafes across Capitol Hill and downtown. Coffee here is genuinely exceptional.</div>
+            </div>
+          </div>
+          <div class="tip-row">
+            <div class="tip-icon">🎉</div>
+            <div class="tip-content">
+              <div class="tip-title">Fan Festival at Seattle Center</div>
+              <div class="tip-text">The official FIFA Fan Festival is at Seattle Center near the Space Needle with live match broadcasts, food and events throughout the tournament. Easily reachable by monorail from downtown or a short walk from hotels.</div>
+            </div>
+          </div>
+          <div class="tip-row">
+            <div class="tip-icon">💵</div>
+            <div class="tip-content">
+              <div class="tip-title">Tip 18-20% everywhere</div>
+              <div class="tip-text">Tipping is expected at restaurants, bars and for most services. Seattle is an expensive city — budget $80-120 per day for food and transport. Pike Place Market is a great affordable food option.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="main-right">
+
+    <a href="../index.html" class="plan-btn">Plan your full Seattle trip ⚽</a>
+
+    <div class="card">
+      <div class="card-header"><span class="card-header-icon">✈️</span><div class="card-title">Getting to Seattle</div></div>
+      <div class="card-body">
+        <p style="font-size:0.82rem;color:var(--muted);margin-bottom:1rem;line-height:1.6">Seattle-Tacoma International Airport (SEA-TAC) is the main hub with strong connections from Asia-Pacific, Europe and across North America. Link light rail takes you downtown in 40 minutes.</p>
+        <div class="transport-list">
+          <a href="#" class="transport-row"><div><div class="transport-name">Flights to Seattle SEA-TAC</div><div class="transport-note">Search and compare flights</div></div><div class="transport-arrow">→</div></a>
+          <a href="#" class="transport-row"><div><div class="transport-name">Airport Transfer</div><div class="transport-note">SEA-TAC to downtown or Pioneer Square</div></div><div class="transport-arrow">→</div></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><span class="card-header-icon">🚈</div><div class="card-title">Getting to Lumen Field</div></div>
+      <div class="card-body">
+        <div class="tips-list">
+          <div class="tip-row">
+            <div class="tip-icon">🚈</div>
+            <div class="tip-content">
+              <div class="tip-title">Link light rail to Stadium Station</div>
+              <div class="tip-text">Alight at Stadium Station (1 Line) or International District/Chinatown Station. Both are a short walk to the stadium. Every 8 minutes on match days.</div>
+            </div>
+          </div>
+          <div class="tip-row">
+            <div class="tip-icon">🚶</div>
+            <div class="tip-content">
+              <div class="tip-title">Walk from Pioneer Square or downtown</div>
+              <div class="tip-text">5-20 minutes depending on where you're staying. The easiest stadium walk of any US 2026 host city.</div>
+            </div>
+          </div>
+          <div class="tip-row">
+            <div class="tip-icon">🚌</div>
+            <div class="tip-content">
+              <div class="tip-title">Bus routes 21, 101, 150</div>
+              <div class="tip-text">Multiple bus routes stop near Lumen Field. Pay with ORCA card or Transit GO Ticket app. Under 18s ride free on match days.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><span class="card-header-icon">📱</span><div class="card-title">Stay connected in Seattle</div></div>
+      <div class="card-body">
+        <p style="font-size:0.82rem;color:var(--muted);margin-bottom:1rem;line-height:1.6">US roaming charges can be very expensive. Get a US eSIM before you board your flight.</p>
+        <a href="#" class="book-row" style="text-decoration:none"><div><div class="book-name">Get US eSIM on Airalo</div><div class="book-note">From $5 for 1GB, activate before landing</div></div><div class="book-arrow">→</div></a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><span class="card-header-icon">🛡️</span><div class="card-title">Travel insurance</div></div>
+      <div class="card-body">
+        <p style="font-size:0.82rem;color:var(--muted);margin-bottom:1rem;line-height:1.6">Medical costs in the USA are extremely high. Travel insurance is strongly recommended for all international visitors.</p>
+        <a href="#" class="book-row" style="text-decoration:none"><div><div class="book-name">Get a quote on World Nomads</div><div class="book-note">Covers medical, cancellation and baggage</div></div><div class="book-arrow">→</div></a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><span class="card-header-icon">👕</span><div class="card-title">Official merchandise</div></div>
+      <div class="card-body">
+        <p style="font-size:0.82rem;color:var(--muted);margin-bottom:1rem;line-height:1.6">Shop official World Cup 2026 jerseys and gear before you travel.</p>
+        <a href="#" class="book-row" style="text-decoration:none"><div><div class="book-name">Shop on Fanatics</div><div class="book-note">Official licensed World Cup gear</div></div><div class="book-arrow">→</div></a>
+      </div>
+    </div>
+
+    <div class="fanfest-card">
+      <strong>Visa reminder for USA</strong>
+      Most international visitors need either ESTA or a B1/B2 visa to enter the USA. Check requirements before booking.
+      <br><br>
+      <a href="../visa.html" style="color:var(--green);font-weight:700;font-size:0.82rem">View full Visa Guide →</a>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <a href="../index.html" class="logo">TravelTo<span>WC26</span></a>
+  <div class="footer-links">
+    <a href="../visa.html">Visa Guide</a>
+    <a href="../cities.html">Host Cities</a>
+    <a href="../schedule.html">Match Schedule</a>
+    <a href="../about.html">Affiliate Disclosure</a>
+    <a href="../about.html">Privacy Policy</a>
+  </div>
+  <div class="footer-copy">© 2026 TravelToWC26 · Not affiliated with FIFA</div>
+</footer>
+
+</body>
+</html>

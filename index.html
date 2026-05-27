@@ -8,16 +8,16 @@
 <style>
   :root {
     --green: #1a7a3c;
-    --green-light: #2ecc71;
     --green-pale: #e8f8ef;
-    --gold: #f0a500;
-    --gold-light: #ffefc0;
-    --red: #e63946;
-    --bg: #fffdf7;
+    --sandy: #e9c46a;
+    --sandy-pale: #fef8e7;
+    --terra: #e76f51;
+    --ivory: #fffbf0;
     --white: #ffffff;
-    --text: #1a1a2e;
-    --muted: #6b7280;
-    --border: #e5e7eb;
+    --bg: #fffbf0;
+    --text: #1a2e20;
+    --muted: #6b7e70;
+    --border: #e0d8c8;
     --card: #ffffff;
   }
 
@@ -38,7 +38,7 @@
     align-items: center;
     padding: 1.2rem 5%;
     background: var(--white);
-    border-bottom: 2px solid var(--green-pale);
+    border-bottom: 2px solid #f0e8d0;
     position: sticky;
     top: 0;
     z-index: 100;
@@ -53,7 +53,7 @@
     letter-spacing: -0.5px;
   }
 
-  .logo span { color: var(--gold); }
+  .logo span { color: var(--terra); }
 
   .nav-links {
     display: flex;
@@ -80,7 +80,7 @@
     border-radius: 20px;
   }
 
-  /* HERO — full width centered */
+  /* HERO */
   .hero {
     min-height: calc(100vh - 65px);
     display: flex;
@@ -91,10 +91,9 @@
     text-align: center;
     position: relative;
     overflow: hidden;
-    background: linear-gradient(160deg, #f0fff6 0%, #fffdf7 50%, #fff9e6 100%);
+    background: linear-gradient(160deg, #f0fff6 0%, #fffbf0 60%, #fef3e8 100%);
   }
 
-  /* Subtle pitch lines */
   .hero::before {
     content: '';
     position: absolute;
@@ -102,8 +101,8 @@
     background-image:
       repeating-linear-gradient(
         90deg,
-        rgba(26,122,60,0.04) 0px,
-        rgba(26,122,60,0.04) 1px,
+        rgba(26,122,60,0.03) 0px,
+        rgba(26,122,60,0.03) 1px,
         transparent 1px,
         transparent 80px
       );
@@ -118,17 +117,18 @@
     margin: 0 auto;
   }
 
+  /* EYEBROW — sandy yellow as in screenshot */
   .eyebrow {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background: var(--gold-light);
-    border: 1.5px solid var(--gold);
-    color: #8a5c00;
+    background: var(--sandy-pale);
+    border: 1.5px solid var(--sandy);
+    color: #7a5c00;
     font-size: 0.72rem;
     font-weight: 700;
-    padding: 0.4rem 0.9rem;
-    border-radius: 20px;
+    padding: 0.4rem 1.1rem;
+    border-radius: 30px;
     letter-spacing: 1px;
     text-transform: uppercase;
     margin-bottom: 1.8rem;
@@ -145,8 +145,9 @@
   }
 
   .hero-heading .green { color: var(--green); }
-  .hero-heading .gold { color: var(--gold); }
+  .hero-heading .terra { color: var(--terra); }
 
+  /* SUBHEADING — consistent weight, no mixing */
   .hero-sub {
     font-size: 1.05rem;
     color: var(--muted);
@@ -156,9 +157,7 @@
     font-weight: 400;
   }
 
-  .hero-sub strong { color: var(--text); font-weight: 600; }
-
-  /* FORM CARD — centered, wider */
+  /* FORM CARD */
   .form-card {
     background: var(--white);
     border: 2px solid var(--border);
@@ -167,7 +166,7 @@
     width: 100%;
     max-width: 580px;
     margin: 0 auto;
-    box-shadow: 0 12px 50px rgba(26,122,60,0.1);
+    box-shadow: 0 12px 50px rgba(26,122,60,0.09);
     position: relative;
     overflow: hidden;
   }
@@ -177,7 +176,7 @@
     position: absolute;
     top: 0; left: 0; right: 0;
     height: 4px;
-    background: linear-gradient(90deg, var(--green), var(--gold), var(--red));
+    background: linear-gradient(90deg, var(--green), var(--sandy), var(--terra));
   }
 
   .form-card-title {
@@ -188,7 +187,6 @@
     text-align: left;
   }
 
-  /* Two column form layout */
   .form-row {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
@@ -222,7 +220,7 @@
     appearance: none;
     cursor: pointer;
     transition: border-color 0.2s, box-shadow 0.2s;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%236b7280' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%236b7e70' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 1rem center;
     background-color: var(--bg);
@@ -239,7 +237,7 @@
     align-items: center;
     justify-content: center;
     padding-bottom: 0.2rem;
-    color: var(--green);
+    color: var(--sandy);
     font-size: 1.3rem;
     font-weight: 700;
     flex-shrink: 0;
@@ -261,14 +259,16 @@
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    box-shadow: 0 4px 16px rgba(26,122,60,0.3);
+    box-shadow: 0 4px 16px rgba(26,122,60,0.25);
   }
 
   .submit-btn:hover {
     background: #155f2f;
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(26,122,60,0.35);
+    box-shadow: 0 8px 24px rgba(26,122,60,0.3);
   }
+
+  .submit-btn:active { transform: translateY(0); }
 
   .privacy-note {
     text-align: center;
@@ -281,7 +281,7 @@
     gap: 0.4rem;
   }
 
-  /* STATS ROW below form */
+  /* STATS ROW */
   .stats-row {
     display: flex;
     justify-content: center;
@@ -313,8 +313,7 @@
   }
 
   .stat-num.green { color: var(--green); }
-  .stat-num.gold { color: var(--gold); }
-  .stat-num.red { color: var(--red); }
+  .stat-num.terra { color: var(--terra); }
 
   .stat-label {
     font-size: 0.75rem;
@@ -341,7 +340,7 @@
     align-items: center;
     gap: 0.6rem;
     padding: 1rem 2rem;
-    border-right: 1px solid rgba(255,255,255,0.15);
+    border-right: 1px solid rgba(255,255,255,0.12);
     flex: 1;
     justify-content: center;
     transition: background 0.2s;
@@ -354,7 +353,7 @@
 
   .feature-text {
     font-size: 0.78rem;
-    color: rgba(255,255,255,0.7);
+    color: rgba(255,255,255,0.65);
   }
 
   .feature-text strong {
@@ -390,6 +389,7 @@
     font-weight: 900;
     margin-bottom: 0.5rem;
     letter-spacing: -0.5px;
+    color: var(--green);
   }
 
   .section-sub {
@@ -424,7 +424,7 @@
     position: absolute;
     bottom: 0; left: 0; right: 0;
     height: 3px;
-    background: linear-gradient(90deg, var(--green), var(--gold));
+    background: linear-gradient(90deg, var(--green), var(--terra));
     transform: scaleX(0);
     transition: transform 0.25s;
     transform-origin: left;
@@ -433,13 +433,13 @@
   .city-card:hover {
     border-color: var(--green);
     transform: translateY(-4px);
-    box-shadow: 0 12px 32px rgba(26,122,60,0.12);
+    box-shadow: 0 12px 32px rgba(26,122,60,0.1);
   }
 
   .city-card:hover::after { transform: scaleX(1); }
 
   .city-flag { font-size: 1.6rem; margin-bottom: 0.75rem; }
-  .city-name { font-weight: 700; font-size: 1rem; margin-bottom: 0.2rem; }
+  .city-name { font-weight: 700; font-size: 1rem; margin-bottom: 0.2rem; color: var(--green); }
   .city-matches { font-size: 0.75rem; color: var(--muted); }
 
   .city-info {
@@ -453,8 +453,8 @@
 
   .city-badge {
     display: inline-block;
-    background: var(--gold-light);
-    color: #8a5c00;
+    background: var(--sandy-pale);
+    color: #7a5c00;
     font-size: 0.65rem;
     font-weight: 700;
     padding: 0.2rem 0.5rem;
@@ -489,16 +489,16 @@
 
   .why-card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+    box-shadow: 0 8px 30px rgba(26,122,60,0.08);
   }
 
   .why-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
-  .why-title { font-weight: 700; font-size: 1rem; margin-bottom: 0.5rem; }
+  .why-title { font-weight: 700; font-size: 1rem; margin-bottom: 0.5rem; color: var(--green); }
   .why-text { font-size: 0.85rem; color: var(--muted); line-height: 1.65; }
 
   /* FOOTER */
   footer {
-    background: var(--text);
+    background: var(--green);
     padding: 2.5rem 5%;
     display: flex;
     justify-content: space-between;
@@ -508,7 +508,7 @@
   }
 
   footer .logo { color: white; }
-  footer .logo span { color: var(--gold); }
+  footer .logo span { color: var(--sandy); }
 
   .footer-links {
     display: flex;
@@ -517,7 +517,7 @@
   }
 
   .footer-links a {
-    color: rgba(255,255,255,0.5);
+    color: rgba(255,255,255,0.55);
     text-decoration: none;
     font-size: 0.8rem;
     transition: color 0.2s;
@@ -533,7 +533,7 @@
     .cities-grid { grid-template-columns: repeat(2, 1fr); }
     .why-grid { grid-template-columns: 1fr; }
     .features-bar { flex-wrap: wrap; }
-    .feature-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.15); width: 50%; }
+    .feature-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.12); width: 50%; }
     .nav-links { display: none; }
     .stats-row { gap: 1rem; }
     .stat-divider { display: none; }
@@ -553,7 +553,7 @@
   </div>
 </nav>
 
-<!-- HERO — centered -->
+<!-- HERO -->
 <div class="hero">
   <div class="hero-inner">
 
@@ -561,16 +561,15 @@
 
     <h1 class="hero-heading">
       Your <span class="green">World Cup</span><br>
-      trip, <span class="gold">planned.</span>
+      trip, <span class="terra">planned.</span>
     </h1>
 
     <p class="hero-sub">
-      Visa requirements, flights, hotels, eSIM and insurance —
-      <strong>personalised to where you're travelling from.</strong>
-      Free, instant, no data stored.
+      Visa requirements, flights, hotels, eSIM and insurance,
+      all personalised to where you are travelling from.
+      Free, instant and no data stored.
     </p>
 
-    <!-- FORM -->
     <div class="form-card">
       <div class="form-card-title">✈️ Start planning your trip</div>
 
@@ -578,27 +577,196 @@
         <div class="form-group">
           <label class="form-label">Where are you from?</label>
           <select class="form-select" id="country">
-            <option value="">Select country...</option>
-            <option>🇮🇳 India</option>
-            <option>🇧🇷 Brazil</option>
-            <option>🇦🇷 Argentina</option>
-            <option>🇬🇧 United Kingdom</option>
-            <option>🇩🇪 Germany</option>
-            <option>🇫🇷 France</option>
-            <option>🇯🇵 Japan</option>
-            <option>🇦🇺 Australia</option>
-            <option>🇳🇬 Nigeria</option>
-            <option>🇿🇦 South Africa</option>
-            <option>🇲🇽 Mexico</option>
-            <option>🇺🇸 United States</option>
-            <option>🇨🇦 Canada</option>
-            <option>🇰🇷 South Korea</option>
-            <option>🇸🇦 Saudi Arabia</option>
-            <option>🇪🇬 Egypt</option>
-            <option>🇨🇴 Colombia</option>
-            <option>🇵🇹 Portugal</option>
-            <option>🇪🇸 Spain</option>
-            <option>🇮🇹 Italy</option>
+            <option value="">Select your country...</option>
+            <option value="AF">🇦🇫 Afghanistan</option>
+            <option value="AL">🇦🇱 Albania</option>
+            <option value="DZ">🇩🇿 Algeria</option>
+            <option value="AD">🇦🇩 Andorra</option>
+            <option value="AO">🇦🇴 Angola</option>
+            <option value="AG">🇦🇬 Antigua and Barbuda</option>
+            <option value="AR">🇦🇷 Argentina</option>
+            <option value="AM">🇦🇲 Armenia</option>
+            <option value="AU">🇦🇺 Australia</option>
+            <option value="AT">🇦🇹 Austria</option>
+            <option value="AZ">🇦🇿 Azerbaijan</option>
+            <option value="BS">🇧🇸 Bahamas</option>
+            <option value="BH">🇧🇭 Bahrain</option>
+            <option value="BD">🇧🇩 Bangladesh</option>
+            <option value="BB">🇧🇧 Barbados</option>
+            <option value="BY">🇧🇾 Belarus</option>
+            <option value="BE">🇧🇪 Belgium</option>
+            <option value="BZ">🇧🇿 Belize</option>
+            <option value="BJ">🇧🇯 Benin</option>
+            <option value="BT">🇧🇹 Bhutan</option>
+            <option value="BO">🇧🇴 Bolivia</option>
+            <option value="BA">🇧🇦 Bosnia and Herzegovina</option>
+            <option value="BW">🇧🇼 Botswana</option>
+            <option value="BR">🇧🇷 Brazil</option>
+            <option value="BN">🇧🇳 Brunei</option>
+            <option value="BG">🇧🇬 Bulgaria</option>
+            <option value="BF">🇧🇫 Burkina Faso</option>
+            <option value="BI">🇧🇮 Burundi</option>
+            <option value="CV">🇨🇻 Cape Verde</option>
+            <option value="KH">🇰🇭 Cambodia</option>
+            <option value="CM">🇨🇲 Cameroon</option>
+            <option value="CA">🇨🇦 Canada</option>
+            <option value="CF">🇨🇫 Central African Republic</option>
+            <option value="TD">🇹🇩 Chad</option>
+            <option value="CL">🇨🇱 Chile</option>
+            <option value="CN">🇨🇳 China</option>
+            <option value="CO">🇨🇴 Colombia</option>
+            <option value="KM">🇰🇲 Comoros</option>
+            <option value="CG">🇨🇬 Congo</option>
+            <option value="CR">🇨🇷 Costa Rica</option>
+            <option value="HR">🇭🇷 Croatia</option>
+            <option value="CU">🇨🇺 Cuba</option>
+            <option value="CY">🇨🇾 Cyprus</option>
+            <option value="CZ">🇨🇿 Czech Republic</option>
+            <option value="DK">🇩🇰 Denmark</option>
+            <option value="DJ">🇩🇯 Djibouti</option>
+            <option value="DM">🇩🇲 Dominica</option>
+            <option value="DO">🇩🇴 Dominican Republic</option>
+            <option value="EC">🇪🇨 Ecuador</option>
+            <option value="EG">🇪🇬 Egypt</option>
+            <option value="SV">🇸🇻 El Salvador</option>
+            <option value="GQ">🇬🇶 Equatorial Guinea</option>
+            <option value="ER">🇪🇷 Eritrea</option>
+            <option value="EE">🇪🇪 Estonia</option>
+            <option value="SZ">🇸🇿 Eswatini</option>
+            <option value="ET">🇪🇹 Ethiopia</option>
+            <option value="FJ">🇫🇯 Fiji</option>
+            <option value="FI">🇫🇮 Finland</option>
+            <option value="FR">🇫🇷 France</option>
+            <option value="GA">🇬🇦 Gabon</option>
+            <option value="GM">🇬🇲 Gambia</option>
+            <option value="GE">🇬🇪 Georgia</option>
+            <option value="DE">🇩🇪 Germany</option>
+            <option value="GH">🇬🇭 Ghana</option>
+            <option value="GR">🇬🇷 Greece</option>
+            <option value="GD">🇬🇩 Grenada</option>
+            <option value="GT">🇬🇹 Guatemala</option>
+            <option value="GN">🇬🇳 Guinea</option>
+            <option value="GW">🇬🇼 Guinea-Bissau</option>
+            <option value="GY">🇬🇾 Guyana</option>
+            <option value="HT">🇭🇹 Haiti</option>
+            <option value="HN">🇭🇳 Honduras</option>
+            <option value="HU">🇭🇺 Hungary</option>
+            <option value="IS">🇮🇸 Iceland</option>
+            <option value="IN">🇮🇳 India</option>
+            <option value="ID">🇮🇩 Indonesia</option>
+            <option value="IR">🇮🇷 Iran</option>
+            <option value="IQ">🇮🇶 Iraq</option>
+            <option value="IE">🇮🇪 Ireland</option>
+            <option value="IL">🇮🇱 Israel</option>
+            <option value="IT">🇮🇹 Italy</option>
+            <option value="JM">🇯🇲 Jamaica</option>
+            <option value="JP">🇯🇵 Japan</option>
+            <option value="JO">🇯🇴 Jordan</option>
+            <option value="KZ">🇰🇿 Kazakhstan</option>
+            <option value="KE">🇰🇪 Kenya</option>
+            <option value="KI">🇰🇮 Kiribati</option>
+            <option value="KW">🇰🇼 Kuwait</option>
+            <option value="KG">🇰🇬 Kyrgyzstan</option>
+            <option value="LA">🇱🇦 Laos</option>
+            <option value="LV">🇱🇻 Latvia</option>
+            <option value="LB">🇱🇧 Lebanon</option>
+            <option value="LS">🇱🇸 Lesotho</option>
+            <option value="LR">🇱🇷 Liberia</option>
+            <option value="LY">🇱🇾 Libya</option>
+            <option value="LI">🇱🇮 Liechtenstein</option>
+            <option value="LT">🇱🇹 Lithuania</option>
+            <option value="LU">🇱🇺 Luxembourg</option>
+            <option value="MG">🇲🇬 Madagascar</option>
+            <option value="MW">🇲🇼 Malawi</option>
+            <option value="MY">🇲🇾 Malaysia</option>
+            <option value="MV">🇲🇻 Maldives</option>
+            <option value="ML">🇲🇱 Mali</option>
+            <option value="MT">🇲🇹 Malta</option>
+            <option value="MH">🇲🇭 Marshall Islands</option>
+            <option value="MR">🇲🇷 Mauritania</option>
+            <option value="MU">🇲🇺 Mauritius</option>
+            <option value="MX">🇲🇽 Mexico</option>
+            <option value="FM">🇫🇲 Micronesia</option>
+            <option value="MD">🇲🇩 Moldova</option>
+            <option value="MC">🇲🇨 Monaco</option>
+            <option value="MN">🇲🇳 Mongolia</option>
+            <option value="ME">🇲🇪 Montenegro</option>
+            <option value="MA">🇲🇦 Morocco</option>
+            <option value="MZ">🇲🇿 Mozambique</option>
+            <option value="MM">🇲🇲 Myanmar</option>
+            <option value="NA">🇳🇦 Namibia</option>
+            <option value="NR">🇳🇷 Nauru</option>
+            <option value="NP">🇳🇵 Nepal</option>
+            <option value="NL">🇳🇱 Netherlands</option>
+            <option value="NZ">🇳🇿 New Zealand</option>
+            <option value="NI">🇳🇮 Nicaragua</option>
+            <option value="NE">🇳🇪 Niger</option>
+            <option value="NG">🇳🇬 Nigeria</option>
+            <option value="NO">🇳🇴 Norway</option>
+            <option value="OM">🇴🇲 Oman</option>
+            <option value="PK">🇵🇰 Pakistan</option>
+            <option value="PW">🇵🇼 Palau</option>
+            <option value="PA">🇵🇦 Panama</option>
+            <option value="PG">🇵🇬 Papua New Guinea</option>
+            <option value="PY">🇵🇾 Paraguay</option>
+            <option value="PE">🇵🇪 Peru</option>
+            <option value="PH">🇵🇭 Philippines</option>
+            <option value="PL">🇵🇱 Poland</option>
+            <option value="PT">🇵🇹 Portugal</option>
+            <option value="QA">🇶🇦 Qatar</option>
+            <option value="RO">🇷🇴 Romania</option>
+            <option value="RU">🇷🇺 Russia</option>
+            <option value="RW">🇷🇼 Rwanda</option>
+            <option value="KN">🇰🇳 Saint Kitts and Nevis</option>
+            <option value="LC">🇱🇨 Saint Lucia</option>
+            <option value="VC">🇻🇨 Saint Vincent and the Grenadines</option>
+            <option value="WS">🇼🇸 Samoa</option>
+            <option value="SM">🇸🇲 San Marino</option>
+            <option value="ST">🇸🇹 Sao Tome and Principe</option>
+            <option value="SA">🇸🇦 Saudi Arabia</option>
+            <option value="SN">🇸🇳 Senegal</option>
+            <option value="RS">🇷🇸 Serbia</option>
+            <option value="SC">🇸🇨 Seychelles</option>
+            <option value="SL">🇸🇱 Sierra Leone</option>
+            <option value="SG">🇸🇬 Singapore</option>
+            <option value="SK">🇸🇰 Slovakia</option>
+            <option value="SI">🇸🇮 Slovenia</option>
+            <option value="SB">🇸🇧 Solomon Islands</option>
+            <option value="SO">🇸🇴 Somalia</option>
+            <option value="ZA">🇿🇦 South Africa</option>
+            <option value="SS">🇸🇸 South Sudan</option>
+            <option value="ES">🇪🇸 Spain</option>
+            <option value="LK">🇱🇰 Sri Lanka</option>
+            <option value="SD">🇸🇩 Sudan</option>
+            <option value="SR">🇸🇷 Suriname</option>
+            <option value="SE">🇸🇪 Sweden</option>
+            <option value="CH">🇨🇭 Switzerland</option>
+            <option value="SY">🇸🇾 Syria</option>
+            <option value="TW">🇹🇼 Taiwan</option>
+            <option value="TJ">🇹🇯 Tajikistan</option>
+            <option value="TZ">🇹🇿 Tanzania</option>
+            <option value="TH">🇹🇭 Thailand</option>
+            <option value="TL">🇹🇱 Timor-Leste</option>
+            <option value="TG">🇹🇬 Togo</option>
+            <option value="TO">🇹🇴 Tonga</option>
+            <option value="TT">🇹🇹 Trinidad and Tobago</option>
+            <option value="TN">🇹🇳 Tunisia</option>
+            <option value="TR">🇹🇷 Turkey</option>
+            <option value="TM">🇹🇲 Turkmenistan</option>
+            <option value="TV">🇹🇻 Tuvalu</option>
+            <option value="UG">🇺🇬 Uganda</option>
+            <option value="UA">🇺🇦 Ukraine</option>
+            <option value="AE">🇦🇪 United Arab Emirates</option>
+            <option value="GB">🇬🇧 United Kingdom</option>
+            <option value="US">🇺🇸 United States</option>
+            <option value="UY">🇺🇾 Uruguay</option>
+            <option value="UZ">🇺🇿 Uzbekistan</option>
+            <option value="VU">🇻🇺 Vanuatu</option>
+            <option value="VE">🇻🇪 Venezuela</option>
+            <option value="VN">🇻🇳 Vietnam</option>
+            <option value="YE">🇾🇪 Yemen</option>
+            <option value="ZM">🇿🇲 Zambia</option>
+            <option value="ZW">🇿🇼 Zimbabwe</option>
           </select>
         </div>
 
@@ -643,7 +811,6 @@
       </div>
     </div>
 
-    <!-- STATS ROW -->
     <div class="stats-row">
       <div class="stat-item">
         <div class="stat-num green">48</div>
@@ -651,7 +818,7 @@
       </div>
       <div class="stat-divider"></div>
       <div class="stat-item">
-        <div class="stat-num gold">16</div>
+        <div class="stat-num terra">16</div>
         <div class="stat-label">🏟️ Host cities</div>
       </div>
       <div class="stat-divider"></div>
@@ -661,7 +828,7 @@
       </div>
       <div class="stat-divider"></div>
       <div class="stat-item">
-        <div class="stat-num red">39</div>
+        <div class="stat-num terra">39</div>
         <div class="stat-label">📅 Days of football</div>
       </div>
     </div>
@@ -701,7 +868,7 @@
 <div class="cities-section">
   <div class="section-tag">Host Cities</div>
   <h2 class="section-title">Where are you heading?</h2>
-  <p class="section-sub">All 16 host cities across USA, Canada and Mexico — click any for a complete guide.</p>
+  <p class="section-sub">All 16 host cities across USA, Canada and Mexico. Click any for a complete guide.</p>
 
   <div class="cities-grid">
     <a href="cities/dallas.html" class="city-card">
@@ -769,17 +936,17 @@
       <div class="why-card">
         <span class="why-icon">🌍</span>
         <div class="why-title">Personalised to you</div>
-        <div class="why-text">Tell us where you're from and where you're going — we give you exactly what's relevant to your passport and city. No generic advice.</div>
+        <div class="why-text">Tell us where you are from and where you are going. We give you exactly what is relevant to your passport and your city. No generic advice.</div>
       </div>
       <div class="why-card">
         <span class="why-icon">🛂</span>
         <div class="why-title">Visa clarity</div>
-        <div class="why-text">USA, Canada and Mexico all have different entry requirements. We break it down clearly by nationality so you know exactly what you need.</div>
+        <div class="why-text">USA, Canada and Mexico all have different entry requirements. We break it down clearly by nationality so you know exactly what you need and how to get it.</div>
       </div>
       <div class="why-card">
         <span class="why-icon">🔒</span>
         <div class="why-title">Zero data collected</div>
-        <div class="why-text">We never store, sell or share your information. No account needed, no email required. Plan your trip and go — completely private.</div>
+        <div class="why-text">We never store, sell or share your information. No account needed, no email required. Plan your trip and go, completely private.</div>
       </div>
     </div>
   </div>

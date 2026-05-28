@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your World Cup 2026 Trip — TravelToWC26</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--green:#1a7a3c;--green-pale:#e8f8ef;--sandy:#e9c46a;--sandy-pale:#fef8e7;--terra:#c47a1a;--ivory:#fffbf0;--white:#ffffff;--bg:#fffbf0;--text:#1a2e20;--muted:#6b7e70;--border:#e0d8c8;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;min-height:100vh;}
+  nav{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 5%;background:var(--white);border-bottom:2px solid #f0e8d0;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(26,122,60,0.06);}
+  .logo{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;color:var(--green);text-decoration:none;}
+  .logo span{color:var(--terra);}
+  .nav-links{display:flex;align-items:center;gap:2rem;}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:0.88rem;font-weight:500;transition:color 0.2s;}
+  .nav-links a:hover{color:var(--green);font-weight:600;}
+  .nav-pill{background:var(--green);color:white;font-size:0.75rem;font-weight:700;padding:0.4rem 1rem;border-radius:20px;}
+
+  .results-hero{background:linear-gradient(135deg,#f0fff6 0%,var(--ivory) 60%,#fef3e8 100%);padding:2rem 5%;border-bottom:1px solid var(--border);}
+  .results-hero-inner{max-width:1100px;margin:0 auto;}
+  .breadcrumb{font-size:0.78rem;color:var(--muted);margin-bottom:1rem;}
+  .breadcrumb a{color:var(--green);text-decoration:none;}
+  .breadcrumb span{margin:0 0.4rem;}
+  .trip-header{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;}
+  .trip-flag{font-size:2.2rem;}
+  .trip-arrow{font-size:1.3rem;color:var(--terra);font-weight:700;}
+  .trip-title{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:900;color:var(--text);}
+  .trip-sub{font-size:0.82rem;color:var(--muted);margin-top:0.2rem;}
+
+  .main{max-width:1100px;margin:0 auto;padding:2rem 5%;display:grid;grid-template-columns:1fr 320px;gap:1.5rem;align-items:start;}
+  .main-col{display:flex;flex-direction:column;gap:1.2rem;}
+  .side-col{display:flex;flex-direction:column;gap:1.2rem;}
+
+  .card{background:var(--white);border:1.5px solid var(--border);border-radius:14px;overflow:hidden;}
+  .card-head{display:flex;align-items:center;gap:0.6rem;padding:0.85rem 1.1rem;background:var(--ivory);border-bottom:1px solid var(--border);}
+  .card-head-icon{font-size:1rem;}
+  .card-head-title{font-weight:700;font-size:0.92rem;color:var(--green);}
+  .card-body{padding:1.1rem;}
+
+  .visa-tabs{display:flex;gap:0.4rem;margin-bottom:0.85rem;}
+  .vtab{font-size:0.75rem;font-weight:600;padding:0.3rem 0.85rem;border-radius:20px;border:1.5px solid var(--border);background:var(--white);color:var(--muted);cursor:pointer;transition:all 0.15s;}
+  .vtab.active{background:var(--green);border-color:var(--green);color:white;}
+  .vtab:hover:not(.active){border-color:var(--green);color:var(--green);}
+
+  .visa-panel{display:none;}
+  .visa-panel.active{display:block;}
+
+  .visa-badge{display:inline-block;font-size:0.7rem;font-weight:700;padding:0.22rem 0.65rem;border-radius:20px;margin-bottom:0.75rem;}
+  .badge-required{background:#fff0f0;color:#8b1a1a;border:1px solid #f5b8b8;}
+  .badge-esta{background:var(--sandy-pale);color:#7a5c00;border:1px solid var(--sandy);}
+  .badge-eta{background:var(--sandy-pale);color:#7a5c00;border:1px solid var(--sandy);}
+  .badge-free{background:var(--green-pale);color:#1a5c30;border:1px solid #a8d5b8;}
+  .badge-evisa{background:#f0f0ff;color:#1a1a8b;border:1px solid #b8b8f5;}
+
+  .visa-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:0.5rem;margin-bottom:0.75rem;}
+  .vstat{background:#f8f6f2;border-radius:8px;padding:0.6rem 0.75rem;}
+  .vstat-label{font-size:0.62rem;text-transform:uppercase;letter-spacing:0.5px;color:var(--muted);margin-bottom:0.2rem;}
+  .vstat-val{font-size:0.85rem;font-weight:700;color:var(--text);}
+
+  .visa-note{font-size:0.75rem;color:var(--muted);line-height:1.65;margin-bottom:0.85rem;padding:0.65rem 0.8rem;background:#fafaf8;border-radius:8px;border-left:3px solid var(--border);}
+  .visa-note.urgent{border-left-color:var(--terra);background:#fff8f0;}
+  .visa-note.good{border-left-color:#a8d5b8;background:var(--green-pale);}
+
+  .btn-row{display:flex;gap:0.5rem;flex-wrap:wrap;}
+  .btn-green{display:inline-flex;align-items:center;gap:0.4rem;background:var(--green);color:white;font-size:0.78rem;font-weight:700;padding:0.5rem 1rem;border-radius:8px;text-decoration:none;border:none;cursor:pointer;transition:all 0.2s;}
+  .btn-green:hover{background:#155f2f;}
+  .btn-outline{display:inline-flex;align-items:center;gap:0.4rem;background:var(--white);color:var(--text);font-size:0.78rem;font-weight:600;padding:0.5rem 1rem;border-radius:8px;text-decoration:none;border:1.5px solid var(--border);cursor:pointer;transition:all 0.2s;}
+  .btn-outline:hover{border-color:var(--green);color:var(--green);}
+
+  .visa-disclaimer{font-size:0.68rem;color:var(--muted);margin-top:0.75rem;padding-top:0.75rem;border-top:1px solid var(--border);line-height:1.6;}
+
+  .book-list{display:flex;flex-direction:column;gap:0.45rem;}
+  .book-row{display:flex;align-items:center;justify-content:space-between;padding:0.65rem 0.85rem;border:1.5px solid var(--border);border-radius:9px;text-decoration:none;transition:border-color 0.15s;background:var(--white);}
+  .book-row:hover{border-color:var(--green);}
+  .book-name{font-weight:600;font-size:0.85rem;color:var(--text);}
+  .book-note{font-size:0.7rem;color:var(--muted);margin-top:0.1rem;}
+  .book-arrow{font-weight:700;color:var(--green);font-size:0.85rem;}
+
+  .city-info-text{font-size:0.78rem;color:var(--muted);margin-bottom:0.85rem;line-height:1.6;}
+  .city-btn{display:flex;align-items:center;justify-content:center;gap:0.5rem;background:var(--green);color:white;padding:0.7rem 1rem;border-radius:9px;font-weight:700;font-size:0.85rem;text-decoration:none;transition:all 0.2s;text-align:center;}
+  .city-btn:hover{background:#155f2f;}
+
+  .donate-card{background:var(--green);border-radius:14px;padding:1.2rem;text-align:center;}
+  .donate-title{font-size:0.9rem;font-weight:700;color:white;margin-bottom:0.3rem;}
+  .donate-sub{font-size:0.72rem;color:rgba(255,255,255,0.7);margin-bottom:0.85rem;line-height:1.5;}
+  .donate-btn{display:inline-flex;align-items:center;justify-content:center;gap:0.4rem;background:white;color:var(--green);font-size:0.82rem;font-weight:700;padding:0.6rem 1.2rem;border-radius:8px;text-decoration:none;width:100%;}
+
+  .not-found{background:var(--sandy-pale);border:1.5px solid var(--sandy);border-radius:12px;padding:1.2rem;font-size:0.82rem;color:#7a5c00;line-height:1.7;}
+  .not-found strong{display:block;font-size:0.9rem;margin-bottom:0.4rem;color:#5a4000;}
+
+  footer{background:var(--green);padding:2rem 5%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-top:4rem;}
+  footer .logo{color:white;font-size:1.2rem;}
+  footer .logo span{color:var(--terra);}
+  .footer-links{display:flex;gap:1.5rem;flex-wrap:wrap;}
+  .footer-links a{color:rgba(255,255,255,0.55);text-decoration:none;font-size:0.8rem;}
+  .footer-links a:hover{color:white;}
+  .footer-copy{font-size:0.75rem;color:rgba(255,255,255,0.35);}
+
+  @media(max-width:900px){
+    .main{grid-template-columns:1fr;}
+    .nav-links{display:none;}
+    .visa-stats{grid-template-columns:repeat(2,1fr);}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">TravelTo<span>WC26</span></a>
+  <div class="nav-links">
+    <a href="visa.html">Visa Guide</a>
+    <a href="cities.html">Host Cities</a>
+    <a href="schedule.html">Match Schedule</a>
+    <a href="about.html">About</a>
+    <span class="nav-pill">⚽ Jun 11 – Jul 19, 2026</span>
+  </div>
+</nav>
+
+<div class="results-hero">
+  <div class="results-hero-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>›</span>Your Trip</div>
+    <div class="trip-header">
+      <div class="trip-flag" id="fromFlag">🌍</div>
+      <div class="trip-arrow">→</div>
+      <div class="trip-flag" id="toFlag">🏟️</div>
+      <div>
+        <div class="trip-title" id="tripTitle">Your World Cup 2026 Trip</div>
+        <div class="trip-sub" id="tripSub">Personalised travel guide</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+  <div class="main-col">
+
+    <!-- VISA -->
+    <div class="card">
+      <div class="card-head"><span class="card-head-icon">🛂</span><div class="card-head-title" id="visaCardTitle">Visa Requirements</div></div>
+      <div class="card-body">
+        <div class="visa-tabs">
+          <button class="vtab active" onclick="showVisa('usa',this)">🇺🇸 USA</button>
+          <button class="vtab" onclick="showVisa('canada',this)">🇨🇦 Canada</button>
+          <button class="vtab" onclick="showVisa('mexico',this)">🇲🇽 Mexico</button>
+        </div>
+        <div class="visa-panel active" id="visa-usa"></div>
+        <div class="visa-panel" id="visa-canada"></div>
+        <div class="visa-panel" id="visa-mexico"></div>
+        <div class="visa-disclaimer">Visa information is for guidance only and was last verified in May 2026. Always confirm with the official embassy or consulate before applying. TravelToWC26 is not responsible for any visa application outcomes.</div>
+      </div>
+    </div>
+
+    <!-- HOTELS -->
+    <div class="card">
+      <div class="card-head"><span class="card-head-icon">🏨</span><div class="card-head-title" id="hotelTitle">Hotels</div></div>
+      <div class="card-body">
+        <div class="book-list" id="hotelLinks"></div>
+      </div>
+    </div>
+
+    <!-- FLIGHTS -->
+    <div class="card">
+      <div class="card-head"><span class="card-head-icon">✈️</span><div class="card-head-title" id="flightTitle">Flights</div></div>
+      <div class="card-body">
+        <div class="book-list" id="flightLinks"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="side-col">
+
+    <!-- CITY GUIDE -->
+    <div class="card">
+      <div class="card-head"><span class="card-head-icon">🏟️</span><div class="card-head-title" id="cityCardTitle">City Guide</div></div>
+      <div class="card-body">
+        <div class="city-info-text" id="cityInfo"></div>
+        <a href="#" class="city-btn" id="cityBtn">View full city guide →</a>
+      </div>
+    </div>
+
+    <!-- ESIM -->
+    <div class="card">
+      <div class="card-head"><span class="card-head-icon">📱</span><div class="card-head-title" id="esimTitle">Stay Connected</div></div>
+      <div class="card-body">
+        <div class="city-info-text" id="esimNote"></div>
+        <div class="book-list">
+          <a href="https://www.airalo.com" target="_blank" class="book-row"><div><div class="book-name">Get eSIM on Airalo</div><div class="book-note">Activate before landing, no SIM swap</div></div><div class="book-arrow">→</div></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- INSURANCE -->
+    <div class="card">
+      <div class="card-head"><span class="card-head-icon">🛡️</span><div class="card-head-title">Travel Insurance</div></div>
+      <div class="card-body">
+        <div class="city-info-text" id="insuranceNote">Travel insurance is strongly recommended for all international visitors.</div>
+        <div class="book-list">
+          <a href="https://www.worldnomads.com" target="_blank" class="book-row"><div><div class="book-name">Get a quote on World Nomads</div><div class="book-note">Medical, cancellation and baggage</div></div><div class="book-arrow">→</div></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- EXPERIENCES -->
+    <div class="card">
+      <div class="card-head"><span class="card-head-icon">🎉</span><div class="card-head-title" id="viatorTitle">Things To Do</div></div>
+      <div class="card-body">
+        <div class="city-info-text" id="viatorNote">Tours, experiences and activities between matches.</div>
+        <div class="book-list">
+          <a href="https://www.viator.com" target="_blank" class="book-row" id="viatorLink"><div><div class="book-name">Browse experiences on Viator</div><div class="book-note">Tours and activities</div></div><div class="book-arrow">→</div></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- DONATE -->
+    <div class="donate-card">
+      <div class="donate-title">Find this useful?</div>
+      <div class="donate-sub">TravelToWC26 is completely free. If it helped you plan your trip, a small donation keeps it running.</div>
+      <a href="https://ko-fi.com/traveltowc26" target="_blank" class="donate-btn">☕ Buy me a coffee</a>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <a href="index.html" class="logo">TravelTo<span>WC26</span></a>
+  <div class="footer-links">
+    <a href="visa.html">Visa Guide</a>
+    <a href="cities.html">Host Cities</a>
+    <a href="schedule.html">Match Schedule</a>
+    <a href="about.html">Affiliate Disclosure</a>
+    <a href="about.html">Privacy Policy</a>
+  </div>
+  <div class="footer-copy">© 2026 TravelToWC26 · Not affiliated with FIFA</div>
+</footer>
+
+<script>
+// ============================================================
+// VISA DATA — 50 countries x 3 host nations
+// Sources: US State Dept, IRCC Canada, Mexico INM (May 2026)
+// ============================================================
+const visaData = {
+
+  // FORMAT: countryCode: { usa: {type, badge, cost, processing, note, applyLink, officialLink}, canada: {...}, mexico: {...} }
+
+  "IN": { // India
+    usa: { type:"B1/B2 Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"$185", processing:"2-4 months", note:"Apply immediately. US visa appointment wait times for Indian citizens are very high. Bring match tickets, bank statements and accommodation proof to your interview.", applyLink:"https://www.ivisa.com/united-states-visa", officialLink:"https://www.state.gov/fifa-world-cup-26-visas" },
+    canada: { type:"Visitor Visa (TRV)", badge:"badge-required", label:"Visa Required", cost:"CAD $100", processing:"2-8 weeks", note:"Apply online through the IRCC portal. Biometrics required at a Visa Application Centre. Apply at least 8 weeks before travel.", applyLink:"https://www.ivisa.com/canada-visa", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html" },
+    mexico: { type:"Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"~$36", processing:"4-6 weeks", note:"Good news — if you already have a valid US B1/B2 visa you can enter Mexico visa-free. No need to apply separately for Mexico.", applyLink:"https://www.ivisa.com/mexico-visa", officialLink:"https://embamex.sre.gob.mx/" }
+  },
+
+  "BR": { // Brazil
+    usa: { type:"B1/B2 Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"$185", processing:"2-4 months", note:"Brazilian citizens require a B1/B2 visa. Apply as early as possible given high demand during the tournament period.", applyLink:"https://www.ivisa.com/united-states-visa", officialLink:"https://www.state.gov/fifa-world-cup-26-visas" },
+    canada: { type:"Visitor Visa (TRV)", badge:"badge-required", label:"Visa Required", cost:"CAD $100", processing:"2-8 weeks", note:"Brazilian citizens require a TRV for Canada. Apply through the IRCC portal online.", applyLink:"https://www.ivisa.com/canada-visa", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html" },
+    mexico: { type:"Visa Free", badge:"badge-free", label:"Visa Free", cost:"Free", processing:"No application", note:"Brazilian citizens can enter Mexico visa-free for up to 180 days. Complete the FMM tourist form on arrival or online.", applyLink:"", officialLink:"https://embamex.sre.gob.mx/" }
+  },
+
+  "AR": { // Argentina
+    usa: { type:"B1/B2 Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"$185", processing:"2-4 months", note:"Argentine citizens require a B1/B2 visa for the USA. Apply well in advance given tournament demand.", applyLink:"https://www.ivisa.com/united-states-visa", officialLink:"https://www.state.gov/fifa-world-cup-26-visas" },
+    canada: { type:"eTA (if eligible) or TRV", badge:"badge-eta", label:"eTA / Visa", cost:"CAD $7 / $100", processing:"Minutes / weeks", note:"Some Argentine citizens may qualify for a Canadian eTA if they hold or have held a valid Canadian visa or US visa. Otherwise a TRV is required. Check the IRCC website.", applyLink:"https://www.ivisa.com/canada-visa", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html" },
+    mexico: { type:"Visa Free", badge:"badge-free", label:"Visa Free", cost:"Free", processing:"No application", note:"Argentine citizens can enter Mexico visa-free for up to 180 days.", applyLink:"", officialLink:"https://embamex.sre.gob.mx/" }
+  },
+
+  "GB": { // United Kingdom
+    usa: { type:"ESTA — Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"UK citizens qualify for the US Visa Waiver Program. Apply for ESTA at esta.cbp.dhs.gov before departure. Usually approved instantly.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
+    canada: { type:"eTA", badge:"badge-eta", label:"eTA Required", cost:"CAD $7", processing:"Minutes", note:"UK citizens need a Canadian eTA for air travel. Apply online at canada.ca. Usually approved in minutes.", applyLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta.html" },
+    mexico: { type:"Visa Free", badge:"badge-free", label:"Visa Free", cost:"Free", processing:"No application", note:"UK citizens can enter Mexico visa-free for up to 180 days. No advance application needed.", applyLink:"", officialLink:"https://embamex.sre.gob.mx/" }
+  },
+
+  "DE": { // Germany
+    usa: { type:"ESTA — Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"German citizens qualify for ESTA. Apply at esta.cbp.dhs.gov before departure.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
+    canada: { type:"eTA", badge:"badge-eta", label:"eTA Required", cost:"CAD $7", processing:"Minutes", note:"German citizens need a Canadian eTA for air travel.", applyLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta.html" },
+    mexico: { type:"Visa Free", badge:"badge-free", label:"Visa Free", cost:"Free", processing:"No application", note:"German citizens can enter Mexico visa-free for up to 180 days.", applyLink:"", officialLink:"https://embamex.sre.gob.mx/" }
+  },
+
+  "FR": { // France
+    usa: { type:"ESTA — Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"French citizens qualify for ESTA. Apply at esta.cbp.dhs.gov before departure.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
+    canada: { type:"eTA", badge:"badge-eta", label:"eTA Required", cost:"CAD $7", processing:"Minutes", note:"French citizens need a Canadian eTA for air travel.", applyLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta.html" },
+    mexico: { type:"Visa Free", badge:"badge-free", label:"Visa Free", cost:"Free", processing:"No application", note:"French citizens can enter Mexico visa-free for up to 180 days.", applyLink:"", officialLink:"https://embamex.sre.gob.mx/" }
+  },
+
+  "ES": { // Spain
+    usa: { type:"ESTA — Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"Spanish citizens qualify for ESTA. Apply at esta.cbp.dhs.gov before departure.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
+    canada: { type:"eTA", badge:"badge-eta", label:"eTA Required", cost:"CAD $7", processing:"Minutes", note:"Spanish citizens need a Canadian eTA for air travel.", applyLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta.html" },
+    mexico: { type:"Visa Free", badge:"badge-free", label:"Visa Free", cost:"Free", processing:"No application", note:"Spanish citizens can enter Mexico visa-free for up to 180 days.", applyLink:"", officialLink:"https://embamex.sre.gob.mx/" }
+  },
+
+  "PT": { // Portugal
+    usa: { type:"ESTA — Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"Portuguese citizens qualify for ESTA. Apply at esta.cbp.dhs.gov.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
+    canada: { type:"eTA", badge:"badge-eta", label:"eTA Required", cost:"CAD $7", processing:"Minutes", note:"Portuguese citizens need a Canadian eTA for air travel.", applyLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta.html" },
+    mexico: { type:"Visa Free", badge:"badge-free", label:"Visa Free", cost:"Free", processing:"No application", note:"Portuguese citizens can enter Mexico visa-free for up to 180 days.", applyLink:"", officialLink:"https://embamex.sre.gob.mx/" }
+  },
+
+  "NL": { // Netherlands
+    usa: { type:"ESTA — Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"Dutch citizens qualify for ESTA. Apply at esta.cbp.dhs.gov.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
+    canada: { type:"eTA", badge:"badge-eta", label:"eTA Required", cost:"CAD $7", processing:"Minutes", note:"Dutch citizens need a Canadian eTA for air travel.", applyLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta.html" },
+    mexico: { type:"Visa Free", badge:"badge-free", label:"Visa Free", cost:"Free", processing:"No application", note:"Dutch citizens can enter Mexico visa-free for up to 180 days.", applyLink:"", officialLink:"https://embamex.sre.gob.mx/" }
+  },
+
+  "BE": { // Belgium
+    usa: { type:"ESTA — Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"Belgian citizens qualify for ESTA. Apply at esta.cbp.dhs.gov.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
+    canada: { type:"eTA", badge:"badge-eta", label:"eTA Required", cost:"CAD $7", processing:"Minutes", note:"Belgian citizens need a Canadian eTA for air travel.", applyLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta.html" },
+    mexico: { type:"Visa Free", badge:"badge-free", label:"Visa Free", cost:"Free", processing:"No application", note:"Belgian citizens can enter Mexico visa-free for up to 180 days.", applyLink:"", officialLink:"https://embamex.sre.gob.mx/" }
+  },
+
+  "HR": { // Croatia
+    usa: { type:"ESTA — Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"Croatian citizens qualify for ESTA. Apply at esta.cbp.dhs.gov.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
+    canada: { type:"eTA", badge:"badge-eta", label:"eTA Required", cost:"CAD $7", processing:"Minutes", note:"Croatian citizens need a Canadian eTA for air travel.", applyLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta.html" },
+    mexico: { type:"Visa Free", badge:"badge-free", label:"Visa Free", cost:"Free", processing:"No application", note:"Croatian citizens can enter Mexico visa-free for up to 180 days.", applyLink:"", officialLink:"https://embamex.sre.gob.mx/" }
+  },
+
+  "CH": { // Switzerland
+    usa: { type:"ESTA — Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"Swiss citizens qualify for ESTA. Apply at esta.cbp.dhs.gov.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
+    canada: { type:"eTA", badge:"badge-eta", label:"eTA Required", cost:"CAD $7", processing:"Minutes", note:"Swiss citizens need a Canadian eTA for air travel.", applyLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta.html" },
+    mexico: { type:"Visa Free", badge:"badge-free", label:"Visa Free", cost:"Free", processing:"No application", note:"Swiss citizens can enter Mexico visa-free for up to 180 days.", applyLink:"", officialLink:"https://embamex.sre.gob.mx/" }
+  },
+
+  "JP": { // Japan
+    usa: { type:"ESTA — Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"Japanese citizens qualify for ESTA. Apply at esta.cbp.dhs.gov.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
+    canada: { type:"eTA", badge:"badge-eta", label:"eTA Required", cost:"CAD $7", processing:"Minutes", note:"Japanese citizens need a Canadian eTA for air travel.", applyLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta.html" },
+    mexico: { type:"Visa Free", badge:"badge-free", label:"Visa Free", cost:"Free", processing:"No application", note:"Japanese citizens can enter Mexico visa-free for up to 180 days.", applyLink:"", officialLink:"https://embamex.sre.gob.mx/" }
+  },
+
+  "KR": { // South Korea
+    usa: { type:"ESTA — Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"South Korean citizens qualify for ESTA. Apply at esta.cbp.dhs.gov.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
+    canada: { type:"eTA", badge:"badge-eta", label:"eTA Required", cost:"CAD $7", processing:"Minutes", note:"South Korean citizens need a Canadian eTA for air travel.", applyLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta.html" },
+    mexico: { type:"Visa Free", badge:"badge-free", label:"Visa Free", cost:"Free", processing:"No application", note:"South Korean citizens can enter Mexico visa-free for up to 180 days.", applyLink:"", officialLink:"https://embamex.sre.gob.mx/" }
+  },
+
+  "AU": { // Australia
+    usa: { type:"ESTA — Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"Australian citizens qualify for ESTA. Apply at esta.cbp.dhs.gov.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
+    canada: { type:"eTA", badge:"badge-eta", label:"eTA Required", cost:"CAD $7", processing:"Minutes", note:"Australian citizens need a Canadian eTA for air travel.", applyLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta.html" },
+    mexico: { type:"Visa Free", badge:"badge-free", label:"Visa Free", cost:"Free", processing:"No application", note:"Australian citizens can enter Mexico visa-free for up to 180 days.", applyLink:"", officialLink:"https://embamex.sre.gob.mx/" }
+  },
+
+  "NZ": { // New Zealand
+    usa: { type:"ESTA — Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"New Zealand citizens qualify for ESTA. Apply at esta.cbp.dhs.gov.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
+    canada: { type:"eTA", badge:"badge-eta", label:"eTA Required", cost:"CAD $7", processing:"Minutes", note:"New Zealand citizens need a Canadian eTA for air travel.", applyLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta.html" },
+    mexico: { type:"Visa Free", badge:"badge-free", label:"Visa Free", cost:"Free", processing:"No application", note:"New Zealand citizens can enter Mexico visa-free for up to 180 days.", applyLink:"", officialLink:"https://embamex.sre.gob.mx/" }
+  },
+
+  "SG": { // Singapore
+    usa: { type:"ESTA — Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"Singapore citizens qualify for ESTA. Apply at esta.cbp.dhs.gov.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
+    canada: { type:"eTA", badge:"badge-eta", label:"eTA Required", cost:"CAD $7", processing:"Minutes", note:"Singapore citizens need a Canadian eTA for air travel.", applyLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta.html" },
+    mexico: { type:"Visa Free", badge:"badge-free", label:"Visa Free", cost:"Free", processing:"No application", note:"Singapore citizens can enter Mexico visa-free for up to 180 days.", applyLink:"", officialLink:"https://embamex.sre.gob.mx/" }
+  },
+
+  "CL": { // Chile
+    usa: { type:"ESTA — Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"Chilean citizens qualify for ESTA. Apply at esta.cbp.dhs.gov.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
+    canada: { type:"eTA", badge:"badge-eta", label:"eTA Required", cost:"CAD $7", processing:"Minutes", note:"Chilean citizens need a Canadian eTA for air travel.", applyLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta.html" },
+    mexico: { type:"Visa Free", badge:"badge-free", label:"Visa Free", cost:"Free", processing:"No application", note:"Chilean citizens can enter Mexico visa-free for up to 180 days.", applyLink:"", officialLink:"https://embamex.sre.gob.mx/" }
+  },
+
+  "NG": { // Nigeria
+    usa: { type:"B1/B2 Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"$185", processing:"2-4 months", note:"Nigerian citizens require a B1/B2 visa. Apply as early as possible. High demand during the tournament period.", applyLink:"https://www.ivisa.com/united-states-visa", officialLink:"https://www.state.gov/fifa-world-cup-26-visas" },
+    canada: { type:"Visitor Visa (TRV)", badge:"badge-required", label:"Visa Required", cost:"CAD $100", processing:"2-8 weeks", note:"Nigerian citizens require a TRV for Canada. Apply through the IRCC portal online.", applyLink:"https://www.ivisa.com/canada-visa", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html" },
+    mexico: { type:"Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"~$36", processing:"4-6 weeks", note:"Nigerian citizens require a visa for Mexico. However, if you hold a valid US B1/B2 visa you can enter Mexico visa-free.", applyLink:"https://www.ivisa.com/mexico-visa", officialLink:"https://embamex.sre.gob.mx/" }
+  },
+
+  "GH": { // Ghana
+    usa: { type:"B1/B2 Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"$185", processing:"2-4 months", note:"Ghanaian citizens require a B1/B2 visa for the USA.", applyLink:"https://www.ivisa.com/united-states-visa", officialLink:"https://www.state.gov/fifa-world-cup-26-visas" },
+    canada: { type:"Visitor Visa (TRV)", badge:"badge-required", label:"Visa Required", cost:"CAD $100", processing:"2-8 weeks", note:"Ghanaian citizens require a TRV for Canada.", applyLink:"https://www.ivisa.com/canada-visa", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html" },
+    mexico: { type:"Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"~$36", processing:"4-6 weeks", note:"Ghanaian citizens require a visa for Mexico. A valid US visa allows visa-free entry to Mexico.", applyLink:"https://www.ivisa.com/mexico-visa", officialLink:"https://embamex.sre.gob.mx/" }
+  },
+
+  "SN": { // Senegal
+    usa: { type:"B1/B2 Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"$185", processing:"2-4 months", note:"Senegalese citizens require a B1/B2 visa for the USA.", applyLink:"https://www.ivisa.com/united-states-visa", officialLink:"https://www.state.gov/fifa-world-cup-26-visas" },
+    canada: { type:"Visitor Visa (TRV)", badge:"badge-required", label:"Visa Required", cost:"CAD $100", processing:"2-8 weeks", note:"Senegalese citizens require a TRV for Canada.", applyLink:"https://www.ivisa.com/canada-visa", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html" },
+    mexico: { type:"Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"~$36", processing:"4-6 weeks", note:"Senegalese citizens require a visa for Mexico. A valid US visa allows visa-free entry to Mexico.", applyLink:"https://www.ivisa.com/mexico-visa", officialLink:"https://embamex.sre.gob.mx/" }
+  },
+
+  "MA": { // Morocco
+    usa: { type:"B1/B2 Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"$185", processing:"2-4 months", note:"Moroccan citizens require a B1/B2 visa for the USA.", applyLink:"https://www.ivisa.com/united-states-visa", officialLink:"https://www.state.gov/fifa-world-cup-26-visas" },
+    canada: { type:"eTA (if eligible) or TRV", badge:"badge-eta", label:"eTA / Visa", cost:"CAD $7 / $100", processing:"Minutes / weeks", note:"Some Moroccan citizens with a prior Canadian or US visa may qualify for a Canadian eTA. Otherwise a TRV is required.", applyLink:"https://www.ivisa.com/canada-visa", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html" },
+    mexico: { type:"Visa Free", badge:"badge-free", label:"Visa Free", cost:"Free", processing:"No application", note:"Moroccan citizens can enter Mexico visa-free for up to 180 days.", applyLink:"", officialLink:"https://embamex.sre.gob.mx/" }
+  },
+
+  "ZA": { // South Africa
+    usa: { type:"B1/B2 Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"$185", processing:"2-4 months", note:"South African citizens require a B1/B2 visa for the USA.", applyLink:"https://www.ivisa.com/united-states-visa", officialLink:"https://www.state.gov/fifa-world-cup-26-visas" },
+    canada: { type:"Visitor Visa (TRV)", badge:"badge-required", label:"Visa Required", cost:"CAD $100", processing:"2-8 weeks", note:"South African citizens require a TRV for Canada.", applyLink:"https://www.ivisa.com/canada-visa", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html" },
+    mexico: { type:"Visa Free", badge:"badge-free", label:"Visa Free", cost:"Free", processing:"No application", note:"South African citizens can enter Mexico visa-free for up to 180 days.", applyLink:"", officialLink:"https://embamex.sre.gob.mx/" }
+  },
+
+  "EG": { // Egypt
+    usa: { type:"B1/B2 Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"$185", processing:"2-4 months", note:"Egyptian citizens require a B1/B2 visa for the USA.", applyLink:"https://www.ivisa.com/united-states-visa", officialLink:"https://www.state.gov/fifa-world-cup-26-visas" },
+    canada: { type:"Visitor Visa (TRV)", badge:"badge-required", label:"Visa Required", cost:"CAD $100", processing:"2-8 weeks", note:"Egyptian citizens require a TRV for Canada.", applyLink:"https://www.ivisa.com/canada-visa", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html" },
+    mexico: { type:"Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"~$36", processing:"4-6 weeks", note:"Egyptian citizens require a visa for Mexico. A valid US visa allows visa-free entry to Mexico.", applyLink:"https://www.ivisa.com/mexico-visa", officialLink:"https://embamex.sre.gob.mx/" }
+  },
+
+  "DZ": { // Algeria
+    usa: { type:"B1/B2 Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"$185", processing:"2-4 months", note:"Algerian citizens require a B1/B2 visa for the USA.", applyLink:"https://www.ivisa.com/united-states-visa", officialLink:"https://www.state.gov/fifa-world-cup-26-visas" },
+    canada: { type:"Visitor Visa (TRV)", badge:"badge-required", label:"Visa Required", cost:"CAD $100", processing:"2-8 weeks", note:"Algerian citizens require a TRV for Canada.", applyLink:"https://www.ivisa.com/canada-visa", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html" },
+    mexico: { type:"Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"~$36", processing:"4-6 weeks", note:"Algerian citizens require a visa for Mexico. A valid US visa allows visa-free entry to Mexico.", applyLink:"https://www.ivisa.com/mexico-visa", officialLink:"https://embamex.sre.gob.mx/" }
+  },
+
+  "TN": { // Tunisia
+    usa: { type:"B1/B2 Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"$185", processing:"2-4 months", note:"Tunisian citizens require a B1/B2 visa for the USA.", applyLink:"https://www.ivisa.com/united-states-visa", officialLink:"https://www.state.gov/fifa-world-cup-26-visas" },
+    canada: { type:"Visitor Visa (TRV)", badge:"badge-required", label:"Visa Required", cost:"CAD $100", processing:"2-8 weeks", note:"Tunisian citizens require a TRV for Canada.", applyLink:"https://www.ivisa.com/canada-visa", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html" },
+    mexico: { type:"Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"~$36", processing:"4-6 weeks", note:"Tunisian citizens require a visa for Mexico. A valid US visa allows visa-free entry to Mexico.", applyLink:"https://www.ivisa.com/mexico-visa", officialLink:"https://embamex.sre.gob.mx/" }
+  },
+
+  "CI": { // Ivory Coast
+    usa: { type:"B1/B2 Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"$185", processing:"2-4 months", note:"Ivorian citizens require a B1/B2 visa for the USA.", applyLink:"https://www.ivisa.com/united-states-visa", officialLink:"https://www.state.gov/fifa-world-cup-26-visas" },
+    canada: { type:"Visitor Visa (TRV)", badge:"badge-required", label:"Visa Required", cost:"CAD $100", processing:"2-8 weeks", note:"Ivorian citizens require a TRV for Canada.", applyLink:"https://www.ivisa.com/canada-visa", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html" },
+    mexico: { type:"Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"~$36", processing:"4-6 weeks", note:"Ivorian citizens require a visa for Mexico. A valid US visa allows visa-free entry to Mexico.", applyLink:"https://www.ivisa.com/mexico-visa", officialLink:"https://embamex.sre.gob.mx/" }
+  },
+
+  "CM": { // Cameroon
+    usa: { type:"B1/B2 Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"$185", processing:"2-4 months", note:"Cameroonian citizens require a B1/B2 visa for the USA.", applyLink:"https://www.ivisa.com/united-states-visa", officialLink:"https://www.state.gov/fifa-world-cup-26-visas" },
+    canada: { type:"Visitor Visa (TRV)", badge:"badge-required", label:"Visa Required", cost:"CAD $100", processing:"2-8 weeks", note:"Cameroonian citizens require a TRV for Canada.", applyLink:"https://www.ivisa.com/canada-visa", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html" },
+    mexico: { type:"Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"~$36", processing:"4-6 weeks", note:"Cameroonian citizens require a visa for Mexico. A valid US visa allows visa-free entry to Mexico.", applyLink:"https://www.ivisa.com/mexico-visa", officialLink:"https://embamex.sre.gob.mx/" }
+  },
+
+  "SA": { // Saudi Arabia
+    usa: { type:"B1/B2 Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"$185", processing:"2-4 months", note:"Saudi citizens require a B1/B2 visa for the USA.", applyLink:"https://www.ivisa.com/united-states-visa", officialLink:"https://www.state.gov/fifa-world-cup-26-visas" },
+    canada: { type:"Visitor Visa (TRV)", badge:"badge-required", label:"Visa Required", cost:"CAD $100", processing:"2-8 weeks", note:"Saudi citizens require a TRV for Canada.", applyLink:"https://www.ivisa.com/canada-visa", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html" },
+    mexico: { type:"Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"~$36", processing:"4-6 weeks", note:"Saudi citizens require a visa for Mexico. A valid US visa allows visa-free entry to Mexico.", applyLink:"https://www.ivisa.com/mexico-visa", officialLink:"https://embamex.sre.gob.mx/" }
+  },
+
+  "IR": { // Iran
+    usa: { type:"B1/B2 Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"$185", processing:"3-6 months", note:"Iranian citizens require a B1/B2 visa. Processing times are significantly longer. Apply as early as possible and check for any travel restrictions.", applyLink:"https://www.ivisa.com/united-states-visa", officialLink:"https://www.state.gov/fifa-world-cup-26-visas" },
+    canada: { type:"Visitor Visa (TRV)", badge:"badge-required", label:"Visa Required", cost:"CAD $100", processing:"4-12 weeks", note:"Iranian citizens require a TRV for Canada. Processing times can be lengthy.", applyLink:"https://www.ivisa.com/canada-visa", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html" },
+    mexico: { type:"Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"~$36", processing:"4-6 weeks", note:"Iranian citizens require a visa for Mexico. A valid US visa allows visa-free entry to Mexico.", applyLink:"https://www.ivisa.com/mexico-visa", officialLink:"https://embamex.sre.gob.mx/" }
+  },
+
+  "IQ": { // Iraq
+    usa: { type:"B1/B2 Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"$185", processing:"3-6 months", note:"Iraqi citizens require a B1/B2 visa. Processing may take longer. Apply well in advance.", applyLink:"https://www.ivisa.com/united-states-visa", officialLink:"https://www.state.gov/fifa-world-cup-26-visas" },
+    canada: { type:"Visitor Visa (TRV)", badge:"badge-required", label:"Visa Required", cost:"CAD $100", processing:"4-12 weeks", note:"Iraqi citizens require a TRV for Canada.", applyLink:"https://www.ivisa.com/canada-visa", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html" },
+    mexico: { type:"Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"~$36", processing:"4-6 weeks", note:"Iraqi citizens require a visa for Mexico. A valid US visa allows visa-free entry to Mexico.", applyLink:"https://www.ivisa.com/mexico-visa", officialLink:"https://embamex.sre.gob.mx/" }
+  },
+
+  "QA": { // Qatar
+    usa: { type:"ESTA — Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"Qatar joined the US Visa Waiver Program in 2025. Qatari citizens can apply for ESTA at esta.cbp.dhs.gov.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
+    canada: { type:"eTA", badge:"badge-eta", label:"eTA Required", cost:"CAD $7", processing:"Minutes", note:"Qatari citizens need a Canadian eTA for air travel.", applyLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta.html" },
+    mexico: { type:"Visa Free", badge:"badge-free", label:"Visa Free", cost:"Free", processing:"No application", note:"Qatari citizens can enter Mexico visa-free for up to 180 days.", applyLink:"", officialLink:"https://embamex.sre.gob.mx/" }
+  },
+
+  "AE": { // UAE
+    usa: { type:"B1/B2 Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"$185", processing:"2-4 months", note:"UAE citizens require a B1/B2 visa for the USA.", applyLink:"https://www.ivisa.com/united-states-visa", officialLink:"https://www.state.gov/fifa-world-cup-26-visas" },
+    canada: { type:"Visitor Visa (TRV)", badge:"badge-required", label:"Visa Required", cost:"CAD $100", processing:"2-8 weeks", note:"UAE citizens require a TRV for Canada.", applyLink:"https://www.ivisa.com/canada-visa", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html" },
+    mexico: { type:"Visa Free", badge:"badge-free", label:"Visa Free", cost:"Free", processing:"No application", note:"UAE citizens can enter Mexico visa-free for up to 180 days.", applyLink:"", officialLink:"https://embamex.sre.gob.mx/" }
+  },
+
+  "UY": { // Uruguay
+    usa: { type:"B1/B2 Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"$185", processing:"2-4 months", note:"Uruguayan citizens require a B1/B2 visa for the USA.", applyLink:"https://www.ivisa.com/united-states-visa", officialLink:"https://www.state.gov/fifa-world-cup-26-visas" },
+    canada: { type:"eTA (if eligible) or TRV", badge:"badge-eta", label:"eTA / Visa", cost:"CAD $7 / $100", processing:"Minutes / weeks", note:"Some Uruguayan citizens with a prior Canadian or US visa may qualify for a Canadian eTA. Otherwise a TRV is required.", applyLink:"https://www.ivisa.com/canada-visa", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html" },
+    mexico: { type:"Visa Free", badge:"badge-free", label:"Visa Free", cost:"Free", processing:"No application", note:"Uruguayan citizens can enter Mexico visa-free for up to 180 days.", applyLink:"", officialLink:"https://embamex.sre.gob.mx/" }
+  },
+
+  "EC": { // Ecuador
+    usa: { type:"B1/B2 Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"$185", processing:"2-4 months", note:"Ecuadorian citizens require a B1/B2 visa for the USA.", applyLink:"https://www.ivisa.com/united-states-visa", officialLink:"https://www.state.gov/fifa-world-cup-26-visas" },
+    canada: { type:"Visitor Visa (TRV)", badge:"badge-required", label:"Visa Required", cost:"CAD $100", processing:"2-8 weeks", note:"Ecuadorian citizens require a TRV for Canada.", applyLink:"https://www.ivisa.com/canada-visa", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html" },
+    mexico: { type:"Visa Free", badge:"badge-free", label:"Visa Free", cost:"Free", processing:"No application", note:"Ecuadorian citizens can enter Mexico visa-free for up to 180 days.", applyLink:"", officialLink:"https://embamex.sre.gob.mx/" }
+  },
+
+  "CO": { // Colombia
+    usa: { type:"B1/B2 Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"$185", processing:"2-4 months", note:"Colombian citizens require a B1/B2 visa for the USA.", applyLink:"https://www.ivisa.com/united-states-visa", officialLink:"https://www.state.gov/fifa-world-cup-26-visas" },
+    canada: { type:"Visitor Visa (TRV)", badge:"badge-required", label:"Visa Required", cost:"CAD $100", processing:"2-8 weeks", note:"Colombian citizens require a TRV for Canada.", applyLink:"https://www.ivisa.com/canada-visa", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html" },
+    mexico: { type:"Visa Free", badge:"badge-free", label:"Visa Free", cost:"Free", processing:"No application", note:"Colombian citizens can enter Mexico visa-free for up to 180 days.", applyLink:"", officialLink:"https://embamex.sre.gob.mx/" }
+  },
+
+  "PE": { // Peru
+    usa: { type:"B1/B2 Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"$185", processing:"2-4 months", note:"Peruvian citizens require a B1/B2 visa for the USA.", applyLink:"https://www.ivisa.com/united-states-visa", officialLink:"https://www.state.gov/fifa-world-cup-26-visas" },
+    canada: { type:"Visitor Visa (TRV)", badge:"badge-required", label:"Visa Required", cost:"CAD $100", processing:"2-8 weeks", note:"Peruvian citizens require a TRV for Canada.", applyLink:"https://www.ivisa.com/canada-visa", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html" },
+    mexico: { type:"Visa Free", badge:"badge-free", label:"Visa Free", cost:"Free", processing:"No application", note:"Peruvian citizens can enter Mexico visa-free for up to 180 days.", applyLink:"", officialLink:"https://embamex.sre.gob.mx/" }
+  },
+
+  "PK": { // Pakistan
+    usa: { type:"B1/B2 Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"$185", processing:"2-4 months", note:"Pakistani citizens require a B1/B2 visa for the USA.", applyLink:"https://www.ivisa.com/united-states-visa", officialLink:"https://www.state.gov/fifa-world-cup-26-visas" },
+    canada: { type:"Visitor Visa (TRV)", badge:"badge-required", label:"Visa Required", cost:"CAD $100", processing:"2-8 weeks", note:"Pakistani citizens require a TRV for Canada.", applyLink:"https://www.ivisa.com/canada-visa", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html" },
+    mexico: { type:"Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"~$36", processing:"4-6 weeks", note:"Pakistani citizens require a visa for Mexico. A valid US visa allows visa-free entry to Mexico.", applyLink:"https://www.ivisa.com/mexico-visa", officialLink:"https://embamex.sre.gob.mx/" }
+  },
+
+  "BD": { // Bangladesh
+    usa: { type:"B1/B2 Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"$185", processing:"2-4 months", note:"Bangladeshi citizens require a B1/B2 visa for the USA.", applyLink:"https://www.ivisa.com/united-states-visa", officialLink:"https://www.state.gov/fifa-world-cup-26-visas" },
+    canada: { type:"Visitor Visa (TRV)", badge:"badge-required", label:"Visa Required", cost:"CAD $100", processing:"2-8 weeks", note:"Bangladeshi citizens require a TRV for Canada.", applyLink:"https://www.ivisa.com/canada-visa", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html" },
+    mexico: { type:"Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"~$36", processing:"4-6 weeks", note:"Bangladeshi citizens require a visa for Mexico. A valid US visa allows visa-free entry to Mexico.", applyLink:"https://www.ivisa.com/mexico-visa", officialLink:"https://embamex.sre.gob.mx/" }
+  },
+
+  "PH": { // Philippines
+    usa: { type:"B1/B2 Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"$185", processing:"2-4 months", note:"Filipino citizens require a B1/B2 visa for the USA.", applyLink:"https://www.ivisa.com/united-states-visa", officialLink:"https://www.state.gov/fifa-world-cup-26-visas" },
+    canada: { type:"eTA (if eligible) or TRV", badge:"badge-eta", label:"eTA / Visa", cost:"CAD $7 / $100", processing:"Minutes / weeks", note:"Some Filipino citizens with a prior Canadian or US visa may qualify for a Canadian eTA. Otherwise a TRV is required.", applyLink:"https://www.ivisa.com/canada-visa", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html" },
+    mexico: { type:"Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"~$36", processing:"4-6 weeks", note:"Filipino citizens require a visa for Mexico. A valid US visa allows visa-free entry to Mexico.", applyLink:"https://www.ivisa.com/mexico-visa", officialLink:"https://embamex.sre.gob.mx/" }
+  },
+
+  "ID": { // Indonesia
+    usa: { type:"B1/B2 Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"$185", processing:"2-4 months", note:"Indonesian citizens require a B1/B2 visa for the USA.", applyLink:"https://www.ivisa.com/united-states-visa", officialLink:"https://www.state.gov/fifa-world-cup-26-visas" },
+    canada: { type:"eTA (if eligible) or TRV", badge:"badge-eta", label:"eTA / Visa", cost:"CAD $7 / $100", processing:"Minutes / weeks", note:"As of May 2026, some Indonesian citizens may be eligible for a Canadian eTA if they meet certain requirements. Check canada.ca for your eligibility before applying.", applyLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html" },
+    mexico: { type:"Visa Free", badge:"badge-free", label:"Visa Free", cost:"Free", processing:"No application", note:"Indonesian citizens can enter Mexico visa-free for up to 180 days.", applyLink:"", officialLink:"https://embamex.sre.gob.mx/" }
+  },
+
+  "MY": { // Malaysia
+    usa: { type:"B1/B2 Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"$185", processing:"2-4 months", note:"Malaysian citizens require a B1/B2 visa for the USA.", applyLink:"https://www.ivisa.com/united-states-visa", officialLink:"https://www.state.gov/fifa-world-cup-26-visas" },
+    canada: { type:"eTA (if eligible) or TRV", badge:"badge-eta", label:"eTA / Visa", cost:"CAD $7 / $100", processing:"Minutes / weeks", note:"As of May 2026, some Malaysian citizens may be eligible for a Canadian eTA if they meet certain requirements. Check canada.ca for your eligibility.", applyLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html" },
+    mexico: { type:"Visa Free", badge:"badge-free", label:"Visa Free", cost:"Free", processing:"No application", note:"Malaysian citizens can enter Mexico visa-free for up to 180 days.", applyLink:"", officialLink:"https://embamex.sre.gob.mx/" }
+  },
+
+  "TH": { // Thailand
+    usa: { type:"B1/B2 Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"$185", processing:"2-4 months", note:"Thai citizens require a B1/B2 visa for the USA.", applyLink:"https://www.ivisa.com/united-states-visa", officialLink:"https://www.state.gov/fifa-world-cup-26-visas" },
+    canada: { type:"eTA (if eligible) or TRV", badge:"badge-eta", label:"eTA / Visa", cost:"CAD $7 / $100", processing:"Minutes / weeks", note:"Some Thai citizens with a prior Canadian or US visa may qualify for a Canadian eTA. Otherwise a TRV is required.", applyLink:"https://www.ivisa.com/canada-visa", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html" },
+    mexico: { type:"Visa Free", badge:"badge-free", label:"Visa Free", cost:"Free", processing:"No application", note:"Thai citizens can enter Mexico visa-free for up to 180 days.", applyLink:"", officialLink:"https://embamex.sre.gob.mx/" }
+  },
+
+  "CN": { // China
+    usa: { type:"B1/B2 Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"$185", processing:"2-4 months", note:"Chinese citizens require a B1/B2 visa for the USA. Apply well in advance given high demand.", applyLink:"https://www.ivisa.com/united-states-visa", officialLink:"https://www.state.gov/fifa-world-cup-26-visas" },
+    canada: { type:"Visitor Visa (TRV)", badge:"badge-required", label:"Visa Required", cost:"CAD $100", processing:"2-8 weeks", note:"Chinese citizens require a TRV for Canada.", applyLink:"https://www.ivisa.com/canada-visa", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html" },
+    mexico: { type:"Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"~$36", processing:"4-6 weeks", note:"Chinese citizens require a visa for Mexico. A valid US B1/B2 visa allows visa-free entry to Mexico.", applyLink:"https://www.ivisa.com/mexico-visa", officialLink:"https://embamex.sre.gob.mx/" }
+  },
+
+  "TR": { // Turkey
+    usa: { type:"B1/B2 Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"$185", processing:"2-4 months", note:"Turkish citizens require a B1/B2 visa for the USA.", applyLink:"https://www.ivisa.com/united-states-visa", officialLink:"https://www.state.gov/fifa-world-cup-26-visas" },
+    canada: { type:"Visitor Visa (TRV)", badge:"badge-required", label:"Visa Required", cost:"CAD $100", processing:"2-8 weeks", note:"Turkish citizens require a TRV for Canada.", applyLink:"https://www.ivisa.com/canada-visa", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html" },
+    mexico: { type:"SAE Electronic Authorisation", badge:"badge-evisa", label:"SAE Required", cost:"Free", processing:"Online, instant", note:"Turkish citizens require an SAE electronic authorisation before flying to Mexico. Apply at inm.gob.mx/sae. Free and approved by email.", applyLink:"https://inm.gob.mx/sae", officialLink:"https://embamex.sre.gob.mx/" }
+  },
+
+  "RS": { // Serbia
+    usa: { type:"B1/B2 Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"$185", processing:"2-4 months", note:"Serbian citizens require a B1/B2 visa for the USA.", applyLink:"https://www.ivisa.com/united-states-visa", officialLink:"https://www.state.gov/fifa-world-cup-26-visas" },
+    canada: { type:"Visitor Visa (TRV)", badge:"badge-required", label:"Visa Required", cost:"CAD $100", processing:"2-8 weeks", note:"Serbian citizens require a TRV for Canada.", applyLink:"https://www.ivisa.com/canada-visa", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html" },
+    mexico: { type:"Visa Free", badge:"badge-free", label:"Visa Free", cost:"Free", processing:"No application", note:"Serbian citizens can enter Mexico visa-free for up to 180 days.", applyLink:"", officialLink:"https://embamex.sre.gob.mx/" }
+  },
+
+  "PL": { // Poland
+    usa: { type:"ESTA — Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"Polish citizens qualify for ESTA. Apply at esta.cbp.dhs.gov.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
+    canada: { type:"eTA", badge:"badge-eta", label:"eTA Required", cost:"CAD $7", processing:"Minutes", note:"Polish citizens need a Canadian eTA for air travel.", applyLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta.html" },
+    mexico: { type:"Visa Free", badge:"badge-free", label:"Visa Free", cost:"Free", processing:"No application", note:"Polish citizens can enter Mexico visa-free for up to 180 days.", applyLink:"", officialLink:"https://embamex.sre.gob.mx/" }
+  },
+
+  "DK": { // Denmark
+    usa: { type:"ESTA — Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"Danish citizens qualify for ESTA. Apply at esta.cbp.dhs.gov.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
+    canada: { type:"eTA", badge:"badge-eta", label:"eTA Required", cost:"CAD $7", processing:"Minutes", note:"Danish citizens need a Canadian eTA for air travel.", applyLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta.html" },
+    mexico: { type:"Visa Free", badge:"badge-free", label:"Visa Free", cost:"Free", processing:"No application", note:"Danish citizens can enter Mexico visa-free for up to 180 days.", applyLink:"", officialLink:"https://embamex.sre.gob.mx/" }
+  },
+
+  "NO": { // Norway
+    usa: { type:"ESTA — Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"Norwegian citizens qualify for ESTA. Apply at esta.cbp.dhs.gov.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
+    canada: { type:"eTA", badge:"badge-eta", label:"eTA Required", cost:"CAD $7", processing:"Minutes", note:"Norwegian citizens need a Canadian eTA for air travel.", applyLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta.html" },
+    mexico: { type:"Visa Free", badge:"badge-free", label:"Visa Free", cost:"Free", processing:"No application", note:"Norwegian citizens can enter Mexico visa-free for up to 180 days.", applyLink:"", officialLink:"https://embamex.sre.gob.mx/" }
+  },
+
+  "SE": { // Sweden
+    usa: { type:"ESTA — Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"Swedish citizens qualify for ESTA. Apply at esta.cbp.dhs.gov.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
+    canada: { type:"eTA", badge:"badge-eta", label:"eTA Required", cost:"CAD $7", processing:"Minutes", note:"Swedish citizens need a Canadian eTA for air travel.", applyLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta.html" },
+    mexico: { type:"Visa Free", badge:"badge-free", label:"Visa Free", cost:"Free", processing:"No application", note:"Swedish citizens can enter Mexico visa-free for up to 180 days.", applyLink:"", officialLink:"https://embamex.sre.gob.mx/" }
+  },
+
+  "CZ": { // Czech Republic
+    usa: { type:"ESTA — Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"Czech citizens qualify for ESTA. Apply at esta.cbp.dhs.gov.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
+    canada: { type:"eTA", badge:"badge-eta", label:"eTA Required", cost:"CAD $7", processing:"Minutes", note:"Czech citizens need a Canadian eTA for air travel.", applyLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta.html" },
+    mexico: { type:"Visa Free", badge:"badge-free", label:"Visa Free", cost:"Free", processing:"No application", note:"Czech citizens can enter Mexico visa-free for up to 180 days.", applyLink:"", officialLink:"https://embamex.sre.gob.mx/" }
+  },
+
+  "BA": { // Bosnia and Herzegovina
+    usa: { type:"B1/B2 Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"$185", processing:"2-4 months", note:"Bosnian citizens require a B1/B2 visa for the USA.", applyLink:"https://www.ivisa.com/united-states-visa", officialLink:"https://www.state.gov/fifa-world-cup-26-visas" },
+    canada: { type:"Visitor Visa (TRV)", badge:"badge-required", label:"Visa Required", cost:"CAD $100", processing:"2-8 weeks", note:"Bosnian citizens require a TRV for Canada.", applyLink:"https://www.ivisa.com/canada-visa", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html" },
+    mexico: { type:"Visa Free", badge:"badge-free", label:"Visa Free", cost:"Free", processing:"No application", note:"Bosnian citizens can enter Mexico visa-free for up to 180 days.", applyLink:"", officialLink:"https://embamex.sre.gob.mx/" }
+  },
+
+  "UZ": { // Uzbekistan
+    usa: { type:"B1/B2 Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"$185", processing:"2-4 months", note:"Uzbek citizens require a B1/B2 visa for the USA.", applyLink:"https://www.ivisa.com/united-states-visa", officialLink:"https://www.state.gov/fifa-world-cup-26-visas" },
+    canada: { type:"Visitor Visa (TRV)", badge:"badge-required", label:"Visa Required", cost:"CAD $100", processing:"2-8 weeks", note:"Uzbek citizens require a TRV for Canada.", applyLink:"https://www.ivisa.com/canada-visa", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html" },
+    mexico: { type:"Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"~$36", processing:"4-6 weeks", note:"Uzbek citizens require a visa for Mexico. A valid US visa allows visa-free entry to Mexico.", applyLink:"https://www.ivisa.com/mexico-visa", officialLink:"https://embamex.sre.gob.mx/" }
+  },
+
+  "CD": { // DR Congo
+    usa: { type:"B1/B2 Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"$185", processing:"2-4 months", note:"Congolese citizens require a B1/B2 visa for the USA.", applyLink:"https://www.ivisa.com/united-states-visa", officialLink:"https://www.state.gov/fifa-world-cup-26-visas" },
+    canada: { type:"Visitor Visa (TRV)", badge:"badge-required", label:"Visa Required", cost:"CAD $100", processing:"2-8 weeks", note:"Congolese citizens require a TRV for Canada.", applyLink:"https://www.ivisa.com/canada-visa", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html" },
+    mexico: { type:"Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"~$36", processing:"4-6 weeks", note:"Congolese citizens require a visa for Mexico. A valid US visa allows visa-free entry to Mexico.", applyLink:"https://www.ivisa.com/mexico-visa", officialLink:"https://embamex.sre.gob.mx/" }
+  },
+
+  "PA": { // Panama
+    usa: { type:"B1/B2 Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"$185", processing:"2-4 months", note:"Panamanian citizens require a B1/B2 visa for the USA.", applyLink:"https://www.ivisa.com/united-states-visa", officialLink:"https://www.state.gov/fifa-world-cup-26-visas" },
+    canada: { type:"eTA (if eligible) or TRV", badge:"badge-eta", label:"eTA / Visa", cost:"CAD $7 / $100", processing:"Minutes / weeks", note:"Some Panamanian citizens with a prior Canadian or US visa may qualify for a Canadian eTA. Otherwise a TRV is required.", applyLink:"https://www.ivisa.com/canada-visa", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html" },
+    mexico: { type:"Visa Free", badge:"badge-free", label:"Visa Free", cost:"Free", processing:"No application", note:"Panamanian citizens can enter Mexico visa-free for up to 180 days.", applyLink:"", officialLink:"https://embamex.sre.gob.mx/" }
+  },
+
+  "HT": { // Haiti
+    usa: { type:"B1/B2 Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"$185", processing:"2-4 months", note:"Haitian citizens require a B1/B2 visa for the USA.", applyLink:"https://www.ivisa.com/united-states-visa", officialLink:"https://www.state.gov/fifa-world-cup-26-visas" },
+    canada: { type:"Visitor Visa (TRV)", badge:"badge-required", label:"Visa Required", cost:"CAD $100", processing:"2-8 weeks", note:"Haitian citizens require a TRV for Canada.", applyLink:"https://www.ivisa.com/canada-visa", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html" },
+    mexico: { type:"Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"~$36", processing:"4-6 weeks", note:"Haitian citizens require a visa for Mexico. A valid US visa allows visa-free entry to Mexico.", applyLink:"https://www.ivisa.com/mexico-visa", officialLink:"https://embamex.sre.gob.mx/" }
+  },
+
+  "CV": { // Cape Verde
+    usa: { type:"B1/B2 Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"$185", processing:"2-4 months", note:"Cape Verdean citizens require a B1/B2 visa for the USA.", applyLink:"https://www.ivisa.com/united-states-visa", officialLink:"https://www.state.gov/fifa-world-cup-26-visas" },
+    canada: { type:"Visitor Visa (TRV)", badge:"badge-required", label:"Visa Required", cost:"CAD $100", processing:"2-8 weeks", note:"Cape Verdean citizens require a TRV for Canada.", applyLink:"https://www.ivisa.com/canada-visa", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html" },
+    mexico: { type:"Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"~$36", processing:"4-6 weeks", note:"Cape Verdean citizens require a visa for Mexico. A valid US visa allows visa-free entry to Mexico.", applyLink:"https://www.ivisa.com/mexico-visa", officialLink:"https://embamex.sre.gob.mx/" }
+  },
+
+  "JO": { // Jordan
+    usa: { type:"B1/B2 Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"$185", processing:"2-4 months", note:"Jordanian citizens require a B1/B2 visa for the USA.", applyLink:"https://www.ivisa.com/united-states-visa", officialLink:"https://www.state.gov/fifa-world-cup-26-visas" },
+    canada: { type:"Visitor Visa (TRV)", badge:"badge-required", label:"Visa Required", cost:"CAD $100", processing:"2-8 weeks", note:"Jordanian citizens require a TRV for Canada.", applyLink:"https://www.ivisa.com/canada-visa", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html" },
+    mexico: { type:"Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"~$36", processing:"4-6 weeks", note:"Jordanian citizens require a visa for Mexico. A valid US visa allows visa-free entry to Mexico.", applyLink:"https://www.ivisa.com/mexico-visa", officialLink:"https://embamex.sre.gob.mx/" }
+  },
+
+  // Two bonus high-traffic countries
+  "RU": { // Russia
+    usa: { type:"B1/B2 Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"$185", processing:"3-6 months", note:"Russian citizens require a B1/B2 visa. Processing times are lengthy and approval is not guaranteed. Check the US State Department website for current guidance.", applyLink:"https://www.ivisa.com/united-states-visa", officialLink:"https://www.state.gov/fifa-world-cup-26-visas" },
+    canada: { type:"Visitor Visa (TRV)", badge:"badge-required", label:"Visa Required", cost:"CAD $100", processing:"4-12 weeks", note:"Russian citizens require a TRV for Canada. Processing may take longer than usual.", applyLink:"https://www.ivisa.com/canada-visa", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html" },
+    mexico: { type:"SAE Electronic Authorisation", badge:"badge-evisa", label:"SAE Required", cost:"Free", processing:"Online, instant", note:"Russian citizens require an SAE electronic authorisation before flying to Mexico. Apply at inm.gob.mx/sae. Free and approved by email.", applyLink:"https://inm.gob.mx/sae", officialLink:"https://embamex.sre.gob.mx/" }
+  },
+
+  "MX": { // Mexico (host nation)
+    usa: { type:"B1/B2 Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"$185", processing:"2-4 months", note:"Mexican citizens require a B1/B2 visa for the USA.", applyLink:"https://www.ivisa.com/united-states-visa", officialLink:"https://www.state.gov/fifa-world-cup-26-visas" },
+    canada: { type:"eTA (if eligible) or TRV", badge:"badge-eta", label:"eTA / Visa", cost:"CAD $7 / $100", processing:"Minutes / weeks", note:"Some Mexican citizens may qualify for a Canadian eTA. Check canada.ca for current requirements as rules changed in 2024.", applyLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html" },
+    mexico: { type:"No requirement", badge:"badge-free", label:"Home Country", cost:"Free", processing:"No application", note:"Mexico is one of the three host nations. No visa required to attend matches in Mexico City, Guadalajara or Monterrey.", applyLink:"", officialLink:"" }
+  }
+
+};
+
+// ============================================================
+// CITY DATA
+// ============================================================
+const cityData = {
+  "Dallas, Texas": { flag:"🇺🇸", file:"cities/dallas.html", country:"usa", desc:"AT&T Stadium, Arlington. 9 matches including the Semi-Final on July 14.", esim:"US eSIM recommended. Roaming charges in the USA are very expensive.", insurance:"Medical costs in the USA are extremely high. Travel insurance is strongly recommended.", viator:"https://www.viator.com/en-GB/Dallas/d4684", hotel_city:"Dallas", iata:"DFW" },
+  "New York / New Jersey": { flag:"🇺🇸", file:"cities/newyork.html", country:"usa", desc:"MetLife Stadium, East Rutherford. 8 matches including the World Cup Final on July 19.", esim:"US eSIM recommended. Roaming charges in the USA are very expensive.", insurance:"Medical costs in the USA are extremely high. Travel insurance is strongly recommended.", viator:"https://www.viator.com/en-GB/New-York/d687", hotel_city:"New York", iata:"JFK" },
+  "Los Angeles, California": { flag:"🇺🇸", file:"cities/losangeles.html", country:"usa", desc:"SoFi Stadium, Inglewood. 8 matches including a Quarter-Final on July 10.", esim:"US eSIM recommended. Roaming charges in the USA are very expensive.", insurance:"Medical costs in the USA are extremely high. Travel insurance is strongly recommended.", viator:"https://www.viator.com/en-GB/Los-Angeles/d645", hotel_city:"Los Angeles", iata:"LAX" },
+  "Miami, Florida": { flag:"🇺🇸", file:"cities/miami.html", country:"usa", desc:"Hard Rock Stadium. 7 matches including a Quarter-Final and the Bronze Final.", esim:"US eSIM recommended. Roaming charges in the USA are very expensive.", insurance:"Medical costs in the USA are extremely high. Travel insurance is strongly recommended.", viator:"https://www.viator.com/en-GB/Miami/d672", hotel_city:"Miami", iata:"MIA" },
+  "Seattle, Washington": { flag:"🇺🇸", file:"cities/seattle.html", country:"usa", desc:"Lumen Field, downtown Seattle. 6 matches including a Round of 16 on July 6.", esim:"US eSIM recommended. Roaming charges in the USA are very expensive.", insurance:"Medical costs in the USA are extremely high. Travel insurance is strongly recommended.", viator:"https://www.viator.com/en-GB/Seattle/d659", hotel_city:"Seattle", iata:"SEA" },
+  "Boston, Massachusetts": { flag:"🇺🇸", file:"cities/boston.html", country:"usa", desc:"Gillette Stadium, Foxborough. 7 matches including a Quarter-Final on July 9.", esim:"US eSIM recommended. Roaming charges in the USA are very expensive.", insurance:"Medical costs in the USA are extremely high. Travel insurance is strongly recommended.", viator:"https://www.viator.com/en-GB/Boston/d678", hotel_city:"Boston", iata:"BOS" },
+  "Atlanta, Georgia": { flag:"🇺🇸", file:"cities/atlanta.html", country:"usa", desc:"Mercedes-Benz Stadium. 8 matches including a Semi-Final on July 15.", esim:"US eSIM recommended. Roaming charges in the USA are very expensive.", insurance:"Medical costs in the USA are extremely high. Travel insurance is strongly recommended.", viator:"https://www.viator.com/en-GB/Atlanta/d271", hotel_city:"Atlanta", iata:"ATL" },
+  "Kansas City, Missouri": { flag:"🇺🇸", file:"cities/kansascity.html", country:"usa", desc:"Arrowhead Stadium. 6 matches including a Quarter-Final on July 11.", esim:"US eSIM recommended. Roaming charges in the USA are very expensive.", insurance:"Medical costs in the USA are extremely high. Travel insurance is strongly recommended.", viator:"https://www.viator.com/en-GB/Kansas-City/d22494", hotel_city:"Kansas City", iata:"MCI" },
+  "Philadelphia, Pennsylvania": { flag:"🇺🇸", file:"cities/philadelphia.html", country:"usa", desc:"Lincoln Financial Field. 6 matches including a Round of 16 on July 4.", esim:"US eSIM recommended. Roaming charges in the USA are very expensive.", insurance:"Medical costs in the USA are extremely high. Travel insurance is strongly recommended.", viator:"https://www.viator.com/en-GB/Philadelphia/d673", hotel_city:"Philadelphia", iata:"PHL" },
+  "Houston, Texas": { flag:"🇺🇸", file:"cities/houston.html", country:"usa", desc:"NRG Stadium. 7 matches including a Round of 16 on July 4.", esim:"US eSIM recommended. Roaming charges in the USA are very expensive.", insurance:"Medical costs in the USA are extremely high. Travel insurance is strongly recommended.", viator:"https://www.viator.com/en-GB/Houston/d684", hotel_city:"Houston", iata:"IAH" },
+  "San Francisco Bay Area": { flag:"🇺🇸", file:"cities/sanfrancisco.html", country:"usa", desc:"Levi's Stadium, Santa Clara. 6 matches including a Round of 32 on July 1.", esim:"US eSIM recommended. Roaming charges in the USA are very expensive.", insurance:"Medical costs in the USA are extremely high. Travel insurance is strongly recommended.", viator:"https://www.viator.com/en-GB/San-Francisco/d651", hotel_city:"San Francisco", iata:"SFO" },
+  "Toronto, Ontario": { flag:"🇨🇦", file:"cities/toronto.html", country:"canada", desc:"BMO Field, Exhibition Place. 6 matches including Canada's historic home opener on June 12.", esim:"Canada eSIM recommended to avoid roaming charges.", insurance:"Healthcare in Canada is not free for visitors. Travel insurance is recommended.", viator:"https://www.viator.com/en-GB/Toronto/d715", hotel_city:"Toronto", iata:"YYZ" },
+  "Vancouver, BC": { flag:"🇨🇦", file:"cities/vancouver.html", country:"canada", desc:"BC Place. 7 matches including Canada twice and a Round of 16 on July 7.", esim:"Canada eSIM recommended to avoid roaming charges.", insurance:"Healthcare in Canada is not free for visitors. Travel insurance is recommended.", viator:"https://www.viator.com/en-GB/Vancouver/d293", hotel_city:"Vancouver", iata:"YVR" },
+  "Mexico City": { flag:"🇲🇽", file:"cities/mexicocity.html", country:"mexico", desc:"Estadio Azteca. 5 matches including the historic Opening Match on June 11.", esim:"Get a Mexico eSIM before landing. Local SIMs require passport registration since January 2026.", insurance:"Travel insurance is recommended for Mexico.", viator:"https://www.viator.com/en-GB/Mexico-City/d585", hotel_city:"Mexico City", iata:"MEX" },
+  "Guadalajara": { flag:"🇲🇽", file:"cities/guadalajara.html", country:"mexico", desc:"Estadio Akron. 4 group stage matches including Mexico vs South Korea on June 18.", esim:"Get a Mexico eSIM before landing. Local SIMs require passport registration since January 2026.", insurance:"Travel insurance is recommended for Mexico.", viator:"https://www.viator.com/en-GB/Guadalajara/d24154", hotel_city:"Guadalajara", iata:"GDL" },
+  "Monterrey": { flag:"🇲🇽", file:"cities/monterrey.html", country:"mexico", desc:"Estadio BBVA. 4 matches including the historic 1,000th World Cup match on June 20.", esim:"Get a Mexico eSIM before landing. Local SIMs require passport registration since January 2026.", insurance:"Travel insurance is recommended for Mexico.", viator:"https://www.viator.com/en-GB/Monterrey/d22517", hotel_city:"Monterrey", iata:"MTY" }
+};
+
+// Country code to name mapping
+const countryNames = {
+  "IN":"India","BR":"Brazil","AR":"Argentina","GB":"United Kingdom","DE":"Germany",
+  "FR":"France","ES":"Spain","PT":"Portugal","NL":"Netherlands","BE":"Belgium",
+  "HR":"Croatia","CH":"Switzerland","JP":"Japan","KR":"South Korea","AU":"Australia",
+  "NZ":"New Zealand","SG":"Singapore","CL":"Chile","NG":"Nigeria","GH":"Ghana",
+  "SN":"Senegal","MA":"Morocco","ZA":"South Africa","EG":"Egypt","DZ":"Algeria",
+  "TN":"Tunisia","CI":"Ivory Coast","CM":"Cameroon","SA":"Saudi Arabia","IR":"Iran",
+  "IQ":"Iraq","QA":"Qatar","AE":"UAE","UY":"Uruguay","EC":"Ecuador","CO":"Colombia",
+  "PE":"Peru","PK":"Pakistan","BD":"Bangladesh","PH":"Philippines","ID":"Indonesia",
+  "MY":"Malaysia","TH":"Thailand","CN":"China","TR":"Turkey","RS":"Serbia",
+  "PL":"Poland","DK":"Denmark","NO":"Norway","SE":"Sweden","CZ":"Czech Republic",
+  "BA":"Bosnia and Herzegovina","UZ":"Uzbekistan","CD":"DR Congo","PA":"Panama",
+  "HT":"Haiti","CV":"Cape Verde","JO":"Jordan","RU":"Russia","MX":"Mexico"
+};
+
+// Country flags
+const countryFlags = {
+  "IN":"🇮🇳","BR":"🇧🇷","AR":"🇦🇷","GB":"🇬🇧","DE":"🇩🇪","FR":"🇫🇷","ES":"🇪🇸",
+  "PT":"🇵🇹","NL":"🇳🇱","BE":"🇧🇪","HR":"🇭🇷","CH":"🇨🇭","JP":"🇯🇵","KR":"🇰🇷",
+  "AU":"🇦🇺","NZ":"🇳🇿","SG":"🇸🇬","CL":"🇨🇱","NG":"🇳🇬","GH":"🇬🇭","SN":"🇸🇳",
+  "MA":"🇲🇦","ZA":"🇿🇦","EG":"🇪🇬","DZ":"🇩🇿","TN":"🇹🇳","CI":"🇨🇮","CM":"🇨🇲",
+  "SA":"🇸🇦","IR":"🇮🇷","IQ":"🇮🇶","QA":"🇶🇦","AE":"🇦🇪","UY":"🇺🇾","EC":"🇪🇨",
+  "CO":"🇨🇴","PE":"🇵🇪","PK":"🇵🇰","BD":"🇧🇩","PH":"🇵🇭","ID":"🇮🇩","MY":"🇲🇾",
+  "TH":"🇹🇭","CN":"🇨🇳","TR":"🇹🇷","RS":"🇷🇸","PL":"🇵🇱","DK":"🇩🇰","NO":"🇳🇴",
+  "SE":"🇸🇪","CZ":"🇨🇿","BA":"🇧🇦","UZ":"🇺🇿","CD":"🇨🇩","PA":"🇵🇦","HT":"🇭🇹",
+  "CV":"🇨🇻","JO":"🇯🇴","RU":"🇷🇺","MX":"🇲🇽"
+};
+
+// ============================================================
+// PAGE INIT
+// ============================================================
+function getParam(name) {
+  return new URLSearchParams(window.location.search).get(name);
+}
+
+function renderVisaPanel(panelId, data) {
+  const el = document.getElementById(panelId);
+  if (!data) {
+    el.innerHTML = `<div class="not-found"><strong>Country not in our database yet</strong>Check the official embassy websites for your visa requirements.<br><br><a href="visa.html" style="color:var(--green);font-weight:700">View our full Visa Guide →</a></div>`;
+    return;
+  }
+  const urgentClass = data.badge === 'badge-required' ? 'urgent' : (data.badge === 'badge-free' ? 'good' : '');
+  el.innerHTML = `
+    <span class="visa-badge ${data.badge}">${data.label}</span>
+    <div class="visa-stats">
+      <div class="vstat"><div class="vstat-label">Type</div><div class="vstat-val">${data.type}</div></div>
+      <div class="vstat"><div class="vstat-label">Fee</div><div class="vstat-val">${data.cost}</div></div>
+      <div class="vstat"><div class="vstat-label">Processing</div><div class="vstat-val">${data.processing}</div></div>
+    </div>
+    <div class="visa-note ${urgentClass}">${data.note}</div>
+    <div class="btn-row">
+      ${data.applyLink ? `<a href="${data.applyLink}" target="_blank" class="btn-green">Apply via iVisa →</a>` : ''}
+      ${data.officialLink ? `<a href="${data.officialLink}" target="_blank" class="btn-outline">Official site →</a>` : ''}
+    </div>
+  `;
+}
+
+function showVisa(country, btn) {
+  document.querySelectorAll('.vtab').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.visa-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('visa-' + country).classList.add('active');
+}
+
+function init() {
+  const countryCode = getParam('country') || 'IN';
+  const cityName = getParam('city') || 'Dallas, Texas';
+
+  const countryName = countryNames[countryCode] || countryCode;
+  const countryFlag = countryFlags[countryCode] || '🌍';
+  const city = cityData[cityName];
+
+  // Hero
+  document.getElementById('fromFlag').textContent = countryFlag;
+  document.getElementById('toFlag').textContent = city ? city.flag : '🏟️';
+  document.getElementById('tripTitle').textContent = `${countryName} to ${cityName}`;
+  document.getElementById('tripSub').textContent = 'Your personalised World Cup 2026 travel guide';
+
+  // Visa card title
+  document.getElementById('visaCardTitle').textContent = `Visa Requirements for ${countryName}`;
+
+  // Visa data
+  const visa = visaData[countryCode];
+  if (visa) {
+    renderVisaPanel('visa-usa', visa.usa);
+    renderVisaPanel('visa-canada', visa.canada);
+    renderVisaPanel('visa-mexico', visa.mexico);
+  } else {
+    ['usa','canada','mexico'].forEach(c => renderVisaPanel('visa-' + c, null));
+  }
+
+  if (!city) return;
+
+  // City guide
+  document.getElementById('cityCardTitle').textContent = `${cityName} Guide`;
+  document.getElementById('cityInfo').textContent = city.desc;
+  document.getElementById('cityBtn').href = city.file;
+  document.getElementById('cityBtn').textContent = `View full ${cityName} guide →`;
+
+  // Hotels
+  document.getElementById('hotelTitle').textContent = `Hotels in ${city.hotel_city}`;
+  document.getElementById('hotelLinks').innerHTML = `
+    <a href="https://www.booking.com/searchresults.html?ss=${encodeURIComponent(city.hotel_city)}" target="_blank" class="book-row"><div><div class="book-name">Booking.com</div><div class="book-note">Largest selection, free cancellation options</div></div><div class="book-arrow">→</div></a>
+    <a href="https://www.hotels.com/search.do?q-destination=${encodeURIComponent(city.hotel_city)}" target="_blank" class="book-row"><div><div class="book-name">Hotels.com</div><div class="book-note">Earn free nights with every booking</div></div><div class="book-arrow">→</div></a>
+    <a href="https://www.hostelworld.com/search?search_keywords=${encodeURIComponent(city.hotel_city)}" target="_blank" class="book-row"><div><div class="book-name">Hostelworld</div><div class="book-note">Budget stays from $30/night</div></div><div class="book-arrow">→</div></a>
+    <a href="https://www.agoda.com/search?city=${encodeURIComponent(city.hotel_city)}" target="_blank" class="book-row"><div><div class="book-name">Agoda</div><div class="book-note">Popular with Asian travellers</div></div><div class="book-arrow">→</div></a>
+  `;
+
+  // Flights
+  document.getElementById('flightTitle').textContent = `Flights to ${city.hotel_city}`;
+  document.getElementById('flightLinks').innerHTML = `
+    <a href="https://www.skyscanner.net/transport/flights/anywhere/${city.iata}/" target="_blank" class="book-row"><div><div class="book-name">Search on Skyscanner</div><div class="book-note">Compare all airlines to ${city.hotel_city}</div></div><div class="book-arrow">→</div></a>
+    <a href="https://www.expedia.com/Flights-Search?trip=oneway&leg1=from:anywhere,to:${city.iata}" target="_blank" class="book-row"><div><div class="book-name">Search on Expedia</div><div class="book-note">Flights, hotels and packages</div></div><div class="book-arrow">→</div></a>
+  `;
+
+  // eSIM
+  document.getElementById('esimTitle').textContent = `Stay Connected in ${city.hotel_city}`;
+  document.getElementById('esimNote').textContent = city.esim;
+
+  // Insurance
+  document.getElementById('insuranceNote').textContent = city.insurance;
+
+  // Viator
+  document.getElementById('viatorTitle').textContent = `Things To Do in ${city.hotel_city}`;
+  document.getElementById('viatorNote').textContent = `Tours, experiences and activities between matches in ${city.hotel_city}.`;
+  document.getElementById('viatorLink').href = city.viator;
+}
+
+window.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>

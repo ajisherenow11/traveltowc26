@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Match Schedule — TravelToWC26</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--green:#1a7a3c;--green-pale:#e8f8ef;--sandy:#e9c46a;--sandy-pale:#fef8e7;--terra:#c47a1a;--ivory:#fffbf0;--white:#ffffff;--bg:#fffbf0;--text:#1a2e20;--muted:#6b7e70;--border:#e0d8c8;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;min-height:100vh;}
+  nav{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 5%;background:var(--white);border-bottom:2px solid #f0e8d0;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(26,122,60,0.06);}
+  .logo{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;color:var(--green);text-decoration:none;}
+  .logo span{color:var(--terra);}
+  .nav-links{display:flex;align-items:center;gap:2rem;}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:0.88rem;font-weight:500;transition:color 0.2s;}
+  .nav-links a:hover,.nav-links a.active{color:var(--green);font-weight:600;}
+  .nav-pill{background:var(--green);color:white;font-size:0.75rem;font-weight:700;padding:0.4rem 1rem;border-radius:20px;}
+
+  .page-hero{background:linear-gradient(135deg,#f0fff6 0%,var(--ivory) 60%,#fef3e8 100%);padding:3rem 5%;border-bottom:1px solid var(--border);}
+  .page-hero-inner{max-width:1100px;margin:0 auto;}
+  .breadcrumb{font-size:0.78rem;color:var(--muted);margin-bottom:1rem;}
+  .breadcrumb a{color:var(--green);text-decoration:none;}
+  .breadcrumb span{margin:0 0.4rem;}
+  .page-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:900;letter-spacing:-0.5px;margin-bottom:0.75rem;}
+  .page-title span{color:var(--green);}
+  .page-sub{font-size:0.95rem;color:var(--muted);line-height:1.65;max-width:600px;}
+
+  .main{max-width:1100px;margin:0 auto;padding:2rem 5%;}
+
+  /* FILTER TABS */
+  .filter-tabs{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:2rem;}
+  .filter-tab{font-size:0.78rem;font-weight:600;padding:0.4rem 1rem;border-radius:20px;border:1.5px solid var(--border);background:var(--white);color:var(--muted);cursor:pointer;transition:all 0.15s;}
+  .filter-tab:hover,.filter-tab.active{background:var(--green);border-color:var(--green);color:white;}
+
+  /* DAY BLOCK */
+  .day-block{margin-bottom:2rem;}
+  .day-header{font-weight:700;font-size:0.78rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);padding:0.5rem 0;border-bottom:1.5px solid var(--border);margin-bottom:0.75rem;}
+
+  /* MATCH ROW */
+  .match-row{display:grid;grid-template-columns:90px 1fr 160px 90px;align-items:center;gap:0.75rem;padding:0.7rem 1rem;border-radius:10px;background:var(--white);border:1px solid var(--border);margin-bottom:0.4rem;text-decoration:none;color:var(--text);transition:border-color 0.15s;}
+  .match-row:hover{border-color:var(--green);}
+  .match-row.knockout{background:var(--sandy-pale);border-color:var(--sandy);}
+  .match-row.final{background:#fef3dc;border-color:var(--terra);}
+  .match-row.opening{background:var(--green-pale);border-color:#a8d5b8;}
+
+  .match-time{font-size:0.72rem;color:var(--muted);font-weight:500;}
+  .match-teams{font-size:0.88rem;font-weight:600;color:var(--text);}
+  .match-row.knockout .match-teams{color:#7a5c00;}
+  .match-row.final .match-teams{color:#7a3a00;}
+  .match-row.opening .match-teams{color:#1a5c30;}
+  .match-city{font-size:0.72rem;color:var(--muted);text-align:right;}
+  .match-city a{color:var(--green);text-decoration:none;font-weight:600;}
+  .match-city a:hover{text-decoration:underline;}
+  .match-group{font-size:0.65rem;font-weight:700;padding:0.18rem 0.45rem;border-radius:5px;background:var(--green-pale);color:var(--green);white-space:nowrap;text-align:center;}
+  .match-row.knockout .match-group{background:#fde8b0;color:#7a5c00;}
+  .match-row.final .match-group{background:#fdd9a0;color:#7a3a00;}
+  .match-row.opening .match-group{background:#c0e8cc;color:#1a5c30;}
+
+  /* STAGE HEADERS */
+  .stage-header{background:var(--green);color:white;padding:0.75rem 1rem;border-radius:10px;font-weight:700;font-size:0.85rem;margin:2rem 0 1rem;display:flex;align-items:center;gap:0.5rem;}
+
+  footer{background:var(--green);padding:2rem 5%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-top:4rem;}
+  footer .logo{color:white;font-size:1.2rem;}
+  footer .logo span{color:var(--terra);}
+  .footer-links{display:flex;gap:1.5rem;flex-wrap:wrap;}
+  .footer-links a{color:rgba(255,255,255,0.55);text-decoration:none;font-size:0.8rem;}
+  .footer-links a:hover{color:white;}
+  .footer-copy{font-size:0.75rem;color:rgba(255,255,255,0.35);}
+
+  @media(max-width:768px){.match-row{grid-template-columns:70px 1fr;}.match-city,.match-group{display:none;}.nav-links{display:none;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">TravelTo<span>WC26</span></a>
+  <div class="nav-links">
+    <a href="visa.html">Visa Guide</a>
+    <a href="cities.html">Host Cities</a>
+    <a href="schedule.html" class="active">Match Schedule</a>
+    <a href="about.html">About</a>
+    <span class="nav-pill">⚽ Jun 11 – Jul 19, 2026</span>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>›</span>Match Schedule</div>
+    <h1 class="page-title">World Cup 2026 <span>Match Schedule</span></h1>
+    <p class="page-sub">All 104 matches across 39 days. Click any city to see hotels, transport and local tips. All times shown in local time for each city.</p>
+  </div>
+</div>
+
+<div class="main">
+
+  <div class="filter-tabs">
+    <button class="filter-tab active" onclick="filterMatches('all',this)">All Matches</button>
+    <button class="filter-tab" onclick="filterMatches('group',this)">Group Stage</button>
+    <button class="filter-tab" onclick="filterMatches('knockout',this)">Knockout Stage</button>
+    <button class="filter-tab" onclick="filterMatches('usa',this)">🇺🇸 USA</button>
+    <button class="filter-tab" onclick="filterMatches('canada',this)">🇨🇦 Canada</button>
+    <button class="filter-tab" onclick="filterMatches('mexico',this)">🇲🇽 Mexico</button>
+  </div>
+
+  <!-- GROUP STAGE -->
+  <div class="stage-header">⚽ Group Stage — June 11 to June 27</div>
+
+  <!-- JUN 11 -->
+  <div class="day-block" data-stage="group" data-country="mexico">
+    <div class="day-header">Thursday, June 11</div>
+    <div class="match-row opening"><div class="match-time">3pm CT</div><div class="match-teams">🎉 Mexico vs South Africa — Opening Match</div><div class="match-city"><a href="cities/mexicocity.html">Mexico City</a></div><div class="match-group">Group A</div></div>
+    <div class="match-row"><div class="match-time">10pm CT</div><div class="match-teams">South Korea vs Czechia</div><div class="match-city"><a href="cities/guadalajara.html">Guadalajara</a></div><div class="match-group">Group A</div></div>
+  </div>
+
+  <!-- JUN 12 -->
+  <div class="day-block" data-stage="group" data-country="canada usa">
+    <div class="day-header">Friday, June 12</div>
+    <div class="match-row"><div class="match-time">3pm ET</div><div class="match-teams">🍁 Canada vs Bosnia and Herzegovina</div><div class="match-city"><a href="cities/toronto.html">Toronto</a></div><div class="match-group">Group B</div></div>
+    <div class="match-row"><div class="match-time">9pm PT</div><div class="match-teams">USA vs Paraguay</div><div class="match-city"><a href="cities/losangeles.html">Los Angeles</a></div><div class="match-group">Group D</div></div>
+  </div>
+
+  <!-- JUN 13 -->
+  <div class="day-block" data-stage="group" data-country="usa canada">
+    <div class="day-header">Saturday, June 13</div>
+    <div class="match-row"><div class="match-time">12pm PT</div><div class="match-teams">Qatar vs Switzerland</div><div class="match-city"><a href="cities/sanfrancisco.html">San Francisco</a></div><div class="match-group">Group B</div></div>
+    <div class="match-row"><div class="match-time">6pm ET</div><div class="match-teams">Brazil vs Morocco</div><div class="match-city"><a href="cities/newyork.html">New York / NJ</a></div><div class="match-group">Group C</div></div>
+    <div class="match-row"><div class="match-time">9pm ET</div><div class="match-teams">Haiti vs Scotland</div><div class="match-city"><a href="cities/boston.html">Boston</a></div><div class="match-group">Group C</div></div>
+    <div class="match-row"><div class="match-time">9pm PT</div><div class="match-teams">Australia vs Turkiye</div><div class="match-city"><a href="cities/vancouver.html">Vancouver</a></div><div class="match-group">Group D</div></div>
+  </div>
+
+  <!-- JUN 14 -->
+  <div class="day-block" data-stage="group" data-country="usa mexico">
+    <div class="day-header">Sunday, June 14</div>
+    <div class="match-row"><div class="match-time">1pm CT</div><div class="match-teams">Germany vs Curacao</div><div class="match-city"><a href="cities/houston.html">Houston</a></div><div class="match-group">Group E</div></div>
+    <div class="match-row"><div class="match-time">2pm CT</div><div class="match-teams">Sweden vs Tunisia</div><div class="match-city"><a href="cities/monterrey.html">Monterrey</a></div><div class="match-group">Group F</div></div>
+    <div class="match-row"><div class="match-time">3pm CT</div><div class="match-teams">Netherlands vs Japan</div><div class="match-city"><a href="cities/dallas.html">Dallas</a></div><div class="match-group">Group F</div></div>
+    <div class="match-row"><div class="match-time">7pm ET</div><div class="match-teams">Ivory Coast vs Ecuador</div><div class="match-city"><a href="cities/philadelphia.html">Philadelphia</a></div><div class="match-group">Group E</div></div>
+  </div>
+
+  <!-- JUN 15 -->
+  <div class="day-block" data-stage="group" data-country="usa canada">
+    <div class="day-header">Monday, June 15</div>
+    <div class="match-row"><div class="match-time">12pm ET</div><div class="match-teams">Spain vs Cape Verde</div><div class="match-city"><a href="cities/atlanta.html">Atlanta</a></div><div class="match-group">Group H</div></div>
+    <div class="match-row"><div class="match-time">3pm PT</div><div class="match-teams">Belgium vs Egypt</div><div class="match-city"><a href="cities/vancouver.html">Vancouver</a></div><div class="match-group">Group G</div></div>
+    <div class="match-row"><div class="match-time">6pm ET</div><div class="match-teams">Saudi Arabia vs Uruguay</div><div class="match-city"><a href="cities/miami.html">Miami</a></div><div class="match-group">Group H</div></div>
+    <div class="match-row"><div class="match-time">9pm PT</div><div class="match-teams">Iran vs New Zealand</div><div class="match-city"><a href="cities/losangeles.html">Los Angeles</a></div><div class="match-group">Group G</div></div>
+  </div>
+
+  <!-- JUN 16 -->
+  <div class="day-block" data-stage="group" data-country="usa">
+    <div class="day-header">Tuesday, June 16</div>
+    <div class="match-row"><div class="match-time">3pm ET</div><div class="match-teams">France vs Senegal</div><div class="match-city"><a href="cities/newyork.html">New York / NJ</a></div><div class="match-group">Group I</div></div>
+    <div class="match-row"><div class="match-time">6pm ET</div><div class="match-teams">Iraq vs Norway</div><div class="match-city"><a href="cities/boston.html">Boston</a></div><div class="match-group">Group I</div></div>
+    <div class="match-row"><div class="match-time">9pm CT</div><div class="match-teams">Argentina vs Algeria</div><div class="match-city"><a href="cities/kansascity.html">Kansas City</a></div><div class="match-group">Group J</div></div>
+    <div class="match-row"><div class="match-time">midnight PT</div><div class="match-teams">Austria vs Jordan</div><div class="match-city"><a href="cities/sanfrancisco.html">San Francisco</a></div><div class="match-group">Group J</div></div>
+  </div>
+
+  <!-- JUN 17 -->
+  <div class="day-block" data-stage="group" data-country="usa canada mexico">
+    <div class="day-header">Wednesday, June 17</div>
+    <div class="match-row"><div class="match-time">1pm CT</div><div class="match-teams">Portugal vs DR Congo</div><div class="match-city"><a href="cities/houston.html">Houston</a></div><div class="match-group">Group K</div></div>
+    <div class="match-row"><div class="match-time">3pm CT</div><div class="match-teams">England vs Croatia</div><div class="match-city"><a href="cities/dallas.html">Dallas</a></div><div class="match-group">Group L</div></div>
+    <div class="match-row"><div class="match-time">7pm ET</div><div class="match-teams">Ghana vs Panama</div><div class="match-city"><a href="cities/toronto.html">Toronto</a></div><div class="match-group">Group L</div></div>
+    <div class="match-row"><div class="match-time">10pm CT</div><div class="match-teams">Uzbekistan vs Colombia</div><div class="match-city"><a href="cities/mexicocity.html">Mexico City</a></div><div class="match-group">Group K</div></div>
+  </div>
+
+  <!-- JUN 18 -->
+  <div class="day-block" data-stage="group" data-country="usa canada mexico">
+    <div class="day-header">Thursday, June 18</div>
+    <div class="match-row"><div class="match-time">12pm ET</div><div class="match-teams">Czechia vs South Africa</div><div class="match-city"><a href="cities/atlanta.html">Atlanta</a></div><div class="match-group">Group A</div></div>
+    <div class="match-row"><div class="match-time">3pm PT</div><div class="match-teams">Switzerland vs Bosnia and Herzegovina</div><div class="match-city"><a href="cities/losangeles.html">Los Angeles</a></div><div class="match-group">Group B</div></div>
+    <div class="match-row"><div class="match-time">6pm PT</div><div class="match-teams">🍁 Canada vs Qatar</div><div class="match-city"><a href="cities/vancouver.html">Vancouver</a></div><div class="match-group">Group B</div></div>
+    <div class="match-row"><div class="match-time">9pm CT</div><div class="match-teams">Mexico vs South Korea</div><div class="match-city"><a href="cities/guadalajara.html">Guadalajara</a></div><div class="match-group">Group A</div></div>
+  </div>
+
+  <!-- JUN 19 -->
+  <div class="day-block" data-stage="group" data-country="usa">
+    <div class="day-header">Friday, June 19</div>
+    <div class="match-row"><div class="match-time">3pm PT</div><div class="match-teams">USA vs Australia</div><div class="match-city"><a href="cities/seattle.html">Seattle</a></div><div class="match-group">Group D</div></div>
+    <div class="match-row"><div class="match-time">6pm ET</div><div class="match-teams">Scotland vs Morocco</div><div class="match-city"><a href="cities/boston.html">Boston</a></div><div class="match-group">Group C</div></div>
+    <div class="match-row"><div class="match-time">9pm ET</div><div class="match-teams">Brazil vs Haiti</div><div class="match-city"><a href="cities/philadelphia.html">Philadelphia</a></div><div class="match-group">Group C</div></div>
+    <div class="match-row"><div class="match-time">midnight PT</div><div class="match-teams">Turkiye vs Paraguay</div><div class="match-city"><a href="cities/sanfrancisco.html">San Francisco</a></div><div class="match-group">Group D</div></div>
+  </div>
+
+  <!-- JUN 20 -->
+  <div class="day-block" data-stage="group" data-country="usa canada mexico">
+    <div class="day-header">Saturday, June 20</div>
+    <div class="match-row"><div class="match-time">1pm CT</div><div class="match-teams">Netherlands vs Sweden</div><div class="match-city"><a href="cities/houston.html">Houston</a></div><div class="match-group">Group F</div></div>
+    <div class="match-row"><div class="match-time">4pm ET</div><div class="match-teams">Germany vs Ivory Coast</div><div class="match-city"><a href="cities/toronto.html">Toronto</a></div><div class="match-group">Group E</div></div>
+    <div class="match-row"><div class="match-time">8pm CT</div><div class="match-teams">Ecuador vs Curacao</div><div class="match-city"><a href="cities/kansascity.html">Kansas City</a></div><div class="match-group">Group E</div></div>
+    <div class="match-row"><div class="match-time">11pm CT</div><div class="match-teams">Tunisia vs Japan — 1,000th World Cup match</div><div class="match-city"><a href="cities/monterrey.html">Monterrey</a></div><div class="match-group">Group F</div></div>
+  </div>
+
+  <!-- JUN 21 -->
+  <div class="day-block" data-stage="group" data-country="usa canada">
+    <div class="day-header">Sunday, June 21</div>
+    <div class="match-row"><div class="match-time">12pm ET</div><div class="match-teams">Spain vs Saudi Arabia</div><div class="match-city"><a href="cities/atlanta.html">Atlanta</a></div><div class="match-group">Group H</div></div>
+    <div class="match-row"><div class="match-time">3pm PT</div><div class="match-teams">Belgium vs Iran</div><div class="match-city"><a href="cities/losangeles.html">Los Angeles</a></div><div class="match-group">Group G</div></div>
+    <div class="match-row"><div class="match-time">6pm ET</div><div class="match-teams">Uruguay vs Cape Verde</div><div class="match-city"><a href="cities/miami.html">Miami</a></div><div class="match-group">Group H</div></div>
+    <div class="match-row"><div class="match-time">9pm PT</div><div class="match-teams">New Zealand vs Egypt</div><div class="match-city"><a href="cities/vancouver.html">Vancouver</a></div><div class="match-group">Group G</div></div>
+  </div>
+
+  <!-- JUN 22 -->
+  <div class="day-block" data-stage="group" data-country="usa">
+    <div class="day-header">Monday, June 22</div>
+    <div class="match-row"><div class="match-time">1pm CT</div><div class="match-teams">Argentina vs Austria</div><div class="match-city"><a href="cities/dallas.html">Dallas</a></div><div class="match-group">Group J</div></div>
+    <div class="match-row"><div class="match-time">5pm ET</div><div class="match-teams">France vs Iraq</div><div class="match-city"><a href="cities/philadelphia.html">Philadelphia</a></div><div class="match-group">Group I</div></div>
+    <div class="match-row"><div class="match-time">8pm ET</div><div class="match-teams">Norway vs Senegal</div><div class="match-city"><a href="cities/newyork.html">New York / NJ</a></div><div class="match-group">Group I</div></div>
+    <div class="match-row"><div class="match-time">11pm PT</div><div class="match-teams">Jordan vs Algeria</div><div class="match-city"><a href="cities/sanfrancisco.html">San Francisco</a></div><div class="match-group">Group J</div></div>
+  </div>
+
+  <!-- JUN 23 -->
+  <div class="day-block" data-stage="group" data-country="usa canada mexico">
+    <div class="day-header">Tuesday, June 23</div>
+    <div class="match-row"><div class="match-time">1pm CT</div><div class="match-teams">Portugal vs Uzbekistan</div><div class="match-city"><a href="cities/houston.html">Houston</a></div><div class="match-group">Group K</div></div>
+    <div class="match-row"><div class="match-time">4pm ET</div><div class="match-teams">England vs Ghana</div><div class="match-city"><a href="cities/boston.html">Boston</a></div><div class="match-group">Group L</div></div>
+    <div class="match-row"><div class="match-time">7pm ET</div><div class="match-teams">Panama vs Croatia</div><div class="match-city"><a href="cities/toronto.html">Toronto</a></div><div class="match-group">Group L</div></div>
+    <div class="match-row"><div class="match-time">10pm CT</div><div class="match-teams">Colombia vs DR Congo</div><div class="match-city"><a href="cities/guadalajara.html">Guadalajara</a></div><div class="match-group">Group K</div></div>
+  </div>
+
+  <!-- JUN 24 -->
+  <div class="day-block" data-stage="group" data-country="usa canada mexico">
+    <div class="day-header">Wednesday, June 24</div>
+    <div class="match-row"><div class="match-time">3pm PT</div><div class="match-teams">Bosnia and Herzegovina vs Qatar</div><div class="match-city"><a href="cities/seattle.html">Seattle</a></div><div class="match-group">Group B</div></div>
+    <div class="match-row"><div class="match-time">3pm PT</div><div class="match-teams">🍁 Switzerland vs Canada</div><div class="match-city"><a href="cities/vancouver.html">Vancouver</a></div><div class="match-group">Group B</div></div>
+    <div class="match-row"><div class="match-time">6pm ET</div><div class="match-teams">Scotland vs Brazil</div><div class="match-city"><a href="cities/miami.html">Miami</a></div><div class="match-group">Group C</div></div>
+    <div class="match-row"><div class="match-time">6pm ET</div><div class="match-teams">Morocco vs Haiti</div><div class="match-city"><a href="cities/atlanta.html">Atlanta</a></div><div class="match-group">Group C</div></div>
+    <div class="match-row"><div class="match-time">9pm CT</div><div class="match-teams">South Africa vs South Korea</div><div class="match-city"><a href="cities/monterrey.html">Monterrey</a></div><div class="match-group">Group A</div></div>
+    <div class="match-row"><div class="match-time">9pm CT</div><div class="match-teams">Czechia vs Mexico</div><div class="match-city"><a href="cities/mexicocity.html">Mexico City</a></div><div class="match-group">Group A</div></div>
+  </div>
+
+  <!-- JUN 25 -->
+  <div class="day-block" data-stage="group" data-country="usa">
+    <div class="day-header">Thursday, June 25</div>
+    <div class="match-row"><div class="match-time">4pm ET</div><div class="match-teams">Ecuador vs Germany</div><div class="match-city"><a href="cities/newyork.html">New York / NJ</a></div><div class="match-group">Group E</div></div>
+    <div class="match-row"><div class="match-time">4pm ET</div><div class="match-teams">Curacao vs Ivory Coast</div><div class="match-city"><a href="cities/philadelphia.html">Philadelphia</a></div><div class="match-group">Group E</div></div>
+    <div class="match-row"><div class="match-time">7pm CT</div><div class="match-teams">Japan vs Sweden</div><div class="match-city"><a href="cities/dallas.html">Dallas</a></div><div class="match-group">Group F</div></div>
+    <div class="match-row"><div class="match-time">7pm CT</div><div class="match-teams">Tunisia vs Netherlands</div><div class="match-city"><a href="cities/kansascity.html">Kansas City</a></div><div class="match-group">Group F</div></div>
+    <div class="match-row"><div class="match-time">10pm PT</div><div class="match-teams">Turkiye vs USA</div><div class="match-city"><a href="cities/losangeles.html">Los Angeles</a></div><div class="match-group">Group D</div></div>
+    <div class="match-row"><div class="match-time">10pm PT</div><div class="match-teams">Paraguay vs Australia</div><div class="match-city"><a href="cities/sanfrancisco.html">San Francisco</a></div><div class="match-group">Group D</div></div>
+  </div>
+
+  <!-- JUN 26 -->
+  <div class="day-block" data-stage="group" data-country="usa canada mexico">
+    <div class="day-header">Friday, June 26</div>
+    <div class="match-row"><div class="match-time">3pm ET</div><div class="match-teams">Norway vs France</div><div class="match-city"><a href="cities/boston.html">Boston</a></div><div class="match-group">Group I</div></div>
+    <div class="match-row"><div class="match-time">3pm ET</div><div class="match-teams">Senegal vs Iraq</div><div class="match-city"><a href="cities/toronto.html">Toronto</a></div><div class="match-group">Group I</div></div>
+    <div class="match-row"><div class="match-time">8pm ET</div><div class="match-teams">Egypt vs Iran</div><div class="match-city"><a href="cities/seattle.html">Seattle</a></div><div class="match-group">Group G</div></div>
+    <div class="match-row"><div class="match-time">8pm PT</div><div class="match-teams">New Zealand vs Belgium</div><div class="match-city"><a href="cities/vancouver.html">Vancouver</a></div><div class="match-group">Group G</div></div>
+    <div class="match-row"><div class="match-time">8pm CT</div><div class="match-teams">Cape Verde vs Saudi Arabia</div><div class="match-city"><a href="cities/houston.html">Houston</a></div><div class="match-group">Group H</div></div>
+    <div class="match-row"><div class="match-time">8pm CT</div><div class="match-teams">Uruguay vs Spain</div><div class="match-city"><a href="cities/guadalajara.html">Guadalajara</a></div><div class="match-group">Group H</div></div>
+  </div>
+
+  <!-- JUN 27 -->
+  <div class="day-block" data-stage="group" data-country="usa">
+    <div class="day-header">Saturday, June 27</div>
+    <div class="match-row"><div class="match-time">5pm ET</div><div class="match-teams">Panama vs England</div><div class="match-city"><a href="cities/newyork.html">New York / NJ</a></div><div class="match-group">Group L</div></div>
+    <div class="match-row"><div class="match-time">5pm ET</div><div class="match-teams">Croatia vs Ghana</div><div class="match-city"><a href="cities/philadelphia.html">Philadelphia</a></div><div class="match-group">Group L</div></div>
+    <div class="match-row"><div class="match-time">7:30pm ET</div><div class="match-teams">Colombia vs Portugal</div><div class="match-city"><a href="cities/miami.html">Miami</a></div><div class="match-group">Group K</div></div>
+    <div class="match-row"><div class="match-time">7:30pm ET</div><div class="match-teams">DR Congo vs Uzbekistan</div><div class="match-city"><a href="cities/atlanta.html">Atlanta</a></div><div class="match-group">Group K</div></div>
+    <div class="match-row"><div class="match-time">10pm CT</div><div class="match-teams">Algeria vs Austria</div><div class="match-city"><a href="cities/kansascity.html">Kansas City</a></div><div class="match-group">Group J</div></div>
+    <div class="match-row"><div class="match-time">10pm CT</div><div class="match-teams">Jordan vs Argentina</div><div class="match-city"><a href="cities/dallas.html">Dallas</a></div><div class="match-group">Group J</div></div>
+  </div>
+
+  <!-- ROUND OF 32 -->
+  <div class="stage-header knockout">🏆 Round of 32 — June 28 to July 3</div>
+
+  <div class="day-block" data-stage="knockout" data-country="usa">
+    <div class="day-header">Sunday, June 28</div>
+    <div class="match-row knockout"><div class="match-time">3pm PT</div><div class="match-teams">Round of 32 — TBD</div><div class="match-city"><a href="cities/losangeles.html">Los Angeles</a></div><div class="match-group">R32</div></div>
+  </div>
+
+  <div class="day-block" data-stage="knockout" data-country="usa mexico">
+    <div class="day-header">Monday, June 29</div>
+    <div class="match-row knockout"><div class="match-time">1pm CT</div><div class="match-teams">Round of 32 — TBD</div><div class="match-city"><a href="cities/houston.html">Houston</a></div><div class="match-group">R32</div></div>
+    <div class="match-row knockout"><div class="match-time">4:30pm ET</div><div class="match-teams">Round of 32 — TBD</div><div class="match-city"><a href="cities/boston.html">Boston</a></div><div class="match-group">R32</div></div>
+    <div class="match-row knockout"><div class="match-time">9pm CT</div><div class="match-teams">Round of 32 — TBD</div><div class="match-city"><a href="cities/monterrey.html">Monterrey</a></div><div class="match-group">R32</div></div>
+  </div>
+
+  <div class="day-block" data-stage="knockout" data-country="usa mexico">
+    <div class="day-header">Tuesday, June 30</div>
+    <div class="match-row knockout"><div class="match-time">1pm CT</div><div class="match-teams">Round of 32 — TBD</div><div class="match-city"><a href="cities/dallas.html">Dallas</a></div><div class="match-group">R32</div></div>
+    <div class="match-row knockout"><div class="match-time">5pm ET</div><div class="match-teams">Round of 32 — TBD</div><div class="match-city"><a href="cities/newyork.html">New York / NJ</a></div><div class="match-group">R32</div></div>
+    <div class="match-row knockout"><div class="match-time">9pm CT</div><div class="match-teams">Round of 32 — TBD</div><div class="match-city"><a href="cities/mexicocity.html">Mexico City</a></div><div class="match-group">R32</div></div>
+  </div>
+
+  <div class="day-block" data-stage="knockout" data-country="usa">
+    <div class="day-header">Wednesday, July 1</div>
+    <div class="match-row knockout"><div class="match-time">12pm ET</div><div class="match-teams">Round of 32 — TBD</div><div class="match-city"><a href="cities/atlanta.html">Atlanta</a></div><div class="match-group">R32</div></div>
+    <div class="match-row knockout"><div class="match-time">4pm PT</div><div class="match-teams">Round of 32 — TBD</div><div class="match-city"><a href="cities/seattle.html">Seattle</a></div><div class="match-group">R32</div></div>
+    <div class="match-row knockout"><div class="match-time">8pm PT</div><div class="match-teams">Round of 32 — TBD</div><div class="match-city"><a href="cities/sanfrancisco.html">San Francisco</a></div><div class="match-group">R32</div></div>
+  </div>
+
+  <div class="day-block" data-stage="knockout" data-country="usa canada">
+    <div class="day-header">Thursday, July 2</div>
+    <div class="match-row knockout"><div class="match-time">3pm PT</div><div class="match-teams">Round of 32 — TBD</div><div class="match-city"><a href="cities/losangeles.html">Los Angeles</a></div><div class="match-group">R32</div></div>
+    <div class="match-row knockout"><div class="match-time">7pm ET</div><div class="match-teams">Round of 32 — TBD</div><div class="match-city"><a href="cities/toronto.html">Toronto</a></div><div class="match-group">R32</div></div>
+    <div class="match-row knockout"><div class="match-time">11pm ET</div><div class="match-teams">Round of 32 — TBD</div><div class="match-city"><a href="cities/vancouver.html">Vancouver</a></div><div class="match-group">R32</div></div>
+  </div>
+
+  <div class="day-block" data-stage="knockout" data-country="usa">
+    <div class="day-header">Friday, July 3</div>
+    <div class="match-row knockout"><div class="match-time">2pm CT</div><div class="match-teams">Round of 32 — TBD</div><div class="match-city"><a href="cities/dallas.html">Dallas</a></div><div class="match-group">R32</div></div>
+    <div class="match-row knockout"><div class="match-time">6pm ET</div><div class="match-teams">Round of 32 — TBD</div><div class="match-city"><a href="cities/miami.html">Miami</a></div><div class="match-group">R32</div></div>
+    <div class="match-row knockout"><div class="match-time">9:30pm CT</div><div class="match-teams">Round of 32 — TBD</div><div class="match-city"><a href="cities/kansascity.html">Kansas City</a></div><div class="match-group">R32</div></div>
+  </div>
+
+  <!-- ROUND OF 16 -->
+  <div class="stage-header">⚡ Round of 16 — July 4 to July 7</div>
+
+  <div class="day-block" data-stage="knockout" data-country="usa">
+    <div class="day-header">Saturday, July 4</div>
+    <div class="match-row knockout"><div class="match-time">1pm CT</div><div class="match-teams">Round of 16 — TBD</div><div class="match-city"><a href="cities/houston.html">Houston</a></div><div class="match-group">R16</div></div>
+    <div class="match-row knockout"><div class="match-time">5pm ET</div><div class="match-teams">Round of 16 — TBD</div><div class="match-city"><a href="cities/philadelphia.html">Philadelphia</a></div><div class="match-group">R16</div></div>
+  </div>
+
+  <div class="day-block" data-stage="knockout" data-country="usa mexico">
+    <div class="day-header">Sunday, July 5</div>
+    <div class="match-row knockout"><div class="match-time">4pm ET</div><div class="match-teams">Round of 16 — TBD</div><div class="match-city"><a href="cities/newyork.html">New York / NJ</a></div><div class="match-group">R16</div></div>
+    <div class="match-row knockout"><div class="match-time">8pm CT</div><div class="match-teams">Round of 16 — TBD</div><div class="match-city"><a href="cities/mexicocity.html">Mexico City</a></div><div class="match-group">R16</div></div>
+  </div>
+
+  <div class="day-block" data-stage="knockout" data-country="usa">
+    <div class="day-header">Monday, July 6</div>
+    <div class="match-row knockout"><div class="match-time">3pm CT</div><div class="match-teams">Round of 16 — TBD</div><div class="match-city"><a href="cities/dallas.html">Dallas</a></div><div class="match-group">R16</div></div>
+    <div class="match-row knockout"><div class="match-time">8pm PT</div><div class="match-teams">Round of 16 — TBD</div><div class="match-city"><a href="cities/seattle.html">Seattle</a></div><div class="match-group">R16</div></div>
+  </div>
+
+  <div class="day-block" data-stage="knockout" data-country="usa canada">
+    <div class="day-header">Tuesday, July 7</div>
+    <div class="match-row knockout"><div class="match-time">12pm ET</div><div class="match-teams">Round of 16 — TBD</div><div class="match-city"><a href="cities/atlanta.html">Atlanta</a></div><div class="match-group">R16</div></div>
+    <div class="match-row knockout"><div class="match-time">4pm PT</div><div class="match-teams">Round of 16 — TBD</div><div class="match-city"><a href="cities/vancouver.html">Vancouver</a></div><div class="match-group">R16</div></div>
+  </div>
+
+  <!-- QUARTER-FINALS -->
+  <div class="stage-header">🥉 Quarter-Finals — July 9 to July 11</div>
+
+  <div class="day-block" data-stage="knockout" data-country="usa">
+    <div class="day-header">Thursday, July 9</div>
+    <div class="match-row knockout"><div class="match-time">4pm ET</div><div class="match-teams">Quarter-Final 1 — TBD</div><div class="match-city"><a href="cities/boston.html">Boston</a></div><div class="match-group">QF</div></div>
+  </div>
+
+  <div class="day-block" data-stage="knockout" data-country="usa">
+    <div class="day-header">Friday, July 10</div>
+    <div class="match-row knockout"><div class="match-time">3pm PT</div><div class="match-teams">Quarter-Final 2 — TBD</div><div class="match-city"><a href="cities/losangeles.html">Los Angeles</a></div><div class="match-group">QF</div></div>
+  </div>
+
+  <div class="day-block" data-stage="knockout" data-country="usa">
+    <div class="day-header">Saturday, July 11</div>
+    <div class="match-row knockout"><div class="match-time">5pm ET</div><div class="match-teams">Quarter-Final 3 — TBD</div><div class="match-city"><a href="cities/miami.html">Miami</a></div><div class="match-group">QF</div></div>
+    <div class="match-row knockout"><div class="match-time">9pm CT</div><div class="match-teams">Quarter-Final 4 — TBD</div><div class="match-city"><a href="cities/kansascity.html">Kansas City</a></div><div class="match-group">QF</div></div>
+  </div>
+
+  <!-- SEMI-FINALS -->
+  <div class="stage-header">🥈 Semi-Finals — July 14 to July 15</div>
+
+  <div class="day-block" data-stage="knockout" data-country="usa">
+    <div class="day-header">Tuesday, July 14</div>
+    <div class="match-row knockout"><div class="match-time">3pm CT</div><div class="match-teams">Semi-Final 1 — TBD</div><div class="match-city"><a href="cities/dallas.html">Dallas</a></div><div class="match-group">SF</div></div>
+  </div>
+
+  <div class="day-block" data-stage="knockout" data-country="usa">
+    <div class="day-header">Wednesday, July 15</div>
+    <div class="match-row knockout"><div class="match-time">3pm ET</div><div class="match-teams">Semi-Final 2 — TBD</div><div class="match-city"><a href="cities/atlanta.html">Atlanta</a></div><div class="match-group">SF</div></div>
+  </div>
+
+  <!-- BRONZE + FINAL -->
+  <div class="stage-header">🏆 Bronze Final and Final</div>
+
+  <div class="day-block" data-stage="knockout" data-country="usa">
+    <div class="day-header">Saturday, July 18</div>
+    <div class="match-row knockout"><div class="match-time">5pm ET</div><div class="match-teams">Bronze Medal Match — TBD</div><div class="match-city"><a href="cities/miami.html">Miami</a></div><div class="match-group">3rd Place</div></div>
+  </div>
+
+  <div class="day-block" data-stage="knockout" data-country="usa">
+    <div class="day-header">Sunday, July 19</div>
+    <div class="match-row final"><div class="match-time">3pm ET</div><div class="match-teams">🏆 World Cup Final — TBD</div><div class="match-city"><a href="cities/newyork.html">New York / NJ</a></div><div class="match-group">Final</div></div>
+  </div>
+
+</div>
+
+<footer>
+  <a href="index.html" class="logo">TravelTo<span>WC26</span></a>
+  <div class="footer-links">
+    <a href="visa.html">Visa Guide</a>
+    <a href="cities.html">Host Cities</a>
+    <a href="schedule.html">Match Schedule</a>
+    <a href="about.html">Affiliate Disclosure</a>
+    <a href="about.html">Privacy Policy</a>
+  </div>
+  <div class="footer-copy">© 2026 TravelToWC26 · Not affiliated with FIFA</div>
+</footer>
+
+<script>
+  function filterMatches(type, btn) {
+    document.querySelectorAll('.filter-tab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const days = document.querySelectorAll('.day-block');
+    const stages = document.querySelectorAll('.stage-header');
+
+    days.forEach(day => {
+      const stage = day.dataset.stage;
+      const country = day.dataset.country || '';
+
+      if (type === 'all') {
+        day.style.display = '';
+      } else if (type === 'group') {
+        day.style.display = stage === 'group' ? '' : 'none';
+      } else if (type === 'knockout') {
+        day.style.display = stage === 'knockout' ? '' : 'none';
+      } else if (type === 'usa') {
+        day.style.display = country.includes('usa') ? '' : 'none';
+      } else if (type === 'canada') {
+        day.style.display = country.includes('canada') ? '' : 'none';
+      } else if (type === 'mexico') {
+        day.style.display = country.includes('mexico') ? '' : 'none';
+      }
+    });
+
+    stages.forEach(s => s.style.display = type === 'knockout' || type === 'group' || type === 'all' ? '' : 'none');
+  }
+</script>
+
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Your World Cup 2026 Trip — TravelToWC26</title>
+<title>Your World Cup 2026 Trip TravelToWC26</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{--green:#1a7a3c;--green-pale:#e8f8ef;--sandy:#e9c46a;--sandy-pale:#fef8e7;--terra:#c47a1a;--ivory:#fffbf0;--white:#ffffff;--bg:#fffbf0;--text:#1a2e20;--muted:#6b7e70;--border:#e0d8c8;}
@@ -237,7 +237,7 @@
 
 <script>
 // ============================================================
-// VISA DATA — 50 countries x 3 host nations
+// VISA DATA 50 countries x 3 host nations
 // Sources: US State Dept, IRCC Canada, Mexico INM (May 2026)
 // ============================================================
 const visaData = {
@@ -247,7 +247,7 @@ const visaData = {
   "IN": { // India
     usa: { type:"B1/B2 Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"$185", processing:"2-4 months", note:"Apply immediately. US visa appointment wait times for Indian citizens are very high. Bring match tickets, bank statements and accommodation proof to your interview.", applyLink:"https://www.ivisa.com/united-states-visa", officialLink:"https://www.state.gov/fifa-world-cup-26-visas" },
     canada: { type:"Visitor Visa (TRV)", badge:"badge-required", label:"Visa Required", cost:"CAD $100", processing:"2-8 weeks", note:"Apply online through the IRCC portal. Biometrics required at a Visa Application Centre. Apply at least 8 weeks before travel.", applyLink:"https://www.ivisa.com/canada-visa", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html" },
-    mexico: { type:"Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"~$36", processing:"4-6 weeks", note:"Good news — if you already have a valid US B1/B2 visa you can enter Mexico visa-free. No need to apply separately for Mexico.", applyLink:"https://www.ivisa.com/mexico-visa", officialLink:"https://embamex.sre.gob.mx/" }
+    mexico: { type:"Tourist Visa", badge:"badge-required", label:"Visa Required", cost:"~$36", processing:"4-6 weeks", note:"Good news if you already have a valid US B1/B2 visa you can enter Mexico visa-free. No need to apply separately for Mexico.", applyLink:"https://www.ivisa.com/mexico-visa", officialLink:"https://embamex.sre.gob.mx/" }
   },
 
   "BR": { // Brazil
@@ -263,91 +263,91 @@ const visaData = {
   },
 
   "GB": { // United Kingdom
-    usa: { type:"ESTA — Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"UK citizens qualify for the US Visa Waiver Program. Apply for ESTA at esta.cbp.dhs.gov before departure. Usually approved instantly.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
+    usa: { type:"ESTA Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"UK citizens qualify for the US Visa Waiver Program. Apply for ESTA at esta.cbp.dhs.gov before departure. Usually approved instantly.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
     canada: { type:"eTA", badge:"badge-eta", label:"eTA Required", cost:"CAD $7", processing:"Minutes", note:"UK citizens need a Canadian eTA for air travel. Apply online at canada.ca. Usually approved in minutes.", applyLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta.html" },
     mexico: { type:"Visa Free", badge:"badge-free", label:"Visa Free", cost:"Free", processing:"No application", note:"UK citizens can enter Mexico visa-free for up to 180 days. No advance application needed.", applyLink:"", officialLink:"https://embamex.sre.gob.mx/" }
   },
 
   "DE": { // Germany
-    usa: { type:"ESTA — Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"German citizens qualify for ESTA. Apply at esta.cbp.dhs.gov before departure.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
+    usa: { type:"ESTA Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"German citizens qualify for ESTA. Apply at esta.cbp.dhs.gov before departure.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
     canada: { type:"eTA", badge:"badge-eta", label:"eTA Required", cost:"CAD $7", processing:"Minutes", note:"German citizens need a Canadian eTA for air travel.", applyLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta.html" },
     mexico: { type:"Visa Free", badge:"badge-free", label:"Visa Free", cost:"Free", processing:"No application", note:"German citizens can enter Mexico visa-free for up to 180 days.", applyLink:"", officialLink:"https://embamex.sre.gob.mx/" }
   },
 
   "FR": { // France
-    usa: { type:"ESTA — Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"French citizens qualify for ESTA. Apply at esta.cbp.dhs.gov before departure.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
+    usa: { type:"ESTA Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"French citizens qualify for ESTA. Apply at esta.cbp.dhs.gov before departure.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
     canada: { type:"eTA", badge:"badge-eta", label:"eTA Required", cost:"CAD $7", processing:"Minutes", note:"French citizens need a Canadian eTA for air travel.", applyLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta.html" },
     mexico: { type:"Visa Free", badge:"badge-free", label:"Visa Free", cost:"Free", processing:"No application", note:"French citizens can enter Mexico visa-free for up to 180 days.", applyLink:"", officialLink:"https://embamex.sre.gob.mx/" }
   },
 
   "ES": { // Spain
-    usa: { type:"ESTA — Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"Spanish citizens qualify for ESTA. Apply at esta.cbp.dhs.gov before departure.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
+    usa: { type:"ESTA Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"Spanish citizens qualify for ESTA. Apply at esta.cbp.dhs.gov before departure.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
     canada: { type:"eTA", badge:"badge-eta", label:"eTA Required", cost:"CAD $7", processing:"Minutes", note:"Spanish citizens need a Canadian eTA for air travel.", applyLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta.html" },
     mexico: { type:"Visa Free", badge:"badge-free", label:"Visa Free", cost:"Free", processing:"No application", note:"Spanish citizens can enter Mexico visa-free for up to 180 days.", applyLink:"", officialLink:"https://embamex.sre.gob.mx/" }
   },
 
   "PT": { // Portugal
-    usa: { type:"ESTA — Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"Portuguese citizens qualify for ESTA. Apply at esta.cbp.dhs.gov.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
+    usa: { type:"ESTA Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"Portuguese citizens qualify for ESTA. Apply at esta.cbp.dhs.gov.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
     canada: { type:"eTA", badge:"badge-eta", label:"eTA Required", cost:"CAD $7", processing:"Minutes", note:"Portuguese citizens need a Canadian eTA for air travel.", applyLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta.html" },
     mexico: { type:"Visa Free", badge:"badge-free", label:"Visa Free", cost:"Free", processing:"No application", note:"Portuguese citizens can enter Mexico visa-free for up to 180 days.", applyLink:"", officialLink:"https://embamex.sre.gob.mx/" }
   },
 
   "NL": { // Netherlands
-    usa: { type:"ESTA — Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"Dutch citizens qualify for ESTA. Apply at esta.cbp.dhs.gov.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
+    usa: { type:"ESTA Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"Dutch citizens qualify for ESTA. Apply at esta.cbp.dhs.gov.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
     canada: { type:"eTA", badge:"badge-eta", label:"eTA Required", cost:"CAD $7", processing:"Minutes", note:"Dutch citizens need a Canadian eTA for air travel.", applyLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta.html" },
     mexico: { type:"Visa Free", badge:"badge-free", label:"Visa Free", cost:"Free", processing:"No application", note:"Dutch citizens can enter Mexico visa-free for up to 180 days.", applyLink:"", officialLink:"https://embamex.sre.gob.mx/" }
   },
 
   "BE": { // Belgium
-    usa: { type:"ESTA — Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"Belgian citizens qualify for ESTA. Apply at esta.cbp.dhs.gov.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
+    usa: { type:"ESTA Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"Belgian citizens qualify for ESTA. Apply at esta.cbp.dhs.gov.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
     canada: { type:"eTA", badge:"badge-eta", label:"eTA Required", cost:"CAD $7", processing:"Minutes", note:"Belgian citizens need a Canadian eTA for air travel.", applyLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta.html" },
     mexico: { type:"Visa Free", badge:"badge-free", label:"Visa Free", cost:"Free", processing:"No application", note:"Belgian citizens can enter Mexico visa-free for up to 180 days.", applyLink:"", officialLink:"https://embamex.sre.gob.mx/" }
   },
 
   "HR": { // Croatia
-    usa: { type:"ESTA — Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"Croatian citizens qualify for ESTA. Apply at esta.cbp.dhs.gov.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
+    usa: { type:"ESTA Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"Croatian citizens qualify for ESTA. Apply at esta.cbp.dhs.gov.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
     canada: { type:"eTA", badge:"badge-eta", label:"eTA Required", cost:"CAD $7", processing:"Minutes", note:"Croatian citizens need a Canadian eTA for air travel.", applyLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta.html" },
     mexico: { type:"Visa Free", badge:"badge-free", label:"Visa Free", cost:"Free", processing:"No application", note:"Croatian citizens can enter Mexico visa-free for up to 180 days.", applyLink:"", officialLink:"https://embamex.sre.gob.mx/" }
   },
 
   "CH": { // Switzerland
-    usa: { type:"ESTA — Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"Swiss citizens qualify for ESTA. Apply at esta.cbp.dhs.gov.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
+    usa: { type:"ESTA Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"Swiss citizens qualify for ESTA. Apply at esta.cbp.dhs.gov.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
     canada: { type:"eTA", badge:"badge-eta", label:"eTA Required", cost:"CAD $7", processing:"Minutes", note:"Swiss citizens need a Canadian eTA for air travel.", applyLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta.html" },
     mexico: { type:"Visa Free", badge:"badge-free", label:"Visa Free", cost:"Free", processing:"No application", note:"Swiss citizens can enter Mexico visa-free for up to 180 days.", applyLink:"", officialLink:"https://embamex.sre.gob.mx/" }
   },
 
   "JP": { // Japan
-    usa: { type:"ESTA — Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"Japanese citizens qualify for ESTA. Apply at esta.cbp.dhs.gov.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
+    usa: { type:"ESTA Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"Japanese citizens qualify for ESTA. Apply at esta.cbp.dhs.gov.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
     canada: { type:"eTA", badge:"badge-eta", label:"eTA Required", cost:"CAD $7", processing:"Minutes", note:"Japanese citizens need a Canadian eTA for air travel.", applyLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta.html" },
     mexico: { type:"Visa Free", badge:"badge-free", label:"Visa Free", cost:"Free", processing:"No application", note:"Japanese citizens can enter Mexico visa-free for up to 180 days.", applyLink:"", officialLink:"https://embamex.sre.gob.mx/" }
   },
 
   "KR": { // South Korea
-    usa: { type:"ESTA — Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"South Korean citizens qualify for ESTA. Apply at esta.cbp.dhs.gov.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
+    usa: { type:"ESTA Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"South Korean citizens qualify for ESTA. Apply at esta.cbp.dhs.gov.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
     canada: { type:"eTA", badge:"badge-eta", label:"eTA Required", cost:"CAD $7", processing:"Minutes", note:"South Korean citizens need a Canadian eTA for air travel.", applyLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta.html" },
     mexico: { type:"Visa Free", badge:"badge-free", label:"Visa Free", cost:"Free", processing:"No application", note:"South Korean citizens can enter Mexico visa-free for up to 180 days.", applyLink:"", officialLink:"https://embamex.sre.gob.mx/" }
   },
 
   "AU": { // Australia
-    usa: { type:"ESTA — Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"Australian citizens qualify for ESTA. Apply at esta.cbp.dhs.gov.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
+    usa: { type:"ESTA Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"Australian citizens qualify for ESTA. Apply at esta.cbp.dhs.gov.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
     canada: { type:"eTA", badge:"badge-eta", label:"eTA Required", cost:"CAD $7", processing:"Minutes", note:"Australian citizens need a Canadian eTA for air travel.", applyLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta.html" },
     mexico: { type:"Visa Free", badge:"badge-free", label:"Visa Free", cost:"Free", processing:"No application", note:"Australian citizens can enter Mexico visa-free for up to 180 days.", applyLink:"", officialLink:"https://embamex.sre.gob.mx/" }
   },
 
   "NZ": { // New Zealand
-    usa: { type:"ESTA — Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"New Zealand citizens qualify for ESTA. Apply at esta.cbp.dhs.gov.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
+    usa: { type:"ESTA Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"New Zealand citizens qualify for ESTA. Apply at esta.cbp.dhs.gov.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
     canada: { type:"eTA", badge:"badge-eta", label:"eTA Required", cost:"CAD $7", processing:"Minutes", note:"New Zealand citizens need a Canadian eTA for air travel.", applyLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta.html" },
     mexico: { type:"Visa Free", badge:"badge-free", label:"Visa Free", cost:"Free", processing:"No application", note:"New Zealand citizens can enter Mexico visa-free for up to 180 days.", applyLink:"", officialLink:"https://embamex.sre.gob.mx/" }
   },
 
   "SG": { // Singapore
-    usa: { type:"ESTA — Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"Singapore citizens qualify for ESTA. Apply at esta.cbp.dhs.gov.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
+    usa: { type:"ESTA Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"Singapore citizens qualify for ESTA. Apply at esta.cbp.dhs.gov.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
     canada: { type:"eTA", badge:"badge-eta", label:"eTA Required", cost:"CAD $7", processing:"Minutes", note:"Singapore citizens need a Canadian eTA for air travel.", applyLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta.html" },
     mexico: { type:"Visa Free", badge:"badge-free", label:"Visa Free", cost:"Free", processing:"No application", note:"Singapore citizens can enter Mexico visa-free for up to 180 days.", applyLink:"", officialLink:"https://embamex.sre.gob.mx/" }
   },
 
   "CL": { // Chile
-    usa: { type:"ESTA — Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"Chilean citizens qualify for ESTA. Apply at esta.cbp.dhs.gov.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
+    usa: { type:"ESTA Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"Chilean citizens qualify for ESTA. Apply at esta.cbp.dhs.gov.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
     canada: { type:"eTA", badge:"badge-eta", label:"eTA Required", cost:"CAD $7", processing:"Minutes", note:"Chilean citizens need a Canadian eTA for air travel.", applyLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta.html" },
     mexico: { type:"Visa Free", badge:"badge-free", label:"Visa Free", cost:"Free", processing:"No application", note:"Chilean citizens can enter Mexico visa-free for up to 180 days.", applyLink:"", officialLink:"https://embamex.sre.gob.mx/" }
   },
@@ -431,7 +431,7 @@ const visaData = {
   },
 
   "QA": { // Qatar
-    usa: { type:"ESTA — Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"Qatar joined the US Visa Waiver Program in 2025. Qatari citizens can apply for ESTA at esta.cbp.dhs.gov.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
+    usa: { type:"ESTA Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"Qatar joined the US Visa Waiver Program in 2025. Qatari citizens can apply for ESTA at esta.cbp.dhs.gov.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
     canada: { type:"eTA", badge:"badge-eta", label:"eTA Required", cost:"CAD $7", processing:"Minutes", note:"Qatari citizens need a Canadian eTA for air travel.", applyLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta.html" },
     mexico: { type:"Visa Free", badge:"badge-free", label:"Visa Free", cost:"Free", processing:"No application", note:"Qatari citizens can enter Mexico visa-free for up to 180 days.", applyLink:"", officialLink:"https://embamex.sre.gob.mx/" }
   },
@@ -521,31 +521,31 @@ const visaData = {
   },
 
   "PL": { // Poland
-    usa: { type:"ESTA — Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"Polish citizens qualify for ESTA. Apply at esta.cbp.dhs.gov.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
+    usa: { type:"ESTA Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"Polish citizens qualify for ESTA. Apply at esta.cbp.dhs.gov.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
     canada: { type:"eTA", badge:"badge-eta", label:"eTA Required", cost:"CAD $7", processing:"Minutes", note:"Polish citizens need a Canadian eTA for air travel.", applyLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta.html" },
     mexico: { type:"Visa Free", badge:"badge-free", label:"Visa Free", cost:"Free", processing:"No application", note:"Polish citizens can enter Mexico visa-free for up to 180 days.", applyLink:"", officialLink:"https://embamex.sre.gob.mx/" }
   },
 
   "DK": { // Denmark
-    usa: { type:"ESTA — Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"Danish citizens qualify for ESTA. Apply at esta.cbp.dhs.gov.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
+    usa: { type:"ESTA Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"Danish citizens qualify for ESTA. Apply at esta.cbp.dhs.gov.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
     canada: { type:"eTA", badge:"badge-eta", label:"eTA Required", cost:"CAD $7", processing:"Minutes", note:"Danish citizens need a Canadian eTA for air travel.", applyLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta.html" },
     mexico: { type:"Visa Free", badge:"badge-free", label:"Visa Free", cost:"Free", processing:"No application", note:"Danish citizens can enter Mexico visa-free for up to 180 days.", applyLink:"", officialLink:"https://embamex.sre.gob.mx/" }
   },
 
   "NO": { // Norway
-    usa: { type:"ESTA — Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"Norwegian citizens qualify for ESTA. Apply at esta.cbp.dhs.gov.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
+    usa: { type:"ESTA Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"Norwegian citizens qualify for ESTA. Apply at esta.cbp.dhs.gov.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
     canada: { type:"eTA", badge:"badge-eta", label:"eTA Required", cost:"CAD $7", processing:"Minutes", note:"Norwegian citizens need a Canadian eTA for air travel.", applyLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta.html" },
     mexico: { type:"Visa Free", badge:"badge-free", label:"Visa Free", cost:"Free", processing:"No application", note:"Norwegian citizens can enter Mexico visa-free for up to 180 days.", applyLink:"", officialLink:"https://embamex.sre.gob.mx/" }
   },
 
   "SE": { // Sweden
-    usa: { type:"ESTA — Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"Swedish citizens qualify for ESTA. Apply at esta.cbp.dhs.gov.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
+    usa: { type:"ESTA Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"Swedish citizens qualify for ESTA. Apply at esta.cbp.dhs.gov.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
     canada: { type:"eTA", badge:"badge-eta", label:"eTA Required", cost:"CAD $7", processing:"Minutes", note:"Swedish citizens need a Canadian eTA for air travel.", applyLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta.html" },
     mexico: { type:"Visa Free", badge:"badge-free", label:"Visa Free", cost:"Free", processing:"No application", note:"Swedish citizens can enter Mexico visa-free for up to 180 days.", applyLink:"", officialLink:"https://embamex.sre.gob.mx/" }
   },
 
   "CZ": { // Czech Republic
-    usa: { type:"ESTA — Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"Czech citizens qualify for ESTA. Apply at esta.cbp.dhs.gov.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
+    usa: { type:"ESTA Visa Waiver Program", badge:"badge-esta", label:"ESTA Required", cost:"$21", processing:"Minutes", note:"Czech citizens qualify for ESTA. Apply at esta.cbp.dhs.gov.", applyLink:"https://esta.cbp.dhs.gov", officialLink:"https://esta.cbp.dhs.gov" },
     canada: { type:"eTA", badge:"badge-eta", label:"eTA Required", cost:"CAD $7", processing:"Minutes", note:"Czech citizens need a Canadian eTA for air travel.", applyLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta/apply.html", officialLink:"https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta.html" },
     mexico: { type:"Visa Free", badge:"badge-free", label:"Visa Free", cost:"Free", processing:"No application", note:"Czech citizens can enter Mexico visa-free for up to 180 days.", applyLink:"", officialLink:"https://embamex.sre.gob.mx/" }
   },
@@ -611,22 +611,22 @@ const visaData = {
 // CITY DATA
 // ============================================================
 const cityData = {
-  "Dallas, Texas": { flag:"🇺🇸", file:"cities/dallas.html", country:"usa", desc:"AT&T Stadium, Arlington. 9 matches including the Semi-Final on July 14.", esim:"US eSIM recommended. Roaming charges in the USA are very expensive.", insurance:"Medical costs in the USA are extremely high. Travel insurance is strongly recommended.", viator:"https://www.viator.com/en-GB/Dallas/d4684", hotel_city:"Dallas", iata:"DFW" },
-  "New York / New Jersey": { flag:"🇺🇸", file:"cities/newyork.html", country:"usa", desc:"MetLife Stadium, East Rutherford. 8 matches including the World Cup Final on July 19.", esim:"US eSIM recommended. Roaming charges in the USA are very expensive.", insurance:"Medical costs in the USA are extremely high. Travel insurance is strongly recommended.", viator:"https://www.viator.com/en-GB/New-York/d687", hotel_city:"New York", iata:"JFK" },
-  "Los Angeles, California": { flag:"🇺🇸", file:"cities/losangeles.html", country:"usa", desc:"SoFi Stadium, Inglewood. 8 matches including a Quarter-Final on July 10.", esim:"US eSIM recommended. Roaming charges in the USA are very expensive.", insurance:"Medical costs in the USA are extremely high. Travel insurance is strongly recommended.", viator:"https://www.viator.com/en-GB/Los-Angeles/d645", hotel_city:"Los Angeles", iata:"LAX" },
-  "Miami, Florida": { flag:"🇺🇸", file:"cities/miami.html", country:"usa", desc:"Hard Rock Stadium. 7 matches including a Quarter-Final and the Bronze Final.", esim:"US eSIM recommended. Roaming charges in the USA are very expensive.", insurance:"Medical costs in the USA are extremely high. Travel insurance is strongly recommended.", viator:"https://www.viator.com/en-GB/Miami/d672", hotel_city:"Miami", iata:"MIA" },
-  "Seattle, Washington": { flag:"🇺🇸", file:"cities/seattle.html", country:"usa", desc:"Lumen Field, downtown Seattle. 6 matches including a Round of 16 on July 6.", esim:"US eSIM recommended. Roaming charges in the USA are very expensive.", insurance:"Medical costs in the USA are extremely high. Travel insurance is strongly recommended.", viator:"https://www.viator.com/en-GB/Seattle/d659", hotel_city:"Seattle", iata:"SEA" },
-  "Boston, Massachusetts": { flag:"🇺🇸", file:"cities/boston.html", country:"usa", desc:"Gillette Stadium, Foxborough. 7 matches including a Quarter-Final on July 9.", esim:"US eSIM recommended. Roaming charges in the USA are very expensive.", insurance:"Medical costs in the USA are extremely high. Travel insurance is strongly recommended.", viator:"https://www.viator.com/en-GB/Boston/d678", hotel_city:"Boston", iata:"BOS" },
-  "Atlanta, Georgia": { flag:"🇺🇸", file:"cities/atlanta.html", country:"usa", desc:"Mercedes-Benz Stadium. 8 matches including a Semi-Final on July 15.", esim:"US eSIM recommended. Roaming charges in the USA are very expensive.", insurance:"Medical costs in the USA are extremely high. Travel insurance is strongly recommended.", viator:"https://www.viator.com/en-GB/Atlanta/d271", hotel_city:"Atlanta", iata:"ATL" },
-  "Kansas City, Missouri": { flag:"🇺🇸", file:"cities/kansascity.html", country:"usa", desc:"Arrowhead Stadium. 6 matches including a Quarter-Final on July 11.", esim:"US eSIM recommended. Roaming charges in the USA are very expensive.", insurance:"Medical costs in the USA are extremely high. Travel insurance is strongly recommended.", viator:"https://www.viator.com/en-GB/Kansas-City/d22494", hotel_city:"Kansas City", iata:"MCI" },
-  "Philadelphia, Pennsylvania": { flag:"🇺🇸", file:"cities/philadelphia.html", country:"usa", desc:"Lincoln Financial Field. 6 matches including a Round of 16 on July 4.", esim:"US eSIM recommended. Roaming charges in the USA are very expensive.", insurance:"Medical costs in the USA are extremely high. Travel insurance is strongly recommended.", viator:"https://www.viator.com/en-GB/Philadelphia/d673", hotel_city:"Philadelphia", iata:"PHL" },
-  "Houston, Texas": { flag:"🇺🇸", file:"cities/houston.html", country:"usa", desc:"NRG Stadium. 7 matches including a Round of 16 on July 4.", esim:"US eSIM recommended. Roaming charges in the USA are very expensive.", insurance:"Medical costs in the USA are extremely high. Travel insurance is strongly recommended.", viator:"https://www.viator.com/en-GB/Houston/d684", hotel_city:"Houston", iata:"IAH" },
-  "San Francisco Bay Area": { flag:"🇺🇸", file:"cities/sanfrancisco.html", country:"usa", desc:"Levi's Stadium, Santa Clara. 6 matches including a Round of 32 on July 1.", esim:"US eSIM recommended. Roaming charges in the USA are very expensive.", insurance:"Medical costs in the USA are extremely high. Travel insurance is strongly recommended.", viator:"https://www.viator.com/en-GB/San-Francisco/d651", hotel_city:"San Francisco", iata:"SFO" },
-  "Toronto, Ontario": { flag:"🇨🇦", file:"cities/toronto.html", country:"canada", desc:"BMO Field, Exhibition Place. 6 matches including Canada's historic home opener on June 12.", esim:"Canada eSIM recommended to avoid roaming charges.", insurance:"Healthcare in Canada is not free for visitors. Travel insurance is recommended.", viator:"https://www.viator.com/en-GB/Toronto/d715", hotel_city:"Toronto", iata:"YYZ" },
-  "Vancouver, BC": { flag:"🇨🇦", file:"cities/vancouver.html", country:"canada", desc:"BC Place. 7 matches including Canada twice and a Round of 16 on July 7.", esim:"Canada eSIM recommended to avoid roaming charges.", insurance:"Healthcare in Canada is not free for visitors. Travel insurance is recommended.", viator:"https://www.viator.com/en-GB/Vancouver/d293", hotel_city:"Vancouver", iata:"YVR" },
-  "Mexico City": { flag:"🇲🇽", file:"cities/mexicocity.html", country:"mexico", desc:"Estadio Azteca. 5 matches including the historic Opening Match on June 11.", esim:"Get a Mexico eSIM before landing. Local SIMs require passport registration since January 2026.", insurance:"Travel insurance is recommended for Mexico.", viator:"https://www.viator.com/en-GB/Mexico-City/d585", hotel_city:"Mexico City", iata:"MEX" },
-  "Guadalajara": { flag:"🇲🇽", file:"cities/guadalajara.html", country:"mexico", desc:"Estadio Akron. 4 group stage matches including Mexico vs South Korea on June 18.", esim:"Get a Mexico eSIM before landing. Local SIMs require passport registration since January 2026.", insurance:"Travel insurance is recommended for Mexico.", viator:"https://www.viator.com/en-GB/Guadalajara/d24154", hotel_city:"Guadalajara", iata:"GDL" },
-  "Monterrey": { flag:"🇲🇽", file:"cities/monterrey.html", country:"mexico", desc:"Estadio BBVA. 4 matches including the historic 1,000th World Cup match on June 20.", esim:"Get a Mexico eSIM before landing. Local SIMs require passport registration since January 2026.", insurance:"Travel insurance is recommended for Mexico.", viator:"https://www.viator.com/en-GB/Monterrey/d22517", hotel_city:"Monterrey", iata:"MTY" }
+  "Dallas, Texas": { flag:"🇺🇸", file:"cities/dallas.html", country:"usa", stadium:"AT&T Stadium, Arlington", matches:"9 matches · Semi-Final Jul 14", desc:"AT&T Stadium, Arlington. 9 matches including the Semi-Final on July 14.", esim:"US eSIM recommended. Roaming charges in the USA are very expensive.", insurance:"Medical costs in the USA are extremely high. Travel insurance is strongly recommended.", viator:"https://www.viator.com/en-GB/Dallas/d4684", hotel_city:"Dallas", iata:"DFW" },
+  "New York / New Jersey": { flag:"🇺🇸", file:"cities/newyork.html", country:"usa", stadium:"MetLife Stadium, East Rutherford", matches:"8 matches · Final Jul 19", desc:"MetLife Stadium, East Rutherford. 8 matches including the World Cup Final on July 19.", esim:"US eSIM recommended. Roaming charges in the USA are very expensive.", insurance:"Medical costs in the USA are extremely high. Travel insurance is strongly recommended.", viator:"https://www.viator.com/en-GB/New-York/d687", hotel_city:"New York", iata:"JFK" },
+  "Los Angeles, California": { flag:"🇺🇸", file:"cities/losangeles.html", country:"usa", stadium:"SoFi Stadium, Inglewood", matches:"8 matches · Quarter-Final Jul 10", desc:"SoFi Stadium, Inglewood. 8 matches including a Quarter-Final on July 10.", esim:"US eSIM recommended. Roaming charges in the USA are very expensive.", insurance:"Medical costs in the USA are extremely high. Travel insurance is strongly recommended.", viator:"https://www.viator.com/en-GB/Los-Angeles/d645", hotel_city:"Los Angeles", iata:"LAX" },
+  "Miami, Florida": { flag:"🇺🇸", file:"cities/miami.html", country:"usa", stadium:"Hard Rock Stadium", matches:"7 matches · Quarter-Final + Bronze Final", desc:"Hard Rock Stadium. 7 matches including a Quarter-Final and the Bronze Final.", esim:"US eSIM recommended. Roaming charges in the USA are very expensive.", insurance:"Medical costs in the USA are extremely high. Travel insurance is strongly recommended.", viator:"https://www.viator.com/en-GB/Miami/d672", hotel_city:"Miami", iata:"MIA" },
+  "Seattle, Washington": { flag:"🇺🇸", file:"cities/seattle.html", country:"usa", stadium:"Lumen Field", matches:"6 matches · Round of 16 Jul 6", desc:"Lumen Field, downtown Seattle. 6 matches including a Round of 16 on July 6.", esim:"US eSIM recommended. Roaming charges in the USA are very expensive.", insurance:"Medical costs in the USA are extremely high. Travel insurance is strongly recommended.", viator:"https://www.viator.com/en-GB/Seattle/d659", hotel_city:"Seattle", iata:"SEA" },
+  "Boston, Massachusetts": { flag:"🇺🇸", file:"cities/boston.html", country:"usa", stadium:"Gillette Stadium, Foxborough", matches:"7 matches · Quarter-Final Jul 9", desc:"Gillette Stadium, Foxborough. 7 matches including a Quarter-Final on July 9.", esim:"US eSIM recommended. Roaming charges in the USA are very expensive.", insurance:"Medical costs in the USA are extremely high. Travel insurance is strongly recommended.", viator:"https://www.viator.com/en-GB/Boston/d678", hotel_city:"Boston", iata:"BOS" },
+  "Atlanta, Georgia": { flag:"🇺🇸", file:"cities/atlanta.html", country:"usa", stadium:"Mercedes-Benz Stadium", matches:"8 matches · Semi-Final Jul 15", desc:"Mercedes-Benz Stadium. 8 matches including a Semi-Final on July 15.", esim:"US eSIM recommended. Roaming charges in the USA are very expensive.", insurance:"Medical costs in the USA are extremely high. Travel insurance is strongly recommended.", viator:"https://www.viator.com/en-GB/Atlanta/d271", hotel_city:"Atlanta", iata:"ATL" },
+  "Kansas City": { flag:"🇺🇸", file:"cities/kansascity.html", country:"usa", stadium:"Arrowhead Stadium", matches:"6 matches · Quarter-Final Jul 11", desc:"Arrowhead Stadium. 6 matches including a Quarter-Final on July 11.", esim:"US eSIM recommended. Roaming charges in the USA are very expensive.", insurance:"Medical costs in the USA are extremely high. Travel insurance is strongly recommended.", viator:"https://www.viator.com/en-GB/Kansas-City/d22494", hotel_city:"Kansas City", iata:"MCI" },
+  "Philadelphia, Pennsylvania": { flag:"🇺🇸", file:"cities/philadelphia.html", country:"usa", stadium:"Lincoln Financial Field", matches:"6 matches · Round of 16 Jul 4", desc:"Lincoln Financial Field. 6 matches including a Round of 16 on July 4.", esim:"US eSIM recommended. Roaming charges in the USA are very expensive.", insurance:"Medical costs in the USA are extremely high. Travel insurance is strongly recommended.", viator:"https://www.viator.com/en-GB/Philadelphia/d673", hotel_city:"Philadelphia", iata:"PHL" },
+  "Houston, Texas": { flag:"🇺🇸", file:"cities/houston.html", country:"usa", stadium:"NRG Stadium", matches:"7 matches · Round of 16 Jul 4", desc:"NRG Stadium. 7 matches including a Round of 16 on July 4.", esim:"US eSIM recommended. Roaming charges in the USA are very expensive.", insurance:"Medical costs in the USA are extremely high. Travel insurance is strongly recommended.", viator:"https://www.viator.com/en-GB/Houston/d684", hotel_city:"Houston", iata:"IAH" },
+  "San Francisco, California": { flag:"🇺🇸", file:"cities/sanfrancisco.html", country:"usa", stadium:"Levi's Stadium, Santa Clara", matches:"6 matches · Round of 32 Jul 1", desc:"Levi's Stadium, Santa Clara. 6 matches including a Round of 32 on July 1.", esim:"US eSIM recommended. Roaming charges in the USA are very expensive.", insurance:"Medical costs in the USA are extremely high. Travel insurance is strongly recommended.", viator:"https://www.viator.com/en-GB/San-Francisco/d651", hotel_city:"San Francisco", iata:"SFO" },
+  "Toronto, Ontario": { flag:"🇨🇦", file:"cities/toronto.html", country:"canada", stadium:"BMO Field", matches:"6 matches · Canada home opener Jun 12", desc:"BMO Field, Exhibition Place. 6 matches including Canada's historic home opener on June 12.", esim:"Canada eSIM recommended to avoid roaming charges.", insurance:"Healthcare in Canada is not free for visitors. Travel insurance is recommended.", viator:"https://www.viator.com/en-GB/Toronto/d715", hotel_city:"Toronto", iata:"YYZ" },
+  "Vancouver, British Columbia": { flag:"🇨🇦", file:"cities/vancouver.html", country:"canada", stadium:"BC Place", matches:"7 matches · Round of 16 Jul 7", desc:"BC Place. 7 matches including Canada twice and a Round of 16 on July 7.", esim:"Canada eSIM recommended to avoid roaming charges.", insurance:"Healthcare in Canada is not free for visitors. Travel insurance is recommended.", viator:"https://www.viator.com/en-GB/Vancouver/d293", hotel_city:"Vancouver", iata:"YVR" },
+  "Mexico City": { flag:"🇲🇽", file:"cities/mexicocity.html", country:"mexico", stadium:"Estadio Azteca", matches:"5 matches · Opening Match Jun 11", desc:"Estadio Azteca. 5 matches including the historic Opening Match on June 11.", esim:"Get a Mexico eSIM before landing. Local SIMs require passport registration since January 2026.", insurance:"Travel insurance is recommended for Mexico.", viator:"https://www.viator.com/en-GB/Mexico-City/d585", hotel_city:"Mexico City", iata:"MEX" },
+  "Guadalajara": { flag:"🇲🇽", file:"cities/guadalajara.html", country:"mexico", stadium:"Estadio Akron", matches:"4 group stage matches", desc:"Estadio Akron. 4 group stage matches including Mexico vs South Korea on June 18.", esim:"Get a Mexico eSIM before landing. Local SIMs require passport registration since January 2026.", insurance:"Travel insurance is recommended for Mexico.", viator:"https://www.viator.com/en-GB/Guadalajara/d24154", hotel_city:"Guadalajara", iata:"GDL" },
+  "Monterrey": { flag:"🇲🇽", file:"cities/monterrey.html", country:"mexico", stadium:"Estadio BBVA", matches:"4 matches · Round of 32 Jun 29", desc:"Estadio BBVA. 4 matches including the historic 1,000th World Cup match on June 20.", esim:"Get a Mexico eSIM before landing. Local SIMs require passport registration since January 2026.", insurance:"Travel insurance is recommended for Mexico.", viator:"https://www.viator.com/en-GB/Monterrey/d22517", hotel_city:"Monterrey", iata:"MTY" }
 };
 
 // Country code to name mapping
@@ -725,7 +725,11 @@ function init() {
 
   // City guide
   document.getElementById('cityCardTitle').textContent = `${cityName} Guide`;
-  document.getElementById('cityInfo').textContent = city.desc;
+  document.getElementById('cityInfo').innerHTML = `
+    <div style="font-weight:700;font-size:0.88rem;color:var(--text);margin-bottom:0.3rem;">${city.stadium}</div>
+    <div style="font-size:0.75rem;color:var(--green);font-weight:600;margin-bottom:0.5rem;">${city.matches}</div>
+    <div style="font-size:0.78rem;color:var(--muted);">${city.desc}</div>
+  `;
   document.getElementById('cityBtn').href = city.file;
   document.getElementById('cityBtn').textContent = `View full ${cityName} guide →`;
 
